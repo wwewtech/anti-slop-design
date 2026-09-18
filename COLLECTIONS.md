@@ -23,15 +23,26 @@ This registry catalogs **`anti-slop-design`** across every AI agent directory, C
 | Repository | Focus | PR Link | Status |
 | :--- | :--- | :--- | :--- |
 | **PatrickJS/awesome-cursorrules** (10,000+ ⭐) | Official Cursor Rules | [PR #382](https://github.com/PatrickJS/awesome-cursorrules/pull/382) | Submitted (Linter Passed) |
-| **ComposioHQ/awesome-claude-skills** | Claude Skills Ecosystem | [PR #1933](https://github.com/ComposioHQ/awesome-claude-skills/pull/1933) | Submitted |
+| **ComposioHQ/awesome-claude-skills** (75,000+ ⭐) | Claude Skills Ecosystem | [PR #1933](https://github.com/ComposioHQ/awesome-claude-skills/pull/1933) | Submitted (CI Passed) |
 | **karanb192/awesome-claude-skills** | Verified Claude Skills | [PR #314](https://github.com/karanb192/awesome-claude-skills/pull/314) | Submitted |
-| **spencerpauly/awesome-cursor-skills** | Cursor Agent Workflows | [PR #81](https://github.com/spencerpauly/awesome-cursor-skills/pull/81) | Submitted |
+| **spencerpauly/awesome-cursor-skills** | Cursor Agent Workflows | [PR #81](https://github.com/spencerpauly/awesome-cursor-skills/pull/81) | Submitted (Copilot Approved) |
 | **philipbankier/awesome-agent-skills** | Agent Skills Standard | [PR #95](https://github.com/philipbankier/awesome-agent-skills/pull/95) | Submitted |
-| **Prat011/awesome-llm-skills** | Multi-Agent LLM Skills | [PR #255](https://github.com/Prat011/awesome-llm-skills/pull/255) | Submitted |
-| **bergside/awesome-design-skills** | TypeUI / Design Skills | [PR #20](https://github.com/bergside/awesome-design-skills/pull/20) | Submitted |
-| **rohitg00/awesome-claude-code-toolkit** | Claude Code Toolkit | [PR #799](https://github.com/rohitg00/awesome-claude-code-toolkit/pull/799) | Submitted |
-| **heilcheng/awesome-agent-skills** | Agent Skill Index | [PR #504](https://github.com/heilcheng/awesome-agent-skills/pull/504) | Submitted |
-| **BehiSecc/awesome-claude-skills** | Claude Skills & Tools | [PR #727](https://github.com/BehiSecc/awesome-claude-skills/pull/727) | Submitted |
+| **Prat011/awesome-llm-skills** (1,700+ ⭐) | Multi-Agent LLM Skills | [PR #255](https://github.com/Prat011/awesome-llm-skills/pull/255) | Submitted (Copilot Approved) |
+| **bergside/awesome-design-skills** (2,800+ ⭐) | TypeUI / Design Skills | [PR #20](https://github.com/bergside/awesome-design-skills/pull/20) | Submitted |
+| **rohitg00/awesome-claude-code-toolkit** (2,300+ ⭐) | Claude Code Toolkit | [PR #799](https://github.com/rohitg00/awesome-claude-code-toolkit/pull/799) | Submitted |
+| **heilcheng/awesome-agent-skills** (6,200+ ⭐) | Agent Skill Index | [PR #504](https://github.com/heilcheng/awesome-agent-skills/pull/504) | Submitted |
+| **BehiSecc/awesome-claude-skills** (10,000+ ⭐) | Claude Skills & Tools | [PR #727](https://github.com/BehiSecc/awesome-claude-skills/pull/727) | Submitted |
+| **rohitg00/awesome-claude-design** (1,000+ ⭐) | Claude Design Systems | [PR #41](https://github.com/rohitg00/awesome-claude-design/pull/41) | Submitted |
+| **filipecalegario/awesome-vibe-coding** (5,200+ ⭐) | Vibe Coding Masterlist | [PR #330](https://github.com/filipecalegario/awesome-vibe-coding/pull/330) | Submitted |
+| **awesome-vibe-coding/awesome-vibe-coding** (830+ ⭐) | Curated Vibe Coding Hub | [PR #157](https://github.com/awesome-vibe-coding/awesome-vibe-coding/pull/157) | Submitted |
+| **analyticalrohit/awesome-vibe-coding-guide** (370+ ⭐) | Vibe Coding Guide & Best Practices | [PR #36](https://github.com/analyticalrohit/awesome-vibe-coding-guide/pull/36) | Submitted |
+| **taskade/awesome-vibe-coding** (130+ ⭐) | Taskade Vibe Coding List | [PR #68](https://github.com/taskade/awesome-vibe-coding/pull/68) | Submitted |
+| **skillmatic-ai/awesome-agent-skills** (670+ ⭐) | Agent Skills Directory | [PR #178](https://github.com/skillmatic-ai/awesome-agent-skills/pull/178) | Submitted |
+| **sickn33/agentic-awesome-skills** (46,500+ ⭐) | AAS Core / Agentic Catalog | [PR #1494](https://github.com/sickn33/agentic-awesome-skills/pull/1494) | Submitted (Strict Validated) |
+| **VoltAgent/awesome-agent-skills** (34,500+ ⭐) | Curated Agent Skills Hub | [PR #1070](https://github.com/VoltAgent/awesome-agent-skills/pull/1070) | Submitted |
+| **libukai/awesome-agent-skills** (5,100+ ⭐) | Chinese & Global Skills Guide | [PR #160](https://github.com/libukai/awesome-agent-skills/pull/160) | Submitted |
+| **jqueryscript/awesome-claude-code** (510+ ⭐) | Claude Code Resources | [PR #685](https://github.com/jqueryscript/awesome-claude-code/pull/685) | Submitted |
+
 
 ---
 
@@ -66,9 +77,50 @@ This registry catalogs **`anti-slop-design`** across every AI agent directory, C
 - **Status:** [PR #20](https://github.com/bergside/awesome-design-skills/pull/20)
 - **Path:** `skills/anti-slop-design/` (`SKILL.md`, `DESIGN.md`, `index.json`)
 
-#### H. Gated Lists (Deferred)
+#### H. [rohitg00/awesome-claude-design](https://github.com/rohitg00/awesome-claude-design)
+- **Status:** [PR #41](https://github.com/rohitg00/awesome-claude-design/pull/41)
+- **Category:** `Community anti-slop tools` & `Community installs`
+
+#### I. [filipecalegario/awesome-vibe-coding](https://github.com/filipecalegario/awesome-vibe-coding) (5,200+ ⭐)
+- **Status:** [PR #330](https://github.com/filipecalegario/awesome-vibe-coding/pull/330)
+- **Category:** `Plugins and Extensions`
+
+#### J. [awesome-vibe-coding/awesome-vibe-coding](https://github.com/awesome-vibe-coding/awesome-vibe-coding)
+- **Status:** [PR #157](https://github.com/awesome-vibe-coding/awesome-vibe-coding/pull/157)
+- **Category:** `Extensions & Plugins` and `content/skills/anti-slop-design.md`
+
+#### K. [analyticalrohit/awesome-vibe-coding-guide](https://github.com/analyticalrohit/awesome-vibe-coding-guide)
+- **Status:** [PR #36](https://github.com/analyticalrohit/awesome-vibe-coding-guide/pull/36)
+- **Category:** `Assisted Coding and Prompting (Best Practices)`
+
+#### L. [taskade/awesome-vibe-coding](https://github.com/taskade/awesome-vibe-coding)
+- **Status:** [PR #68](https://github.com/taskade/awesome-vibe-coding/pull/68)
+- **Category:** `Agent Skills`
+
+#### M. [skillmatic-ai/awesome-agent-skills](https://github.com/skillmatic-ai/awesome-agent-skills)
+- **Status:** [PR #178](https://github.com/skillmatic-ai/awesome-agent-skills/pull/178)
+- **Category:** `Popular Collections`
+
+#### N. [sickn33/agentic-awesome-skills](https://github.com/sickn33/agentic-awesome-skills) (46,500+ ⭐)
+- **Status:** [PR #1494](https://github.com/sickn33/agentic-awesome-skills/pull/1494)
+- **Path:** `skills/anti-slop-design/SKILL.md` (Validated 0 errors, 0 warnings in strict mode)
+
+#### O. [VoltAgent/awesome-agent-skills](https://github.com/VoltAgent/awesome-agent-skills) (34,500+ ⭐)
+- **Status:** [PR #1070](https://github.com/VoltAgent/awesome-agent-skills/pull/1070)
+- **Category:** `Community Skills -> Development and Testing`
+
+#### P. [libukai/awesome-agent-skills](https://github.com/libukai/awesome-agent-skills) (5,100+ ⭐)
+- **Status:** [PR #160](https://github.com/libukai/awesome-agent-skills/pull/160)
+- **Category:** `精选技能 -> 编程开发`
+
+#### Q. [jqueryscript/awesome-claude-code](https://github.com/jqueryscript/awesome-claude-code)
+- **Status:** [PR #685](https://github.com/jqueryscript/awesome-claude-code/pull/685)
+- **Category:** `Agent Skills`
+
+#### R. Gated Lists (Deferred)
 - **[travisvn/awesome-claude-skills](https://github.com/travisvn/awesome-claude-skills):** CI bot enforces `>= 10 stars` threshold. Ready to submit once repo acquires community stars.
 - **[hesreallyhim/awesome-claude-code](https://github.com/hesreallyhim/awesome-claude-code):** Requires manual Web UI issue form (CLI automated PRs forbidden; requires `>= 100 stars` or 14-day history).
+
 
 
 ---
