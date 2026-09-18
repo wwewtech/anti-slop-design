@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anti-Slop Design — The Human-Grade UI/UX Skill for AI Agents</title>
+  <meta name="description" content="Autonomous Principal Design Technologist and Anti-AI-Slop Specialist. Transforms messy, generic vibe-coded prototypes into bespoke, human-grade, production-ready software.">
+  <meta property="og:title" content="Anti-Slop Design — The Anti-AI-Slop Skill for Agents">
+  <meta property="og:description" content="Cures vibe-coded software from generic AI tropes. Enforces 1-to-3 UX hierarchy, tactile micro-interactions, and 7-axis quality gating.">
+  <meta property="og:url" content="https://wwewtech.github.io/anti-slop-design/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-canvas: #09090b;
+      --bg-surface: #121215;
+      --bg-surface-elevated: #18181c;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-hover: rgba(255, 255, 255, 0.16);
+      --accent-primary: #3b82f6;
+      --accent-foreground: #ffffff;
+      --text-primary: #f4f4f5;
+      --text-secondary: #a1a1aa;
+      --text-muted: #71717a;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-display: 'Space Grotesk', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    /* Archetype classes */
+    body.theme-terminal {
+      --bg-canvas: #0c0d0e;
+      --bg-surface: #141618;
+      --bg-surface-elevated: #1a1d20;
+      --border-subtle: #24282c;
+      --border-hover: #383e44;
+      --accent-primary: #10b981;
+      --text-primary: #e6edf3;
+      --radius-sm: 2px;
+      --radius-md: 4px;
+      --font-display: 'JetBrains Mono', monospace;
+    }
+
+    body.theme-editorial {
+      --bg-canvas: #faf8f5;
+      --bg-surface: #ffffff;
+      --bg-surface-elevated: #f4f1ea;
+      --border-subtle: #e8e4df;
+      --border-hover: #d1ccc4;
+      --accent-primary: #1a1a1a;
+      --text-primary: #1a1918;
+      --text-secondary: #635f59;
+      --text-muted: #8c867e;
+      --radius-sm: 0px;
+      --radius-md: 2px;
+      --font-display: Georgia, serif;
+    }
+
+    body.theme-warm {
+      --bg-canvas: #f4f4f0;
+      --bg-surface: #ffffff;
+      --bg-surface-elevated: #ebe9e3;
+      --border-subtle: #e2e1db;
+      --border-hover: #cbcaa;
+      --accent-primary: #d97706;
+      --text-primary: #1c1917;
+      --text-secondary: #78716c;
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg-canvas);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      transition: background-color 200ms ease-out, color 200ms ease-out;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header Nav */
+    header {
+      border-bottom: 1px solid var(--border-subtle);
+      position: sticky;
+      top: 0;
+      background: rgba(9, 9, 11, 0.85);
+      backdrop-filter: blur(12px);
+      z-index: 50;
+    }
+    .nav-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 64px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.125rem;
+      color: var(--text-primary);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+    .brand-badge {
+      font-size: 0.6875rem;
+      padding: 2px 8px;
+      border-radius: 9999px;
+      background: rgba(59, 130, 246, 0.15);
+      color: var(--accent-primary);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      font-weight: 600;
+    }
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+    .nav-link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: color 140ms ease-out;
+    }
+    .nav-link:hover { color: var(--text-primary); }
+
+    .btn-github {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: var(--bg-surface-elevated);
+      color: var(--text-primary);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      font-size: 0.8125rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: border-color 140ms ease-out, transform 60ms ease-out;
+    }
+    .btn-github:hover { border-color: var(--border-hover); }
+    .btn-github:active { transform: scale(0.97); }
+
+    /* Hero */
+    .hero {
+      padding: 80px 0 60px;
+      text-align: center;
+    }
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 14px;
+      border-radius: 9999px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+      letter-spacing: 0.04em;
+    }
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #10b981;
+    }
+    h1.hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+      color: var(--text-primary);
+    }
+    p.hero-subtitle {
+      max-width: 680px;
+      margin: 0 auto 40px;
+      font-size: 1.125rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* Install Bar */
+    .install-box {
+      max-width: 640px;
+      margin: 0 auto 60px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+    }
+    .install-tabs {
+      display: flex;
+      border-bottom: 1px solid var(--border-subtle);
+      background: rgba(0, 0, 0, 0.2);
+    }
+    .install-tab {
+      padding: 10px 18px;
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      color: var(--text-secondary);
+      font-size: 0.8125rem;
+      font-weight: 500;
+      cursor: pointer;
+      font-family: var(--font-sans);
+      transition: color 120ms ease-out, border-color 120ms ease-out;
+    }
+    .install-tab.active {
+      color: var(--text-primary);
+      border-bottom-color: var(--accent-primary);
+    }
+    .install-tab:hover { color: var(--text-primary); }
+
+    .install-body {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px;
+      gap: 12px;
+    }
+    .install-cmd {
+      font-family: var(--font-mono);
+      font-size: 0.875rem;
+      color: #e2e8f0;
+      white-space: nowrap;
+      overflow-x: auto;
+      text-align: left;
+    }
+    .copy-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      background: var(--accent-primary);
+      color: var(--accent-foreground);
+      border: none;
+      border-radius: var(--radius-sm);
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      user-select: none;
+      transition: filter 140ms ease-out, transform 60ms ease-out;
+    }
+    .copy-btn:hover { filter: brightness(1.1); }
+    .copy-btn:active { transform: scale(0.95); }
+
+    /* Interactive Archetype Switcher */
+    .archetypes-section {
+      padding: 40px 0;
+      text-align: center;
+    }
+    .section-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent-primary);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 1.875rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+    }
+    .theme-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+    .theme-btn {
+      padding: 8px 16px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      color: var(--text-secondary);
+      font-size: 0.8125rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 140ms ease-out;
+    }
+    .theme-btn.active {
+      background: var(--bg-surface-elevated);
+      color: var(--text-primary);
+      border-color: var(--accent-primary);
+    }
+    .theme-btn:hover { border-color: var(--border-hover); }
+
+    /* Live Preview Card */
+    .preview-card {
+      max-width: 860px;
+      margin: 0 auto;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      text-align: left;
+      box-shadow: 0 20px 48px rgba(0, 0, 0, 0.4);
+    }
+    .preview-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 28px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .preview-header h3 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+    .preview-controls {
+      display: flex;
+      gap: 8px;
+    }
+    .preview-input {
+      padding: 6px 12px;
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      color: var(--text-primary);
+      font-size: 0.8125rem;
+      outline: none;
+    }
+    .preview-input:focus {
+      border-color: var(--accent-primary);
+    }
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .kpi-card {
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 18px;
+    }
+    .kpi-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      font-weight: 500;
+    }
+    .kpi-val {
+      font-family: var(--font-mono);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      font-variant-numeric: tabular-nums;
+    }
+    .kpi-delta {
+      font-size: 0.6875rem;
+      color: #10b981;
+      font-weight: 600;
+      margin-top: 4px;
+    }
+
+    /* Comparison Table Section */
+    .table-section {
+      padding: 60px 0;
+    }
+    .banned-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 24px;
+      background: var(--bg-surface);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+    }
+    .banned-table th {
+      text-align: left;
+      padding: 14px 18px;
+      background: rgba(0, 0, 0, 0.2);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .banned-table td {
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border-subtle);
+      font-size: 0.875rem;
+    }
+    .banned-table tr:last-child td { border-bottom: none; }
+    .bad-text { color: #ef4444; font-weight: 600; }
+    .good-text { color: #10b981; font-weight: 500; }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border-subtle);
+      padding: 40px 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.8125rem;
+    }
+    footer a { color: var(--text-secondary); text-decoration: none; }
+    footer a:hover { color: var(--text-primary); }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <div class="container nav-wrap">
+      <a href="#" class="brand">
+        ANTI-SLOP DESIGN
+        <span class="brand-badge">v1.0.0</span>
+      </a>
+      <div class="nav-links">
+        <a href="https://skills.sh/wwewtech/anti-slop-design" class="nav-link" target="_blank">skills.sh</a>
+        <a href="https://github.com/wwewtech/anti-slop-design/blob/main/SKILL.md" class="nav-link" target="_blank">SKILL.md</a>
+        <a href="https://github.com/wwewtech/anti-slop-design" class="btn-github" target="_blank">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          GitHub ★
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="status-pill">
+        <span class="dot"></span>
+        AI AGENT SKILL SPECIFICATION
+      </div>
+      <h1 class="hero-title">Cure Vibe-Coded Apps<br>From AI Design Slop</h1>
+      <p class="hero-subtitle">
+        The autonomous Principal Design Technologist skill. Transforms cookie-cutter AI prototypes into distinctive, tactile, accessible, and commercially viable production interfaces.
+      </p>
+
+      <!-- Install Box -->
+      <div class="install-box">
+        <div class="install-tabs">
+          <button class="install-tab active" onclick="switchInstall('skills')">skills.sh CLI</button>
+          <button class="install-tab" onclick="switchInstall('claude')">Claude Code</button>
+          <button class="install-tab" onclick="switchInstall('cursor')">Cursor</button>
+          <button class="install-tab" onclick="switchInstall('antigravity')">Antigravity</button>
+        </div>
+        <div class="install-body">
+          <div class="install-cmd" id="installCmd">npx skills add wwewtech/anti-slop-design</div>
+          <button class="copy-btn" id="copyBtn" onclick="copyInstall()">Copy</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Archetypes Interactive Showcase -->
+  <section class="archetypes-section">
+    <div class="container">
+      <div class="section-label">Interactive Token Engine</div>
+      <h2 class="section-title">Test 4 Production Archetypes Live</h2>
+
+      <div class="theme-buttons">
+        <button class="theme-btn active" onclick="setTheme('default')">Quiet Luxury SaaS (Default)</button>
+        <button class="theme-btn" onclick="setTheme('terminal')">Technical Dense Terminal</button>
+        <button class="theme-btn" onclick="setTheme('editorial')">Editorial &amp; Refined</button>
+        <button class="theme-btn" onclick="setTheme('warm')">Warm Tactile</button>
+      </div>
+
+      <!-- Live Preview Card -->
+      <div class="preview-card">
+        <div class="preview-header">
+          <div>
+            <h3 id="previewHeading">Enterprise Observability</h3>
+            <p style="font-size: 0.8125rem; color: var(--text-secondary);">Real-time telemetry and revenue performance</p>
+          </div>
+          <div class="preview-controls">
+            <input type="text" class="preview-input" value="Last 30 days" readonly style="width: 120px; cursor: pointer;">
+            <button class="copy-btn" style="padding: 6px 14px;">Export</button>
+          </div>
+        </div>
+
+        <div class="kpi-grid">
+          <div class="kpi-card">
+            <div class="kpi-label">Active Workflows</div>
+            <div class="kpi-val">1,429</div>
+            <div class="kpi-delta">↑ +14.2% MoM</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">Median Latency</div>
+            <div class="kpi-val">84ms</div>
+            <div class="kpi-delta">↓ -8.4ms faster</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">Task Completion</div>
+            <div class="kpi-val">99.4%</div>
+            <div class="kpi-delta">↑ 0 friction blocks</div>
+          </div>
+        </div>
+
+        <div style="background: var(--bg-surface-elevated); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 16px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+            <span style="font-size: 0.8125rem; font-weight: 600;">Top Conversion Channels</span>
+            <span style="font-size: 0.75rem; color: var(--text-muted);">Tabular Delta Comparison</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid var(--border-subtle); font-size: 0.8125rem;">
+            <span>Developer API Direct</span>
+            <span style="font-family: var(--font-mono); font-weight: 600;">64.2%</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; padding: 6px 0; font-size: 0.8125rem;">
+            <span>GitHub App Integration</span>
+            <span style="font-family: var(--font-mono); font-weight: 600;">35.8%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Banned Anti-Patterns Table -->
+  <section class="table-section">
+    <div class="container">
+      <div class="section-label">Diagnostic Matrix</div>
+      <h2 class="section-title">The 12 Banned AI Slop Tropes</h2>
+
+      <table class="banned-table">
+        <thead>
+          <tr>
+            <th width="30%">AI Slop Anti-Pattern</th>
+            <th width="35%">Vibe-Coded Manifestation</th>
+            <th width="35%">Mandatory Production Replacement</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="bad-text">✕ The "AI Dark Mode" Blob</td>
+            <td>Purple/indigo radial gradient in corners</td>
+            <td class="good-text">✓ Deep obsidian monochrome (#09090b) with 1px hairline border</td>
+          </tr>
+          <tr>
+            <td class="bad-text">✕ Raw Emojis as Icons</td>
+            <td>Plastering 🚀 🔥 💡 inside buttons</td>
+            <td class="good-text">✓ Crisp 1.5px/2px stroke vector SVGs (Lucide / Phosphor)</td>
+          </tr>
+          <tr>
+            <td class="bad-text">✕ Duplicate Metric Cards</td>
+            <td>Repeating the same KPI across multiple cards</td>
+            <td class="good-text">✓ Single source of metric truth with unified page-level filters</td>
+          </tr>
+          <tr>
+            <td class="bad-text">✕ Vanity Space-Wasters</td>
+            <td>Giant 3D world maps showing zero actionable deltas</td>
+            <td class="good-text">✓ Compact horizontal comparison bars with tabular numbers</td>
+          </tr>
+          <tr>
+            <td class="bad-text">✕ Missing Component States</td>
+            <td>Buttons with only hover states; no focus or active feedback</td>
+            <td class="good-text">✓ 8-State interactive machine + tactile press scale(0.97)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>MIT Licensed • Created with care by <a href="https://wwew.tech" target="_blank">wwewtech</a> (Pavel Lebedev)</p>
+      <p style="margin-top: 8px;">
+        <a href="https://github.com/wwewtech/anti-slop-design" target="_blank">GitHub Repository</a> •
+        <a href="https://skills.sh/wwewtech/anti-slop-design" target="_blank">skills.sh Page</a> •
+        <a href="https://github.com/wwewtech/anti-slop-design/blob/main/SKILLS_ANALYSIS_AND_AUDIT.md" target="_blank">Corpus Audit</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    const commands = {
+      skills: 'npx skills add wwewtech/anti-slop-design',
+      claude: 'claude skills add https://github.com/wwewtech/anti-slop-design',
+      cursor: 'curl -sL https://raw.githubusercontent.com/wwewtech/anti-slop-design/main/SKILL.md -o .cursor/skills/anti-slop-design/SKILL.md',
+      antigravity: 'curl -sL https://raw.githubusercontent.com/wwewtech/anti-slop-design/main/SKILL.md -o ~/.gemini/config/skills/anti-slop-design/SKILL.md'
+    };
+
+    function switchInstall(key) {
+      document.getElementById('installCmd').textContent = commands[key];
+      const tabs = document.querySelectorAll('.install-tab');
+      tabs.forEach(t => t.classList.remove('active'));
+      event.target.classList.add('active');
+    }
+
+    function copyInstall() {
+      const text = document.getElementById('installCmd').textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.getElementById('copyBtn');
+        btn.textContent = 'Copied! ✓';
+        setTimeout(() => { btn.textContent = 'Copy'; }, 2000);
+      });
+    }
+
+    function setTheme(theme) {
+      document.body.className = '';
+      if (theme !== 'default') {
+        document.body.classList.add('theme-' + theme);
+      }
+      const btns = document.querySelectorAll('.theme-btn');
+      btns.forEach(b => b.classList.remove('active'));
+      event.target.classList.add('active');
+
+      const headings = {
+        default: 'Enterprise Observability',
+        terminal: 'SYS_METRICS_OBSERVER::v1.0',
+        editorial: 'The Weekly Dispatches & Metrics',
+        warm: 'Studio Pulse & Creative Workflows'
+      };
+      document.getElementById('previewHeading').textContent = headings[theme] || 'Enterprise Observability';
+    }
+  </script>
+</body>
+</html>

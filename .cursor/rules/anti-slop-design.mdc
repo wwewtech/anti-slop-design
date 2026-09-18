@@ -1,0 +1,16 @@
+---
+description: Anti-slop design rules for UI, frontend, and styling
+globs: **/*.{tsx,jsx,html,vue,svelte,css,scss}
+alwaysApply: false
+---
+
+# Anti-Slop Design: Frontend & UI Rules
+
+When editing or creating user interfaces:
+- Never generate generic "AI Dark Mode" purple/indigo radial gradients.
+- Never use raw emojis as UI icons; use Lucide/Phosphor SVGs.
+- Enforce the 1-to-3 UX rule (1 primary action, max 3 secondary).
+- Global filters/date-pickers belong in the page header, never inside individual cards.
+- Support 8 interactive states on all interactive controls.
+- Snappy transitions (<200ms) with `cubic-bezier(0.23, 1, 0.32, 1)`.
+- Grade output against the 7-Axis Quality Gate in `SKILL.md`.
