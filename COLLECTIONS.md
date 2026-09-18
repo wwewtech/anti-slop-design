@@ -17,74 +17,55 @@ This registry catalogs **`anti-slop-design`** across every AI agent directory, C
 
 ---
 
-## 2. GitHub Awesome-Lists (Ready-to-Submit PR Snippets)
+## 2. GitHub Awesome-Lists Submissions & PR Tracker
 
-Submit Pull Requests to these high-traffic repositories using the exact formatted snippets below:
+| Repository | Focus | PR Link | Status |
+| :--- | :--- | :--- | :--- |
+| **PatrickJS/awesome-cursorrules** (10,000+ ⭐) | Official Cursor Rules | [PR #382](https://github.com/PatrickJS/awesome-cursorrules/pull/382) | Submitted (Linter Passed) |
+| **ComposioHQ/awesome-claude-skills** | Claude Skills Ecosystem | [PR #1933](https://github.com/ComposioHQ/awesome-claude-skills/pull/1933) | Submitted |
+| **karanb192/awesome-claude-skills** | Verified Claude Skills | [PR #314](https://github.com/karanb192/awesome-claude-skills/pull/314) | Submitted |
+| **spencerpauly/awesome-cursor-skills** | Cursor Agent Workflows | [PR #81](https://github.com/spencerpauly/awesome-cursor-skills/pull/81) | Submitted |
+| **philipbankier/awesome-agent-skills** | Agent Skills Standard | [PR #95](https://github.com/philipbankier/awesome-agent-skills/pull/95) | Submitted |
+| **Prat011/awesome-llm-skills** | Multi-Agent LLM Skills | [PR #255](https://github.com/Prat011/awesome-llm-skills/pull/255) | Submitted |
+| **bergside/awesome-design-skills** | TypeUI / Design Skills | [PR #20](https://github.com/bergside/awesome-design-skills/pull/20) | Submitted |
 
-### A. [PatrickJS/awesome-cursorrules](https://github.com/PatrickJS/awesome-cursorrules) (10,000+ ⭐)
+---
+
+### PR Submission Details & Formats
+
+#### A. [PatrickJS/awesome-cursorrules](https://github.com/PatrickJS/awesome-cursorrules) (10,000+ ⭐)
+- **Status:** [PR #382](https://github.com/PatrickJS/awesome-cursorrules/pull/382)
 - **Path:** `rules/anti-slop-design.mdc`
 - **Category:** `Frontend / UI / Design Systems`
-- **PR Title:** `add(rules): anti-slop-design UI engineering framework`
-- **Markdown Entry:**
-  ```markdown
-  - [anti-slop-design](https://github.com/wwewtech/anti-slop-design) - Autonomous Principal Design Technologist. Cures vibe-coded prototypes from AI slop (purple blobs, emoji buttons, 3-card grids) with curated token archetypes and a 7-axis quality gate.
-  ```
 
-### B. [travisvn/awesome-claude-skills](https://github.com/travisvn/awesome-claude-skills)
-- **Category:** `Web Development & Design Systems`
-- **PR Title:** `Add anti-slop-design to Web Development`
-- **Markdown Entry:**
-  ```markdown
-  - [anti-slop-design](https://github.com/wwewtech/anti-slop-design) - Human-grade UI/UX engineering skill for Claude Code. Enforces the 1-to-3 UX focus rule, 8-state interactive feedback, and strict token geometry.
-  ```
+#### B. [ComposioHQ/awesome-claude-skills](https://github.com/ComposioHQ/awesome-claude-skills)
+- **Status:** [PR #1933](https://github.com/ComposioHQ/awesome-claude-skills/pull/1933)
+- **Category:** `Creative & Media`
 
-### C. [ComposioHQ/awesome-claude-skills](https://github.com/ComposioHQ/awesome-claude-skills)
-- **Category:** `UI & Frontend Engineering`
-- **PR Title:** `Add anti-slop-design skill for frontend and design technologist agents`
-- **Markdown Entry:**
-  ```markdown
-  - [anti-slop-design](https://github.com/wwewtech/anti-slop-design) - Autonomous design technologist agent skill. Converts generic vibe-coded prototypes into bespoke, human-grade SaaS dashboards and landing pages.
-  ```
+#### C. [spencerpauly/awesome-cursor-skills](https://github.com/spencerpauly/awesome-cursor-skills)
+- **Status:** [PR #81](https://github.com/spencerpauly/awesome-cursor-skills/pull/81)
+- **Category:** `Frontend & UI`
 
-### D. [karanb192/awesome-claude-skills](https://github.com/karanb192/awesome-claude-skills)
+#### D. [karanb192/awesome-claude-skills](https://github.com/karanb192/awesome-claude-skills)
+- **Status:** [PR #314](https://github.com/karanb192/awesome-claude-skills/pull/314)
 - **Category:** `Frontend / UI Design`
-- **PR Title:** `Add anti-slop-design skill`
-- **Markdown Entry:**
-  ```markdown
-  - [anti-slop-design](https://github.com/wwewtech/anti-slop-design) - 8 Universal Cures for vibe-coded UI, 4 production archetypes, and pre-emit self-critique rubric.
-  ```
 
-### E. [philipbankier/awesome-agent-skills](https://github.com/philipbankier/awesome-agent-skills)
+#### E. [philipbankier/awesome-agent-skills](https://github.com/philipbankier/awesome-agent-skills)
+- **Status:** [PR #95](https://github.com/philipbankier/awesome-agent-skills/pull/95)
 - **Category:** `Design & Developer Tools`
-- **PR Title:** `Add anti-slop-design (SKILL.md standard)`
-- **Markdown Entry:**
-  ```markdown
-  - [anti-slop-design](https://github.com/wwewtech/anti-slop-design) - Open-standard `SKILL.md` skill for AI coding agents. Replaces default AI design tropes with production-grade architectural rules.
-  ```
 
-### F. [VoltAgent/awesome-agent-skills](https://github.com/VoltAgent/awesome-agent-skills)
-- **Category:** `Design & User Experience`
-- **PR Title:** `Add anti-slop-design to Design & UX`
-- **Markdown Entry:**
-  ```markdown
-  - [anti-slop-design](https://github.com/wwewtech/anti-slop-design) - Anti-AI-slop design skill. Deterministic tokens, Emil Kowalski micro-interactions, and 7-axis quality gate.
-  ```
+#### F. [Prat011/awesome-llm-skills](https://github.com/Prat011/awesome-llm-skills)
+- **Status:** [PR #255](https://github.com/Prat011/awesome-llm-skills/pull/255)
+- **Category:** `Creative & Media`
 
-### G. [e2b-dev/awesome-ai-agents](https://github.com/e2b-dev/awesome-ai-agents) (13,000+ ⭐)
-- **Category:** `Agent Tools & Skills`
-- **PR Title:** `Add anti-slop-design to Agent Skills`
-- **Markdown Entry:**
-  ```markdown
-  - [anti-slop-design](https://github.com/wwewtech/anti-slop-design) - Autonomous Principal Design Technologist for coding agents (Claude Code, Cursor, Antigravity, Windsurf).
-  ```
+#### G. [bergside/awesome-design-skills](https://github.com/bergside/awesome-design-skills)
+- **Status:** [PR #20](https://github.com/bergside/awesome-design-skills/pull/20)
+- **Path:** `skills/anti-slop-design/` (`SKILL.md`, `DESIGN.md`, `index.json`)
 
-### H. [hesreallyhim/awesome-claude-code](https://github.com/hesreallyhim/awesome-claude-code)
-- **Category:** `Skills & Extensions`
-- **PR Title:** `Add anti-slop-design skill`
-- **Markdown Entry:**
-  ```markdown
-  - [anti-slop-design](https://github.com/wwewtech/anti-slop-design) - Design system skill for Claude Code that prevents AI design slop in generated frontends.
-  ```
+#### H. Gated Lists (Deferred)
+- **[travisvn/awesome-claude-skills](https://github.com/travisvn/awesome-claude-skills):** CI bot enforces `>= 10 stars` threshold. Ready to submit once repo acquires community stars.
+- **[hesreallyhim/awesome-claude-code](https://github.com/hesreallyhim/awesome-claude-code):** Requires manual Web UI issue form (CLI automated PRs forbidden; requires `>= 100 stars` or 14-day history).
+
 
 ---
 
