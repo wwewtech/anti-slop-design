@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>anti-slop-design · Human-Grade UI/UX Engineering for AI Agents</title>
-  <meta name="description" content="Autonomous Principal Design Technologist. Cures vibe-coded applications from AI design slop with deterministic token architecture and an objective 7-axis quality gate.">
+  <title>anti-slop-design · Human-Grade UI Engineering for AI Coding Agents</title>
+  <meta name="description" content="Autonomous Principal Design Technologist. Cures vibe-coded applications from AI design slop with deterministic token architecture, 8-state micro-interactions, and a 7-axis quality gate.">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22><rect width=%2232%22 height=%2232%22 rx=%226%22 fill=%22%23000%22/><path d=%22M8 8l16 16M24 8L8 24%22 stroke=%22%23fff%22 stroke-width=%223%22 stroke-linecap=%22round%22/></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,10 +15,11 @@
       --surface-1: #09090b;
       --surface-2: #121215;
       --surface-elevated: #18181c;
-      --border-subtle: #222226;
-      --border-active: #3a3a42;
-      --text: #ededed;
-      --text-dim: #8e8e93;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-hover: rgba(255, 255, 255, 0.16);
+      --border-active: rgba(255, 255, 255, 0.24);
+      --text: #f4f4f5;
+      --text-dim: #a1a1aa;
       --text-muted: #52525b;
       --accent-blue: #3b82f6;
       --accent-emerald: #10b981;
@@ -27,9 +28,9 @@
       --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       --font-mono: 'JetBrains Mono', Consolas, monospace;
       --font-serif: 'Newsreader', Georgia, serif;
-      --radius-sm: 4px;
-      --radius-md: 8px;
-      --radius-lg: 12px;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 14px;
       --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
     }
 
@@ -39,88 +40,63 @@
       background: var(--bg);
       color: var(--text);
       font-family: var(--font-sans);
-      font-size: 13.5px;
+      font-size: 14px;
       line-height: 1.55;
       -webkit-font-smoothing: antialiased;
       padding: 0 20px;
     }
 
     .wrap {
-      max-width: 980px;
+      max-width: 1040px;
       margin: 0 auto;
-      padding: 32px 0 100px;
+      padding: 24px 0 120px;
     }
 
-    /* Precision Top Navigation */
-    header {
+    /* Minimalist Top Header */
+    header.site-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding-bottom: 20px;
+      padding: 16px 0 24px;
       border-bottom: 1px solid var(--border-subtle);
-      margin-bottom: 40px;
+      margin-bottom: 48px;
     }
 
-    .brand-wrap {
+    .brand-group {
       display: flex;
       align-items: center;
       gap: 12px;
     }
 
     .brand-mark {
-      width: 24px;
-      height: 24px;
+      width: 26px;
+      height: 26px;
       background: #ffffff;
-      border-radius: 4px;
+      border-radius: 5px;
       display: grid;
       place-items: center;
       color: #000000;
-      font-weight: 800;
-      font-size: 14px;
-      font-family: var(--font-mono);
       user-select: none;
     }
 
     .brand-title {
       font-family: var(--font-mono);
       font-weight: 600;
-      font-size: 13px;
+      font-size: 13.5px;
       color: var(--text);
       text-decoration: none;
       letter-spacing: -0.02em;
     }
 
-    .brand-title span { color: var(--text-muted); }
+    .brand-title span { color: var(--text-muted); font-weight: 400; }
 
-    .telemetry-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: #0d1611;
-      border: 1px solid #183822;
-      border-radius: 9999px;
-      padding: 2px 8px;
-      font-family: var(--font-mono);
-      font-size: 10.5px;
-      color: var(--accent-emerald);
-      letter-spacing: 0.02em;
-    }
-
-    .telemetry-dot {
-      width: 6px;
-      height: 6px;
-      background: var(--accent-emerald);
-      border-radius: 50%;
-      box-shadow: 0 0 6px var(--accent-emerald);
-    }
-
-    .nav-links {
+    .header-nav {
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 20px;
     }
 
-    .nav-links a {
+    .header-nav a {
       color: var(--text-dim);
       font-family: var(--font-mono);
       font-size: 12px;
@@ -128,104 +104,129 @@
       transition: color 120ms var(--ease-out);
     }
 
-    .nav-links a:hover { color: var(--text); }
+    .header-nav a:hover { color: var(--text); }
 
-    /* Hero */
-    .hero {
-      margin-bottom: 48px;
-    }
-
-    .hero-eyebrow {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 8px;
-    }
-
-    .hero-title {
-      font-size: 32px;
-      font-weight: 700;
-      letter-spacing: -0.035em;
-      line-height: 1.15;
-      margin-bottom: 12px;
-    }
-
-    .hero-desc {
-      color: var(--text-dim);
-      font-size: 15px;
-      max-width: 660px;
-      margin-bottom: 24px;
-      line-height: 1.5;
-    }
-
-    /* Terminal Install Multi-Tab Box */
-    .install-container {
-      background: var(--surface-1);
+    .btn-header-gh {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #121215;
       border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-md);
-      max-width: 640px;
-      overflow: hidden;
-      margin-bottom: 48px;
-    }
-
-    .install-tabs {
-      display: flex;
-      background: #060608;
-      border-bottom: 1px solid var(--border-subtle);
-      padding: 0 6px;
-    }
-
-    .install-tab {
-      background: transparent;
-      border: none;
-      padding: 8px 12px;
+      border-radius: var(--radius-sm);
+      padding: 5px 10px;
+      color: var(--text);
       font-family: var(--font-mono);
       font-size: 11.5px;
-      color: var(--text-muted);
-      cursor: pointer;
-      border-bottom: 2px solid transparent;
+      text-decoration: none;
       transition: all 120ms var(--ease-out);
     }
 
-    .install-tab:hover { color: var(--text-dim); }
-
-    .install-tab.active {
-      color: var(--text);
-      border-bottom-color: #ffffff;
-      font-weight: 500;
+    .btn-header-gh:hover {
+      background: #18181c;
+      border-color: var(--border-hover);
     }
 
-    .install-body {
-      display: flex;
+    /* HERO SECTION (Bespoke Human-Grade Architecture) */
+    .hero {
+      text-align: center;
+      padding: 24px 0 40px;
+      margin-bottom: 32px;
+    }
+
+    .hero-badge-wrap {
+      display: inline-flex;
       align-items: center;
-      padding: 8px 12px;
+      gap: 8px;
+      background: #0d0d10;
+      border: 1px solid var(--border-subtle);
+      border-radius: 9999px;
+      padding: 4px 12px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-dim);
+      text-decoration: none;
+      margin-bottom: 24px;
+      transition: all 120ms var(--ease-out);
     }
 
-    .install-cmd {
-      flex: 1;
+    .hero-badge-wrap:hover {
+      border-color: var(--border-hover);
+      color: var(--text);
+      background: #141418;
+    }
+
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--accent-emerald);
+      border-radius: 50%;
+      box-shadow: 0 0 6px var(--accent-emerald);
+    }
+
+    .hero-title {
+      font-size: clamp(38px, 5.5vw, 60px);
+      font-weight: 600;
+      letter-spacing: -0.04em;
+      line-height: 1.08;
+      color: #ffffff;
+      max-width: 820px;
+      margin: 0 auto 20px;
+    }
+
+    .hero-title .title-sub {
+      color: #71717a;
+      font-weight: 400;
+    }
+
+    .hero-desc {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #a1a1aa;
+      max-width: 620px;
+      margin: 0 auto 32px;
+    }
+
+    /* Terminal Install Capsule */
+    .install-capsule {
+      display: inline-flex;
+      align-items: center;
+      background: #09090b;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 8px;
+      padding: 4px 6px 4px 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      transition: border-color 120ms var(--ease-out);
+      max-width: 90%;
+    }
+
+    .install-capsule:hover {
+      border-color: rgba(255, 255, 255, 0.24);
+    }
+
+    .capsule-prompt {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-right: 10px;
+      user-select: none;
+    }
+
+    .capsule-cmd {
       font-family: var(--font-mono);
       font-size: 13px;
       color: #e4e4e7;
       white-space: nowrap;
       overflow-x: auto;
+      margin-right: 12px;
     }
 
-    .install-cmd span {
-      color: var(--text-muted);
-      margin-right: 8px;
-      user-select: none;
-    }
-
-    .btn-copy {
+    .btn-capsule-copy {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: #18181b;
-      border: 1px solid #2e2e34;
-      border-radius: var(--radius-sm);
+      background: #18181c;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 5px;
       color: var(--text);
       font-family: var(--font-mono);
       font-size: 11px;
@@ -236,103 +237,148 @@
       transition: background 100ms var(--ease-out), transform 60ms var(--ease-out);
     }
 
-    .btn-copy:hover { background: #24242a; }
-    .btn-copy:active { transform: scale(0.96); }
+    .btn-capsule-copy:hover {
+      background: #24242a;
+    }
 
-    /* Section Divider */
-    .section-header {
+    .btn-capsule-copy:active {
+      transform: scale(0.96);
+    }
+
+    .kbd-shortcut {
+      background: #0a0a0c;
+      border: 1px solid #2a2a30;
+      border-radius: 3px;
+      padding: 1px 4px;
+      font-size: 9px;
+      color: var(--text-muted);
+      user-select: none;
+    }
+
+    /* Agent Selector Pills */
+    .agent-selector-row {
       display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      padding-bottom: 10px;
-      border-bottom: 1px solid var(--border-subtle);
-      margin: 56px 0 20px;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      margin-top: 14px;
+      flex-wrap: wrap;
     }
 
-    .section-header h2 {
-      font-size: 17px;
-      font-weight: 600;
-      letter-spacing: -0.02em;
-    }
-
-    .section-header .tag {
+    .agent-label {
       font-family: var(--font-mono);
       font-size: 11px;
       color: var(--text-muted);
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
     }
 
-    /* Interactive Before/After SaaS Telemetry Viewport */
-    .viewport-box {
+    .agent-pill {
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: 9999px;
+      padding: 3px 10px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 120ms var(--ease-out);
+    }
+
+    .agent-pill:hover {
+      color: var(--text-dim);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .agent-pill.active {
+      color: #ffffff;
+      background: #141418;
+      border-color: var(--border-subtle);
+      font-weight: 500;
+    }
+
+    /* HERO CENTERPIECE: The Interactive Lens */
+    .hero-lens-container {
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-lg);
       background: var(--surface-1);
       overflow: hidden;
-      margin-bottom: 48px;
+      margin-top: 40px;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+      text-align: left;
     }
 
-    .viewport-toolbar {
+    .lens-toolbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 10px 16px;
-      background: #070709;
+      padding: 12px 18px;
+      background: #08080a;
       border-bottom: 1px solid var(--border-subtle);
       font-family: var(--font-mono);
       font-size: 11.5px;
     }
 
-    .toolbar-left {
+    .lens-toolbar-title {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       color: var(--text-dim);
     }
 
-    .toolbar-tools {
+    .lens-window-dots {
       display: flex;
-      align-items: center;
-      gap: 8px;
+      gap: 6px;
     }
 
-    .btn-tool {
+    .w-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #27272a;
+    }
+
+    .lens-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-lens-tool {
       background: transparent;
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-sm);
       color: var(--text-dim);
       font-family: var(--font-mono);
       font-size: 11px;
-      padding: 4px 8px;
+      padding: 4px 10px;
       cursor: pointer;
       transition: all 100ms var(--ease-out);
     }
 
-    .btn-tool:hover {
+    .btn-lens-tool:hover {
       background: #141418;
       color: var(--text);
     }
 
-    .btn-tool.active {
+    .btn-lens-tool.active {
       background: #1c1c22;
       border-color: var(--border-active);
-      color: var(--text);
+      color: #ffffff;
     }
 
-    .mode-switch {
+    .segmented-switch {
       display: inline-flex;
       background: #000000;
       border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-sm);
+      border-radius: 6px;
       padding: 2px;
       gap: 2px;
     }
 
-    .mode-btn {
-      padding: 4px 10px;
+    .segment-btn {
+      padding: 4px 12px;
       background: transparent;
       border: none;
-      border-radius: 3px;
+      border-radius: 4px;
       color: var(--text-dim);
       font-family: var(--font-mono);
       font-size: 11px;
@@ -340,26 +386,26 @@
       transition: all 120ms var(--ease-out);
     }
 
-    .mode-btn.active-slop {
+    .segment-btn.active-slop {
       background: #2a1436;
       color: #f0abfc;
       font-weight: 600;
     }
 
-    .mode-btn.active-clean {
+    .segment-btn.active-clean {
       background: #ffffff;
       color: #000000;
       font-weight: 600;
     }
 
-    .preview-canvas {
+    .lens-canvas {
       padding: 24px;
-      min-height: 400px;
+      min-height: 420px;
       background: #000000;
       position: relative;
     }
 
-    /* SLOP STAGE */
+    /* SLOP STAGE CONTAINER */
     .stage-slop {
       background: radial-gradient(ellipse at top right, rgba(99, 102, 241, 0.35), rgba(30, 27, 75, 0.6), #09090b);
       border: 1px solid rgba(129, 140, 248, 0.3);
@@ -449,17 +495,17 @@
       background: #ef4444;
       color: #ffffff;
       font-family: var(--font-mono);
-      font-size: 10px;
+      font-size: 10.5px;
       font-weight: 600;
-      padding: 2px 6px;
-      border-radius: 3px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+      padding: 3px 8px;
+      border-radius: 4px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
       pointer-events: none;
       z-index: 10;
       display: none;
     }
 
-    /* CLEAN STAGE (Human-Grade) */
+    /* CLEAN STAGE (Human-Grade UI) */
     .stage-clean {
       background: #09090b;
       border: 1px solid var(--border-subtle);
@@ -504,15 +550,6 @@
       font-family: var(--font-mono);
       font-size: 11.5px;
       color: var(--text-dim);
-    }
-
-    .kbd-tag {
-      background: #18181c;
-      border: 1px solid #2a2a30;
-      border-radius: 3px;
-      padding: 1px 4px;
-      font-size: 9.5px;
-      color: var(--text-muted);
     }
 
     .clean-select {
@@ -656,6 +693,68 @@
 
     .btn-table-action:active { transform: scale(0.96); }
 
+    /* CODE DIFF VIEW (Hero Alternative) */
+    .stage-diff {
+      display: none;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      background: #09090b;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      .stage-diff { grid-template-columns: 1fr; }
+    }
+
+    .diff-pane {
+      background: #040405;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 12px;
+      overflow-x: auto;
+    }
+
+    .diff-header {
+      font-size: 11px;
+      font-weight: 600;
+      padding-bottom: 8px;
+      margin-bottom: 8px;
+      border-bottom: 1px solid #1c1c20;
+    }
+
+    .diff-red { color: #f87171; }
+    .diff-green { color: #4ade80; }
+    .diff-dim { color: #52525b; }
+
+    /* GENERAL SECTION HEADERS */
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border-subtle);
+      margin: 72px 0 24px;
+    }
+
+    .section-header h2 {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    .section-header .tag {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
     /* Showcase 2: Live Archetype Switcher */
     .archetype-container {
       background: var(--surface-1);
@@ -740,7 +839,7 @@
       flex: 1;
     }
 
-    /* Showcase 3: 8-State Component Sandbox */
+    /* Showcase 3: 8-State Interactive Sandbox */
     .sandbox-container {
       background: var(--surface-1);
       border: 1px solid var(--border-subtle);
@@ -781,7 +880,6 @@
       letter-spacing: 0.05em;
     }
 
-    /* Tactile Interactive Button Primitives */
     .tac-btn {
       display: inline-flex;
       align-items: center;
@@ -858,9 +956,7 @@
       animation: spin 0.8s linear infinite;
     }
 
-    @keyframes spin {
-      100% { transform: rotate(360deg); }
-    }
+    @keyframes spin { 100% { transform: rotate(360deg); } }
 
     /* Showcase 4: Live AST/Regex Scanner & Auto-Fixer */
     .scanner-box {
@@ -1178,194 +1274,242 @@
 
   <div class="wrap">
 
-    <!-- Header Navigation -->
-    <header>
-      <div class="brand-wrap">
-        <div class="brand-mark">✕</div>
-        <a href="#" class="brand-title">wwewtech <span>/</span> anti-slop-design</a>
-        <div class="telemetry-badge">
-          <div class="telemetry-dot"></div>
-          <span>v1.0.0 · HUMAN-GRADE</span>
+    <!-- Minimalist Header -->
+    <header class="site-header">
+      <div class="brand-group">
+        <div class="brand-mark">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+            <path d="M3 3l10 10M13 3L3 13" stroke="#000000" stroke-width="2.4" stroke-linecap="round"/>
+          </svg>
         </div>
+        <a href="#" class="brand-title">anti-slop-design <span>/ wwewtech</span></a>
       </div>
-      <div class="nav-links">
-        <a href="#proof">proof</a>
+      <nav class="header-nav">
+        <a href="#lens">showcase</a>
         <a href="#archetypes">archetypes</a>
-        <a href="#sandbox">states</a>
-        <a href="#scanner">linter</a>
-        <a href="https://skills.sh/wwewtech/anti-slop-design" target="_blank">skills.sh</a>
-        <a href="https://github.com/wwewtech/anti-slop-design" target="_blank">github</a>
-      </div>
+        <a href="#states">8-states</a>
+        <a href="#linter">linter</a>
+        <a href="#matrix">anti-patterns</a>
+        <a href="https://github.com/wwewtech/anti-slop-design" target="_blank" class="btn-header-gh">
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+          <span>GitHub</span>
+        </a>
+      </nav>
     </header>
 
-    <!-- Hero -->
+    <!-- HERO SECTION -->
     <div class="hero">
-      <div class="hero-eyebrow">Autonomous Principal Design Technologist</div>
-      <h1 class="hero-title">Kill the AI Slop.<br>Ship Human-Grade Software.</h1>
+      <a href="https://skills.sh/wwewtech/anti-slop-design" target="_blank" class="hero-badge-wrap">
+        <div class="badge-dot"></div>
+        <span>v1.0.0 for Claude Code, Cursor &amp; Antigravity</span>
+        <svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg>
+      </a>
+
+      <h1 class="hero-title">
+        Human-grade UI engineering<br>
+        <span class="title-sub">for AI coding agents.</span>
+      </h1>
+
       <p class="hero-desc">
-        A single-file agent skill for Claude Code, Cursor, Antigravity, and Windsurf. Enforces the 1-to-3 focus triangle, 8-state tactile micro-interactions, curated token archetypes, and an objective 7-axis quality gate.
+        A single-file skill that stops AI agents from generating blurry purple gradients, emoji-laden buttons, and 3-card marketing grids. Enforces curated token archetypes, tactile micro-interactions, and a 7-axis quality gate.
       </p>
 
-      <!-- Terminal Install Multi-Tab Box -->
-      <div class="install-container">
-        <div class="install-tabs">
-          <button class="install-tab active" onclick="setInstallTab('skills')">skills.sh</button>
-          <button class="install-tab" onclick="setInstallTab('claude')">claude code</button>
-          <button class="install-tab" onclick="setInstallTab('antigravity')">antigravity</button>
-          <button class="install-tab" onclick="setInstallTab('cursor')">cursor / windsurf</button>
+      <!-- Terminal Install Capsule -->
+      <div class="install-capsule">
+        <span class="capsule-prompt">$</span>
+        <span class="capsule-cmd" id="installCmdText">npx skills add wwewtech/anti-slop-design</span>
+        <button class="btn-capsule-copy" onclick="copyActiveInstall()" id="btnCopyCapsule">
+          <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="5" width="9" height="9" rx="1.5"/><path d="M11 5V3a1.5 1.5 0 0 0-1.5-1.5H3A1.5 1.5 0 0 0 1.5 3v6.5A1.5 1.5 0 0 0 3 11h2"/></svg>
+          <span id="copyBtnLabel">Copy</span>
+          <span class="kbd-shortcut">C</span>
+        </button>
+      </div>
+
+      <!-- Agent Selector Pills -->
+      <div class="agent-selector-row">
+        <span class="agent-label">Install for:</span>
+        <button class="agent-pill active" onclick="setAgentTab('skills')">skills.sh</button>
+        <button class="agent-pill" onclick="setAgentTab('claude')">Claude Code</button>
+        <button class="agent-pill" onclick="setAgentTab('antigravity')">Google Antigravity</button>
+        <button class="agent-pill" onclick="setAgentTab('cursor')">Cursor / Windsurf</button>
+      </div>
+
+      <!-- HERO CENTERPIECE: The Interactive Lens -->
+      <div class="hero-lens-container" id="lens">
+        <div class="lens-toolbar">
+          <div class="lens-toolbar-title">
+            <div class="lens-window-dots">
+              <div class="w-dot"></div>
+              <div class="w-dot"></div>
+              <div class="w-dot"></div>
+            </div>
+            <span>URL SHORTENER ANALYTICS // TELEMETRY LENS</span>
+          </div>
+
+          <div class="lens-controls">
+            <button class="btn-lens-tool" id="btnTogglePins" onclick="toggleAnnotations()">Show Flaws (5)</button>
+            <div class="segmented-switch">
+              <button class="segment-btn active-slop" id="btnSlop" onclick="setStage('slop')">VIBE-CODED (SLOP)</button>
+              <button class="segment-btn" id="btnClean" onclick="setStage('clean')">HUMAN-GRADE</button>
+            </div>
+            <div class="segmented-switch">
+              <button class="segment-btn active-clean" id="btnViewUI" onclick="setViewMode('ui')">UI</button>
+              <button class="segment-btn" id="btnViewDiff" onclick="setViewMode('diff')">DIFF</button>
+            </div>
+          </div>
         </div>
-        <div class="install-body">
-          <code class="install-cmd" id="installCmdText"><span>$</span>npx skills add wwewtech/anti-slop-design</code>
-          <button class="btn-copy" id="btnCopyInstall" onclick="copyActiveInstall()">
-            <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="5" width="9" height="9" rx="1.5"/><path d="M11 5V3a1.5 1.5 0 0 0-1.5-1.5H3A1.5 1.5 0 0 0 1.5 3v6.5A1.5 1.5 0 0 0 3 11h2"/></svg>
-            <span id="copyBtnLabel">COPY</span>
-          </button>
+
+        <div class="lens-canvas">
+          <!-- 1. Vibe-Coded Slop Stage -->
+          <div id="stageSlop" class="stage-slop">
+            <div class="flaw-pin" id="pinEyebrow" style="top: 14px; left: 24px;">✕ Screaming Eyebrow</div>
+            <div class="slop-eyebrow">DASHBOARD // REAL-TIME METRICS</div>
+            
+            <div class="flaw-pin" id="pinGlow" style="top: 40px; left: 200px;">✕ Single-Word Italic Gradient</div>
+            <div class="slop-title">Link Telemetry &amp; <em>Traffic Radar</em></div>
+            
+            <div class="flaw-pin" id="pinGrid" style="top: 100px; left: 24px;">✕ Cookie-Cutter 3-Card Grid</div>
+            <div class="slop-grid">
+              <div class="slop-card">
+                <div class="slop-card-emoji">🚀</div>
+                <div class="slop-card-h">Total Clicks</div>
+                <div class="slop-card-val">28,491</div>
+                <input type="date" class="slop-date" value="2026-09-01">
+              </div>
+              <div class="slop-card">
+                <div class="slop-card-emoji">🔥</div>
+                <div class="slop-card-h">Uptime</div>
+                <div class="slop-card-val">+99.9% Uptime</div>
+                <input type="date" class="slop-date" value="2026-09-01">
+              </div>
+              <div class="slop-card">
+                <div class="slop-card-emoji">💡</div>
+                <div class="slop-card-h">Total Links</div>
+                <div class="slop-card-val">50k+ Active</div>
+                <input type="date" class="slop-date" value="2026-09-01">
+              </div>
+            </div>
+
+            <div class="flaw-pin" id="pinEmojiBtn" style="bottom: 16px; left: 24px;">✕ Raw Emojis Inside Action Buttons</div>
+            <button class="slop-btn">🚀 Create New Link 🚀</button>
+          </div>
+
+          <!-- 2. Clean Stage (Human-Grade) -->
+          <div id="stageClean" class="stage-clean" style="display: none;">
+            <div class="clean-nav">
+              <div class="clean-crumb">
+                <span>Analytics</span>
+                <svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg>
+                <span style="color: #ffffff;">Link Telemetry</span>
+              </div>
+              <div class="clean-controls">
+                <div class="clean-search">
+                  <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5L14 14"/></svg>
+                  <span>Filter paths...</span>
+                  <span class="kbd-shortcut">⌘K</span>
+                </div>
+                <select class="clean-select">
+                  <option>Last 30 Days (Global)</option>
+                  <option>Last 7 Days</option>
+                  <option>Today</option>
+                </select>
+                <button class="clean-btn-primary">
+                  <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M8 3v10M3 8h10"/></svg>
+                  Create Link
+                </button>
+              </div>
+            </div>
+
+            <!-- Single Source of Truth Summary -->
+            <div class="clean-summary-bar">
+              <div class="clean-metric-tile">
+                <div class="clean-tile-left">
+                  <div class="lbl">Active Links</div>
+                  <div class="val">1,284</div>
+                </div>
+                <div class="clean-tile-delta delta-up">↑ 12.4%</div>
+              </div>
+              <div class="clean-metric-tile">
+                <div class="clean-tile-left">
+                  <div class="lbl">Total Referrals</div>
+                  <div class="val">49,102</div>
+                </div>
+                <div class="clean-tile-delta delta-up">↑ 8.1%</div>
+              </div>
+              <div class="clean-metric-tile">
+                <div class="clean-tile-left">
+                  <div class="lbl">Avg Latency</div>
+                  <div class="val">42ms</div>
+                </div>
+                <div class="clean-tile-delta delta-down">↓ 3.2%</div>
+              </div>
+            </div>
+
+            <!-- Structured Telemetry Table -->
+            <table class="clean-table">
+              <thead>
+                <tr>
+                  <th width="40%">Source Path</th>
+                  <th width="20%">Referrals</th>
+                  <th width="20%">30d Delta</th>
+                  <th width="20%" style="text-align: right;">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="path-cell"><div class="status-ping"></div> /launch-2026</td>
+                  <td class="num-cell">18,240</td>
+                  <td class="num-cell delta-up">↑ 14.2%</td>
+                  <td style="text-align: right;"><button class="btn-table-action" onclick="triggerToast('Copied shortlink to clipboard')">Copy Link</button></td>
+                </tr>
+                <tr>
+                  <td class="path-cell"><div class="status-ping"></div> /pricing-table</td>
+                  <td class="num-cell">6,102</td>
+                  <td class="num-cell delta-up">↑ 8.1%</td>
+                  <td style="text-align: right;"><button class="btn-table-action" onclick="triggerToast('Copied shortlink to clipboard')">Copy Link</button></td>
+                </tr>
+                <tr>
+                  <td class="path-cell"><div class="status-ping"></div> /api-docs</td>
+                  <td class="num-cell">4,149</td>
+                  <td class="num-cell delta-down">↓ 1.4%</td>
+                  <td style="text-align: right;"><button class="btn-table-action" onclick="triggerToast('Copied shortlink to clipboard')">Copy Link</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- 3. Code Diff Stage (Alternative View) -->
+          <div id="stageDiff" class="stage-diff">
+            <div class="diff-pane">
+              <div class="diff-header diff-red">INPUT: VIBE-CODED AI SLOP (REJECTED)</div>
+              <div><span class="diff-dim">01</span> <span class="diff-red">- &lt;div className="min-h-screen bg-slate-900</span></div>
+              <div><span class="diff-dim">02</span> <span class="diff-red">-   bg-[radial-gradient(ellipse_at_top,_#312e81,_#0f172a)]</span></div>
+              <div><span class="diff-dim">03</span> <span class="diff-red">-   flex flex-col items-center p-8"&gt;</span></div>
+              <div><span class="diff-dim">04</span> <span class="diff-red">-   &lt;span className="tracking-widest uppercase"&gt;DASHBOARD&lt;/span&gt;</span></div>
+              <div><span class="diff-dim">05</span> <span class="diff-red">-   &lt;h1&gt;Live &lt;em className="text-gradient"&gt;Radar&lt;/em&gt;&lt;/h1&gt;</span></div>
+              <div><span class="diff-dim">06</span> <span class="diff-red">-   &lt;div className="grid grid-cols-3 gap-6"&gt;</span></div>
+              <div><span class="diff-dim">07</span> <span class="diff-red">-     &lt;Card&gt;&lt;Emoji&gt;🚀&lt;/Emoji&gt;&lt;Val&gt;+99.9% Faster&lt;/Val&gt;&lt;/Card&gt;</span></div>
+              <div><span class="diff-dim">08</span> <span class="diff-red">-   &lt;/div&gt;</span></div>
+              <div><span class="diff-dim">09</span> <span class="diff-red">- &lt;/div&gt;</span></div>
+            </div>
+            <div class="diff-pane">
+              <div class="diff-header diff-green">OUTPUT: HUMAN-GRADE REFACTOR (PASSED)</div>
+              <div><span class="diff-dim">01</span> <span class="diff-green">+ &lt;main className="min-h-screen bg-[#09090b] text-zinc-100 p-8"&gt;</span></div>
+              <div><span class="diff-dim">02</span> <span class="diff-green">+   &lt;header className="flex items-center justify-between pb-4</span></div>
+              <div><span class="diff-dim">03</span> <span class="diff-green">+     border-b border-white/10"&gt;</span></div>
+              <div><span class="diff-dim">04</span> <span class="diff-green">+     &lt;h1 className="text-base font-semibold"&gt;Link Telemetry&lt;/h1&gt;</span></div>
+              <div><span class="diff-dim">05</span> <span class="diff-green">+     &lt;UnifiedControlBar dateRange="30d" /&gt;</span></div>
+              <div><span class="diff-dim">06</span> <span class="diff-green">+   &lt;/header&gt;</span></div>
+              <div><span class="diff-dim">07</span> <span class="diff-green">+   &lt;TelemetrySummary singleSource={true} sparkline={true} /&gt;</span></div>
+              <div><span class="diff-dim">08</span> <span class="diff-green">+   &lt;StructuredTable activeScale={0.97} focusRing={true} /&gt;</span></div>
+              <div><span class="diff-dim">09</span> <span class="diff-green">+ &lt;/main&gt;</span></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Showcase 1: Interactive Before/After SaaS Telemetry -->
-    <div class="section-header" id="proof">
-      <h2>Interactive Proof: AI Slop vs Human-Grade UI</h2>
-      <span class="tag">Press 'V' to toggle</span>
-    </div>
-
-    <div class="viewport-box">
-      <div class="viewport-toolbar">
-        <div class="toolbar-left">
-          <span>URL SHORTENER ANALYTICS // TELEMETRY VIEWPORT</span>
-        </div>
-        <div class="toolbar-tools">
-          <button class="btn-tool" id="btnTogglePins" onclick="toggleAnnotations()">Show Flaws (5)</button>
-          <div class="mode-switch">
-            <button class="mode-btn active-slop" id="btnSlop" onclick="setStage('slop')">VIBE-CODED (SLOP)</button>
-            <button class="mode-btn" id="btnClean" onclick="setStage('clean')">HUMAN-GRADE</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="preview-canvas">
-        <!-- Vibe-Coded Slop Stage -->
-        <div id="stageSlop" class="stage-slop">
-          <div class="flaw-pin" id="pinEyebrow" style="top: 14px; left: 24px;">✕ Screaming Eyebrow</div>
-          <div class="slop-eyebrow">DASHBOARD // REAL-TIME METRICS</div>
-          
-          <div class="flaw-pin" id="pinGlow" style="top: 40px; left: 200px;">✕ Single-Word Italic Gradient</div>
-          <div class="slop-title">Link Telemetry &amp; <em>Traffic Radar</em></div>
-          
-          <div class="flaw-pin" id="pinGrid" style="top: 100px; left: 24px;">✕ Cookie-Cutter 3-Card Grid</div>
-          <div class="slop-grid">
-            <div class="slop-card">
-              <div class="slop-card-emoji">🚀</div>
-              <div class="slop-card-h">Total Clicks</div>
-              <div class="slop-card-val">28,491</div>
-              <input type="date" class="slop-date" value="2026-09-01">
-            </div>
-            <div class="slop-card">
-              <div class="slop-card-emoji">🔥</div>
-              <div class="slop-card-h">Uptime</div>
-              <div class="slop-card-val">+99.9% Uptime</div>
-              <input type="date" class="slop-date" value="2026-09-01">
-            </div>
-            <div class="slop-card">
-              <div class="slop-card-emoji">💡</div>
-              <div class="slop-card-h">Total Links</div>
-              <div class="slop-card-val">50k+ Active</div>
-              <input type="date" class="slop-date" value="2026-09-01">
-            </div>
-          </div>
-
-          <div class="flaw-pin" id="pinEmojiBtn" style="bottom: 16px; left: 24px;">✕ Raw Emojis Inside Action Buttons</div>
-          <button class="slop-btn">🚀 Create New Link 🚀</button>
-        </div>
-
-        <!-- Clean Stage (Human-Grade) -->
-        <div id="stageClean" class="stage-clean" style="display: none;">
-          <div class="clean-nav">
-            <div class="clean-crumb">
-              <span>Analytics</span>
-              <svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg>
-              <span style="color: #ffffff;">Link Telemetry</span>
-            </div>
-            <div class="clean-controls">
-              <div class="clean-search">
-                <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5L14 14"/></svg>
-                <span>Filter paths...</span>
-                <span class="kbd-tag">⌘K</span>
-              </div>
-              <select class="clean-select">
-                <option>Last 30 Days (Global)</option>
-                <option>Last 7 Days</option>
-                <option>Today</option>
-              </select>
-              <button class="clean-btn-primary">
-                <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M8 3v10M3 8h10"/></svg>
-                Create Link
-              </button>
-            </div>
-          </div>
-
-          <!-- Single Source of Truth Summary -->
-          <div class="clean-summary-bar">
-            <div class="clean-metric-tile">
-              <div class="clean-tile-left">
-                <div class="lbl">Active Links</div>
-                <div class="val">1,284</div>
-              </div>
-              <div class="clean-tile-delta delta-up">↑ 12.4%</div>
-            </div>
-            <div class="clean-metric-tile">
-              <div class="clean-tile-left">
-                <div class="lbl">Total Referrals</div>
-                <div class="val">49,102</div>
-              </div>
-              <div class="clean-tile-delta delta-up">↑ 8.1%</div>
-            </div>
-            <div class="clean-metric-tile">
-              <div class="clean-tile-left">
-                <div class="lbl">Avg Latency</div>
-                <div class="val">42ms</div>
-              </div>
-              <div class="clean-tile-delta delta-down">↓ 3.2%</div>
-            </div>
-          </div>
-
-          <!-- Structured Telemetry Table -->
-          <table class="clean-table">
-            <thead>
-              <tr>
-                <th width="40%">Source Path</th>
-                <th width="20%">Referrals</th>
-                <th width="20%">30d Delta</th>
-                <th width="20%" style="text-align: right;">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="path-cell"><div class="status-ping"></div> /launch-2026</td>
-                <td class="num-cell">18,240</td>
-                <td class="num-cell delta-up">↑ 14.2%</td>
-                <td style="text-align: right;"><button class="btn-table-action" onclick="triggerToast('Copied shortlink to clipboard')">Copy Link</button></td>
-              </tr>
-              <tr>
-                <td class="path-cell"><div class="status-ping"></div> /pricing-table</td>
-                <td class="num-cell">6,102</td>
-                <td class="num-cell delta-up">↑ 8.1%</td>
-                <td style="text-align: right;"><button class="btn-table-action" onclick="triggerToast('Copied shortlink to clipboard')">Copy Link</button></td>
-              </tr>
-              <tr>
-                <td class="path-cell"><div class="status-ping"></div> /api-docs</td>
-                <td class="num-cell">4,149</td>
-                <td class="num-cell delta-down">↓ 1.4%</td>
-                <td style="text-align: right;"><button class="btn-table-action" onclick="triggerToast('Copied shortlink to clipboard')">Copy Link</button></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-
-    <!-- Showcase 2: Live Archetype Switcher -->
+    <!-- SHOWCASE 2: LIVE ARCHETYPE SWITCHER -->
     <div class="section-header" id="archetypes">
       <h2>The 4 Production Design Archetypes</h2>
       <span class="tag">DYNAMIC TOKEN ENGINE</span>
@@ -1403,7 +1547,7 @@
           </div>
 
           <div style="font-size: 11px; color: #8e8e93; line-height: 1.5;" id="archDesc">
-            Optimized zero-downtime container cluster across 3 availability zones.
+            Quiet Luxury SaaS archetype. Electric cobalt accents, deep obsidian canvas, and refined spacing geometry.
           </div>
         </div>
 
@@ -1426,8 +1570,8 @@
       </div>
     </div>
 
-    <!-- Showcase 3: 8-State Interactive Machine Sandbox -->
-    <div class="section-header" id="sandbox">
+    <!-- SHOWCASE 3: 8-STATE INTERACTIVE SANDBOX -->
+    <div class="section-header" id="states">
       <h2>The 8-State Interactive Feedback Sandbox</h2>
       <span class="tag">EMIL KOWALSKI DECISION RULES</span>
     </div>
@@ -1472,7 +1616,7 @@
           <button class="tac-btn tac-btn-disabled" disabled>Locked</button>
         </div>
         <div class="sandbox-tile">
-          <span class="sandbox-tile-label">8. Live Test Primitive</span>
+          <span class="sandbox-tile-label">8. Live Cycle Sandbox</span>
           <button class="tac-btn tac-btn-default" id="btnLiveTest" onclick="cycleInteractiveState()">
             Click to Cycle
           </button>
@@ -1484,8 +1628,8 @@
       </div>
     </div>
 
-    <!-- Showcase 4: Live AST/Regex Scanner & Auto-Fixer -->
-    <div class="section-header" id="scanner">
+    <!-- SHOWCASE 4: LIVE AST/REGEX SCANNER & AUTO-FIXER -->
+    <div class="section-header" id="linter">
       <h2>Live Anti-Slop Code Scanner &amp; Auto-Fixer</h2>
       <span class="tag">CLIENT-SIDE LINTER</span>
     </div>
@@ -1519,8 +1663,8 @@
       <div id="scanOut" class="scanner-out"></div>
     </div>
 
-    <!-- Showcase 5: Interactive 7-Axis Quality Gate Calculator -->
-    <div class="section-header">
+    <!-- SHOWCASE 5: 7-AXIS QUALITY GATE CALCULATOR -->
+    <div class="section-header" id="quality-gate">
       <h2>The 7-Axis Pre-Emit Quality Gate</h2>
       <span class="tag">MANDATORY PASS THRESHOLD &ge; 28/35</span>
     </div>
@@ -1620,8 +1764,8 @@
       </div>
     </div>
 
-    <!-- The 12 Banned Anti-Patterns Specification Table -->
-    <div class="section-header">
+    <!-- SHOWCASE 6: THE 12 BANNED ANTI-PATTERNS MATRIX -->
+    <div class="section-header" id="matrix">
       <h2>The 12 Banned AI Slop Anti-Patterns</h2>
       <span class="tag">ENFORCED IN AGENT LOOP</span>
     </div>
@@ -1698,7 +1842,7 @@
       </tbody>
     </table>
 
-    <!-- Footer -->
+    <!-- FOOTER -->
     <footer>
       <div>anti-slop-design · MIT License · wwewtech</div>
       <div style="display: flex; gap: 16px;">
@@ -1711,36 +1855,36 @@
 
   </div>
 
-  <!-- Toast Element -->
+  <!-- Toast Notification -->
   <div class="toast" id="globalToast">
     <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#10b981" stroke-width="2.2"><path d="M3 8.5l3.5 3.5 6.5-7"/></svg>
     <span id="toastMsg">Command copied to clipboard</span>
   </div>
 
   <script>
-    // Install Commands Registry
-    const installCmds = {
+    // Install Commands
+    const agentCmds = {
       skills: 'npx skills add wwewtech/anti-slop-design',
       claude: 'claude skills add https://github.com/wwewtech/anti-slop-design',
       antigravity: 'curl -sL https://raw.githubusercontent.com/wwewtech/anti-slop-design/main/SKILL.md -o ~/.gemini/config/skills/anti-slop-design/SKILL.md',
       cursor: 'mkdir -p .cursor/skills/anti-slop-design && curl -sL https://raw.githubusercontent.com/wwewtech/anti-slop-design/main/SKILL.md -o .cursor/skills/anti-slop-design/SKILL.md'
     };
-    let currentInstallKey = 'skills';
+    let currentAgentKey = 'skills';
 
-    function setInstallTab(key) {
-      currentInstallKey = key;
-      document.querySelectorAll('.install-tab').forEach(b => b.classList.remove('active'));
+    function setAgentTab(key) {
+      currentAgentKey = key;
+      document.querySelectorAll('.agent-pill').forEach(b => b.classList.remove('active'));
       event.target.classList.add('active');
-      document.getElementById('installCmdText').innerHTML = `<span>$</span>${installCmds[key]}`;
+      document.getElementById('installCmdText').textContent = agentCmds[key];
     }
 
     function copyActiveInstall() {
-      const text = installCmds[currentInstallKey];
+      const text = agentCmds[currentAgentKey];
       navigator.clipboard.writeText(text).then(() => {
-        triggerToast('Install command copied to clipboard');
+        triggerToast('Command copied to clipboard');
         const label = document.getElementById('copyBtnLabel');
-        label.textContent = 'COPIED';
-        setTimeout(() => { label.textContent = 'COPY'; }, 2000);
+        label.textContent = 'Copied';
+        setTimeout(() => { label.textContent = 'Copy'; }, 2000);
       });
     }
 
@@ -1754,7 +1898,7 @@
       toastTimeout = setTimeout(() => { el.classList.remove('show'); }, 2200);
     }
 
-    // Stage Toggle (Vibe vs Clean)
+    // Stage Mode Toggle (Slop vs Clean)
     let currentStage = 'slop';
     function setStage(stage) {
       currentStage = stage;
@@ -1766,16 +1910,40 @@
       if (stage === 'slop') {
         slopBox.style.display = 'block';
         cleanBox.style.display = 'none';
-        btnSlop.className = 'mode-btn active-slop';
-        btnClean.className = 'mode-btn';
+        btnSlop.className = 'segment-btn active-slop';
+        btnClean.className = 'segment-btn';
       } else {
         slopBox.style.display = 'none';
         cleanBox.style.display = 'block';
-        btnSlop.className = 'mode-btn';
-        btnClean.className = 'mode-btn active-clean';
-        // Hide flaw pins if showing clean
+        btnSlop.className = 'segment-btn';
+        btnClean.className = 'segment-btn active-clean';
+        // Hide flaw pins when viewing clean
         document.querySelectorAll('.flaw-pin').forEach(p => p.style.display = 'none');
         document.getElementById('btnTogglePins').classList.remove('active');
+      }
+    }
+
+    // View Mode Toggle (UI Preview vs Code Diff)
+    let currentView = 'ui';
+    function setViewMode(mode) {
+      currentView = mode;
+      const btnUI = document.getElementById('btnViewUI');
+      const btnDiff = document.getElementById('btnViewDiff');
+      const slopBox = document.getElementById('stageSlop');
+      const cleanBox = document.getElementById('stageClean');
+      const diffBox = document.getElementById('stageDiff');
+
+      if (mode === 'ui') {
+        diffBox.style.display = 'none';
+        setStage(currentStage);
+        btnUI.className = 'segment-btn active-clean';
+        btnDiff.className = 'segment-btn';
+      } else {
+        slopBox.style.display = 'none';
+        cleanBox.style.display = 'none';
+        diffBox.style.display = 'grid';
+        btnUI.className = 'segment-btn';
+        btnDiff.className = 'segment-btn active-clean';
       }
     }
 
@@ -1783,6 +1951,9 @@
     function toggleAnnotations() {
       if (currentStage !== 'slop') {
         setStage('slop');
+      }
+      if (currentView !== 'ui') {
+        setViewMode('ui');
       }
       showPins = !showPins;
       const btn = document.getElementById('btnTogglePins');
@@ -1939,7 +2110,7 @@
       });
     }
 
-    // 8-State Interactive Machine Test
+    // 8-State Interactive Machine Sandbox
     let liveStateIndex = 0;
     const liveStates = ['default', 'hover', 'focus', 'active', 'loading', 'success', 'error', 'disabled'];
     function cycleInteractiveState() {
@@ -2045,7 +2216,6 @@
         code = input.value;
       }
 
-      // Perform deterministic AST/regex replacements
       code = code.replace(/bg-slate-900\s+bg-\[radial-gradient[^\]]+\]/g, 'bg-[#09090b] border border-white/10');
       code = code.replace(/bg-\[radial-gradient[^\]]+\]/g, 'bg-[#09090b]');
       code = code.replace(/bg-indigo-600/g, 'bg-white text-black font-medium hover:bg-zinc-200');
@@ -2092,16 +2262,15 @@
       }
     }
 
-    // Global Keyboard Shortcuts
+    // Keyboard Shortcuts (V to toggle stage, C to copy install)
     window.addEventListener('keydown', (e) => {
-      // Toggle proof mode with 'V'
       if (e.key === 'v' || e.key === 'V') {
         if (document.activeElement.tagName !== 'TEXTAREA' && document.activeElement.tagName !== 'INPUT') {
+          if (currentView === 'diff') setViewMode('ui');
           setStage(currentStage === 'slop' ? 'clean' : 'slop');
-          triggerToast(`Switched to ${currentStage.toUpperCase()} mode`);
+          triggerToast(`Switched to ${currentStage.toUpperCase()} view`);
         }
       }
-      // Copy active install with 'C'
       if ((e.key === 'c' || e.key === 'C') && !e.ctrlKey && !e.metaKey) {
         if (document.activeElement.tagName !== 'TEXTAREA' && document.activeElement.tagName !== 'INPUT') {
           copyActiveInstall();
@@ -2109,7 +2278,6 @@
       }
     });
 
-    // Initialize Default States
     window.addEventListener('DOMContentLoaded', () => {
       calcQualityGate();
       loadPreset('radial');
