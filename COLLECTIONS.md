@@ -9,6 +9,7 @@ This registry catalogs **`anti-slop-design`** across every AI agent directory, C
 | Platform | Type | Link / Command | Submission Method | Status |
 | :--- | :--- | :--- | :--- | :--- |
 | **skills.sh** (Vercel) | Universal CLI Registry | [skills.sh/wwewtech/anti-slop-design](https://skills.sh/wwewtech/anti-slop-design) | Git Tag / Auto-Indexed | Indexed & Verified |
+| **Anthropic Official Skills** | Show & Tell Showcase | [Discussion #1787](https://github.com/anthropics/skills/discussions/1787) | Official Community Forum | Live & Published |
 | **Cursor Directory** | Cursor Rules Hub | [cursor.directory](https://cursor.directory/) | Form / GitHub PR | Ready to Submit |
 | **Awesome Claude** | Claude Code Hub | [awesomeclaude.ai](https://awesomeclaude.ai/) | "Submit Resource" / PR | Ready to Submit |
 | **Cline Rules Hub** | Roo Code / Cline Directory | [clinerules.org](https://clinerules.org/) | GitHub PR | Ready to Submit |
