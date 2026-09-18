@@ -29,6 +29,9 @@ This registry catalogs **`anti-slop-design`** across every AI agent directory, C
 | **philipbankier/awesome-agent-skills** | Agent Skills Standard | [PR #95](https://github.com/philipbankier/awesome-agent-skills/pull/95) | Submitted |
 | **Prat011/awesome-llm-skills** | Multi-Agent LLM Skills | [PR #255](https://github.com/Prat011/awesome-llm-skills/pull/255) | Submitted |
 | **bergside/awesome-design-skills** | TypeUI / Design Skills | [PR #20](https://github.com/bergside/awesome-design-skills/pull/20) | Submitted |
+| **rohitg00/awesome-claude-code-toolkit** | Claude Code Toolkit | [PR #799](https://github.com/rohitg00/awesome-claude-code-toolkit/pull/799) | Submitted |
+| **heilcheng/awesome-agent-skills** | Agent Skill Index | [PR #504](https://github.com/heilcheng/awesome-agent-skills/pull/504) | Submitted |
+| **BehiSecc/awesome-claude-skills** | Claude Skills & Tools | [PR #727](https://github.com/BehiSecc/awesome-claude-skills/pull/727) | Submitted |
 
 ---
 
