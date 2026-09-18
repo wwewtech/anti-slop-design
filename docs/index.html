@@ -3,639 +3,663 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Anti-Slop Design — The Human-Grade UI/UX Skill for AI Agents</title>
-  <meta name="description" content="Autonomous Principal Design Technologist and Anti-AI-Slop Specialist. Transforms messy, generic vibe-coded prototypes into bespoke, human-grade, production-ready software.">
-  <meta property="og:title" content="Anti-Slop Design — The Anti-AI-Slop Skill for Agents">
-  <meta property="og:description" content="Cures vibe-coded software from generic AI tropes. Enforces 1-to-3 UX hierarchy, tactile micro-interactions, and 7-axis quality gating.">
-  <meta property="og:url" content="https://wwewtech.github.io/anti-slop-design/">
-  <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary_large_image">
+  <title>anti-slop-design · Human-Grade UI/UX Engineering for AI Agents</title>
+  <meta name="description" content="Autonomous Principal Design Technologist. Cures vibe-coded applications from AI design slop.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-canvas: #09090b;
-      --bg-surface: #121215;
-      --bg-surface-elevated: #18181c;
-      --border-subtle: rgba(255, 255, 255, 0.08);
-      --border-hover: rgba(255, 255, 255, 0.16);
-      --accent-primary: #3b82f6;
-      --accent-foreground: #ffffff;
-      --text-primary: #f4f4f5;
-      --text-secondary: #a1a1aa;
-      --text-muted: #71717a;
-      --radius-sm: 6px;
-      --radius-md: 10px;
-      --radius-lg: 16px;
+      --bg: #000000;
+      --surface: #0a0a0a;
+      --surface-hover: #121212;
+      --border: #1a1a1a;
+      --border-focus: #ffffff;
+      --text: #ffffff;
+      --text-dim: #888888;
+      --text-muted: #555555;
       --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      --font-display: 'Space Grotesk', sans-serif;
       --font-mono: 'JetBrains Mono', monospace;
-    }
-
-    /* Archetype classes */
-    body.theme-terminal {
-      --bg-canvas: #0c0d0e;
-      --bg-surface: #141618;
-      --bg-surface-elevated: #1a1d20;
-      --border-subtle: #24282c;
-      --border-hover: #383e44;
-      --accent-primary: #10b981;
-      --text-primary: #e6edf3;
-      --radius-sm: 2px;
-      --radius-md: 4px;
-      --font-display: 'JetBrains Mono', monospace;
-    }
-
-    body.theme-editorial {
-      --bg-canvas: #faf8f5;
-      --bg-surface: #ffffff;
-      --bg-surface-elevated: #f4f1ea;
-      --border-subtle: #e8e4df;
-      --border-hover: #d1ccc4;
-      --accent-primary: #1a1a1a;
-      --text-primary: #1a1918;
-      --text-secondary: #635f59;
-      --text-muted: #8c867e;
-      --radius-sm: 0px;
-      --radius-md: 2px;
-      --font-display: Georgia, serif;
-    }
-
-    body.theme-warm {
-      --bg-canvas: #f4f4f0;
-      --bg-surface: #ffffff;
-      --bg-surface-elevated: #ebe9e3;
-      --border-subtle: #e2e1db;
-      --border-hover: #cbcaa;
-      --accent-primary: #d97706;
-      --text-primary: #1c1917;
-      --text-secondary: #78716c;
-      --radius-sm: 8px;
-      --radius-md: 16px;
-      --radius-lg: 24px;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      background-color: var(--bg-canvas);
-      color: var(--text-primary);
+      background: var(--bg);
+      color: var(--text);
       font-family: var(--font-sans);
-      line-height: 1.6;
+      line-height: 1.5;
+      font-size: 14px;
       -webkit-font-smoothing: antialiased;
-      transition: background-color 200ms ease-out, color 200ms ease-out;
-      overflow-x: hidden;
+      padding: 0 16px;
     }
 
-    .container {
-      max-width: 1120px;
+    .wrap {
+      max-width: 880px;
       margin: 0 auto;
-      padding: 0 24px;
+      padding: 40px 0 80px;
     }
 
-    /* Header Nav */
+    /* Top Utility Header */
     header {
-      border-bottom: 1px solid var(--border-subtle);
-      position: sticky;
-      top: 0;
-      background: rgba(9, 9, 11, 0.85);
-      backdrop-filter: blur(12px);
-      z-index: 50;
-    }
-    .nav-wrap {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      height: 64px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 48px;
     }
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: 1.125rem;
-      color: var(--text-primary);
-      text-decoration: none;
-      letter-spacing: -0.02em;
-    }
-    .brand-badge {
-      font-size: 0.6875rem;
-      padding: 2px 8px;
-      border-radius: 9999px;
-      background: rgba(59, 130, 246, 0.15);
-      color: var(--accent-primary);
-      border: 1px solid rgba(59, 130, 246, 0.3);
-      font-weight: 600;
-    }
-    .nav-links {
-      display: flex;
-      gap: 20px;
-      align-items: center;
-    }
-    .nav-link {
-      color: var(--text-secondary);
-      text-decoration: none;
-      font-size: 0.875rem;
-      font-weight: 500;
-      transition: color 140ms ease-out;
-    }
-    .nav-link:hover { color: var(--text-primary); }
 
-    .btn-github {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 14px;
-      background: var(--bg-surface-elevated);
-      color: var(--text-primary);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-sm);
-      font-size: 0.8125rem;
-      font-weight: 500;
+    .brand-mark {
+      font-family: var(--font-mono);
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: -0.02em;
+      color: var(--text);
       text-decoration: none;
-      transition: border-color 140ms ease-out, transform 60ms ease-out;
     }
-    .btn-github:hover { border-color: var(--border-hover); }
-    .btn-github:active { transform: scale(0.97); }
+
+    .header-links {
+      display: flex;
+      gap: 16px;
+    }
+
+    .header-links a {
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 13px;
+      font-family: var(--font-mono);
+      transition: color 100ms ease-out;
+    }
+
+    .header-links a:hover {
+      color: var(--text);
+    }
 
     /* Hero */
     .hero {
-      padding: 80px 0 60px;
-      text-align: center;
+      margin-bottom: 48px;
     }
-    .status-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 4px 14px;
-      border-radius: 9999px;
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: var(--text-secondary);
-      margin-bottom: 24px;
-      letter-spacing: 0.04em;
-    }
-    .dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: #10b981;
-    }
-    h1.hero-title {
-      font-family: var(--font-display);
-      font-size: clamp(2.5rem, 5vw, 4rem);
-      font-weight: 800;
-      line-height: 1.1;
+
+    h1 {
+      font-size: 32px;
+      font-weight: 700;
       letter-spacing: -0.03em;
-      margin-bottom: 20px;
-      color: var(--text-primary);
+      margin-bottom: 12px;
+      line-height: 1.2;
     }
-    p.hero-subtitle {
-      max-width: 680px;
-      margin: 0 auto 40px;
-      font-size: 1.125rem;
-      color: var(--text-secondary);
+
+    .lead {
+      color: var(--text-dim);
+      font-size: 16px;
+      max-width: 640px;
+      margin-bottom: 28px;
       line-height: 1.6;
     }
 
     /* Install Bar */
-    .install-box {
-      max-width: 640px;
-      margin: 0 auto 60px;
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-md);
+    .cmd-row {
+      display: flex;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
       overflow: hidden;
-      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+      max-width: 580px;
+      align-items: center;
     }
-    .install-tabs {
-      display: flex;
-      border-bottom: 1px solid var(--border-subtle);
-      background: rgba(0, 0, 0, 0.2);
-    }
-    .install-tab {
-      padding: 10px 18px;
-      background: none;
-      border: none;
-      border-bottom: 2px solid transparent;
-      color: var(--text-secondary);
-      font-size: 0.8125rem;
-      font-weight: 500;
-      cursor: pointer;
-      font-family: var(--font-sans);
-      transition: color 120ms ease-out, border-color 120ms ease-out;
-    }
-    .install-tab.active {
-      color: var(--text-primary);
-      border-bottom-color: var(--accent-primary);
-    }
-    .install-tab:hover { color: var(--text-primary); }
 
-    .install-body {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 14px 20px;
-      gap: 12px;
-    }
-    .install-cmd {
+    .cmd-text {
+      flex: 1;
       font-family: var(--font-mono);
-      font-size: 0.875rem;
-      color: #e2e8f0;
-      white-space: nowrap;
+      font-size: 13px;
+      padding: 12px 16px;
+      color: #e5e5e5;
       overflow-x: auto;
-      text-align: left;
+      white-space: nowrap;
     }
+
+    .cmd-text span {
+      color: var(--text-muted);
+      margin-right: 8px;
+    }
+
     .copy-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 12px;
-      background: var(--accent-primary);
-      color: var(--accent-foreground);
+      background: transparent;
       border: none;
-      border-radius: var(--radius-sm);
-      font-size: 0.75rem;
-      font-weight: 600;
+      border-left: 1px solid var(--border);
+      color: var(--text-dim);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      padding: 12px 18px;
       cursor: pointer;
       user-select: none;
-      transition: filter 140ms ease-out, transform 60ms ease-out;
+      transition: background 100ms ease-out, color 100ms ease-out, transform 60ms ease-out;
     }
-    .copy-btn:hover { filter: brightness(1.1); }
-    .copy-btn:active { transform: scale(0.95); }
 
-    /* Interactive Archetype Switcher */
-    .archetypes-section {
-      padding: 40px 0;
-      text-align: center;
+    .copy-btn:hover {
+      background: var(--surface-hover);
+      color: var(--text);
     }
-    .section-label {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--accent-primary);
-      font-weight: 700;
-      margin-bottom: 8px;
+
+    .copy-btn:active {
+      transform: scale(0.96);
     }
-    .section-title {
-      font-family: var(--font-display);
-      font-size: 1.875rem;
-      font-weight: 700;
+
+    .copy-btn:focus-visible {
+      outline: 2px solid var(--border-focus);
+    }
+
+    /* Section Headings */
+    h2 {
+      font-size: 18px;
+      font-weight: 600;
       letter-spacing: -0.02em;
-      margin-bottom: 24px;
-    }
-    .theme-buttons {
+      margin: 48px 0 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
       display: flex;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-bottom: 32px;
+      justify-content: space-between;
+      align-items: baseline;
     }
-    .theme-btn {
-      padding: 8px 16px;
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-sm);
-      color: var(--text-secondary);
-      font-size: 0.8125rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 140ms ease-out;
-    }
-    .theme-btn.active {
-      background: var(--bg-surface-elevated);
-      color: var(--text-primary);
-      border-color: var(--accent-primary);
-    }
-    .theme-btn:hover { border-color: var(--border-hover); }
 
-    /* Live Preview Card */
-    .preview-card {
-      max-width: 860px;
-      margin: 0 auto;
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-lg);
-      padding: 32px;
-      text-align: left;
-      box-shadow: 0 20px 48px rgba(0, 0, 0, 0.4);
+    h2 .section-sub {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--text-muted);
     }
-    .preview-header {
+
+    /* Utility: Live Code Scanner */
+    .scanner-wrap {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 20px;
+      margin-bottom: 40px;
+    }
+
+    .scanner-controls {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 28px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid var(--border-subtle);
-    }
-    .preview-header h3 {
-      font-family: var(--font-display);
-      font-size: 1.25rem;
-      font-weight: 700;
-    }
-    .preview-controls {
-      display: flex;
-      gap: 8px;
-    }
-    .preview-input {
-      padding: 6px 12px;
-      background: var(--bg-surface-elevated);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-sm);
-      color: var(--text-primary);
-      font-size: 0.8125rem;
-      outline: none;
-    }
-    .preview-input:focus {
-      border-color: var(--accent-primary);
-    }
-    .kpi-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 16px;
-      margin-bottom: 24px;
-    }
-    .kpi-card {
-      background: var(--bg-surface-elevated);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-md);
-      padding: 18px;
-    }
-    .kpi-label {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      margin-bottom: 6px;
-      font-weight: 500;
-    }
-    .kpi-val {
-      font-family: var(--font-mono);
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--text-primary);
-      font-variant-numeric: tabular-nums;
-    }
-    .kpi-delta {
-      font-size: 0.6875rem;
-      color: #10b981;
-      font-weight: 600;
-      margin-top: 4px;
+      margin-bottom: 12px;
     }
 
-    /* Comparison Table Section */
-    .table-section {
-      padding: 60px 0;
+    .scanner-controls label {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-dim);
     }
-    .banned-table {
+
+    .sample-link {
+      background: none;
+      border: none;
+      color: var(--text-dim);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      cursor: pointer;
+      text-decoration: underline;
+      padding: 0;
+    }
+
+    .sample-link:hover { color: var(--text); }
+
+    textarea.code-input {
+      width: 100%;
+      height: 140px;
+      background: #050505;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      color: #e5e5e5;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      padding: 12px;
+      line-height: 1.5;
+      resize: vertical;
+      outline: none;
+    }
+
+    textarea.code-input:focus {
+      border-color: #333333;
+    }
+
+    .scan-btn {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 8px 16px;
+      background: #ffffff;
+      color: #000000;
+      border: 1px solid #ffffff;
+      border-radius: 2px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 80ms ease-out, transform 60ms ease-out;
+    }
+
+    .scan-btn:hover { background: #e5e5e5; }
+    .scan-btn:active { transform: scale(0.97); }
+
+    .audit-results {
+      margin-top: 16px;
+      display: none;
+      border-top: 1px solid var(--border);
+      padding-top: 16px;
+    }
+
+    .audit-item {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      padding: 8px 0;
+      border-bottom: 1px solid #141414;
+      display: flex;
+      gap: 12px;
+    }
+
+    .audit-type-bad { color: #ff5555; }
+    .audit-type-ok { color: #55ff55; }
+    .audit-desc { color: var(--text-dim); }
+
+    /* Clean Diagnostic Table */
+    table.data-table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 24px;
-      background: var(--bg-surface);
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      border: 1px solid var(--border-subtle);
+      font-size: 13px;
+      margin: 16px 0 32px;
     }
-    .banned-table th {
+
+    table.data-table th {
       text-align: left;
-      padding: 14px 18px;
-      background: rgba(0, 0, 0, 0.2);
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
+      font-family: var(--font-mono);
+      font-size: 11px;
       color: var(--text-muted);
-      border-bottom: 1px solid var(--border-subtle);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
     }
-    .banned-table td {
-      padding: 14px 18px;
-      border-bottom: 1px solid var(--border-subtle);
-      font-size: 0.875rem;
+
+    table.data-table td {
+      padding: 12px;
+      border-bottom: 1px solid #141414;
+      vertical-align: top;
     }
-    .banned-table tr:last-child td { border-bottom: none; }
-    .bad-text { color: #ef4444; font-weight: 600; }
-    .good-text { color: #10b981; font-weight: 500; }
+
+    table.data-table tr:hover td {
+      background: rgba(255, 255, 255, 0.015);
+    }
+
+    .mono-cell {
+      font-family: var(--font-mono);
+      font-size: 12px;
+    }
+
+    /* Core Axioms List */
+    .axioms-list {
+      list-style: none;
+      margin: 16px 0 40px;
+    }
+
+    .axioms-list li {
+      padding: 14px 0;
+      border-bottom: 1px solid #141414;
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 20px;
+      font-size: 13px;
+    }
+
+    .axiom-name {
+      font-family: var(--font-mono);
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .axiom-desc {
+      color: var(--text-dim);
+    }
 
     /* Footer */
     footer {
-      border-top: 1px solid var(--border-subtle);
-      padding: 40px 0;
-      text-align: center;
+      margin-top: 64px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--font-mono);
+      font-size: 12px;
       color: var(--text-muted);
-      font-size: 0.8125rem;
     }
-    footer a { color: var(--text-secondary); text-decoration: none; }
-    footer a:hover { color: var(--text-primary); }
+
+    footer a {
+      color: var(--text-dim);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: var(--text);
+    }
+
+    @media (max-width: 640px) {
+      .axioms-list li {
+        grid-template-columns: 1fr;
+        gap: 6px;
+      }
+      h1 { font-size: 24px; }
+      header { flex-direction: column; align-items: flex-start; gap: 12px; }
+      footer { flex-direction: column; gap: 12px; }
+    }
   </style>
 </head>
 <body>
 
-  <!-- Navigation -->
-  <header>
-    <div class="container nav-wrap">
-      <a href="#" class="brand">
-        ANTI-SLOP DESIGN
-        <span class="brand-badge">v1.0.0</span>
-      </a>
-      <div class="nav-links">
-        <a href="https://skills.sh/wwewtech/anti-slop-design" class="nav-link" target="_blank">skills.sh</a>
-        <a href="https://github.com/wwewtech/anti-slop-design/blob/main/SKILL.md" class="nav-link" target="_blank">SKILL.md</a>
-        <a href="https://github.com/wwewtech/anti-slop-design" class="btn-github" target="_blank">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-          GitHub ★
-        </a>
-      </div>
-    </div>
-  </header>
+  <div class="wrap">
 
-  <!-- Hero -->
-  <section class="hero">
-    <div class="container">
-      <div class="status-pill">
-        <span class="dot"></span>
-        AI AGENT SKILL SPECIFICATION
-      </div>
-      <h1 class="hero-title">Cure Vibe-Coded Apps<br>From AI Design Slop</h1>
-      <p class="hero-subtitle">
-        The autonomous Principal Design Technologist skill. Transforms cookie-cutter AI prototypes into distinctive, tactile, accessible, and commercially viable production interfaces.
+    <!-- Top Utility Navigation -->
+    <header>
+      <a href="#" class="brand-mark">wwewtech / anti-slop-design</a>
+      <nav class="header-links">
+        <a href="https://skills.sh/wwewtech/anti-slop-design" target="_blank">skills.sh</a>
+        <a href="https://github.com/wwewtech/anti-slop-design/blob/main/SKILL.md" target="_blank">SKILL.md</a>
+        <a href="https://github.com/wwewtech/anti-slop-design" target="_blank">GitHub</a>
+      </nav>
+    </header>
+
+    <!-- Hero Section (Zero Marketing Fluff, Zero Fake Metrics) -->
+    <section class="hero">
+      <h1>Autonomous Anti-Slop UI/UX Engineering</h1>
+      <p class="lead">
+        A single-file agent skill for Claude Code, Cursor, Antigravity, and CLI workflows. Eliminates AI slop tropes, enforces 1-to-3 UX hierarchy, and evaluates code via a 7-axis quality gate.
       </p>
 
-      <!-- Install Box -->
-      <div class="install-box">
-        <div class="install-tabs">
-          <button class="install-tab active" onclick="switchInstall('skills')">skills.sh CLI</button>
-          <button class="install-tab" onclick="switchInstall('claude')">Claude Code</button>
-          <button class="install-tab" onclick="switchInstall('cursor')">Cursor</button>
-          <button class="install-tab" onclick="switchInstall('antigravity')">Antigravity</button>
-        </div>
-        <div class="install-body">
-          <div class="install-cmd" id="installCmd">npx skills add wwewtech/anti-slop-design</div>
-          <button class="copy-btn" id="copyBtn" onclick="copyInstall()">Copy</button>
-        </div>
+      <div class="cmd-row">
+        <div class="cmd-text"><span>$</span>npx skills add wwewtech/anti-slop-design</div>
+        <button class="copy-btn" id="copyBtn" onclick="copyCommand()">COPY</button>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Archetypes Interactive Showcase -->
-  <section class="archetypes-section">
-    <div class="container">
-      <div class="section-label">Interactive Token Engine</div>
-      <h2 class="section-title">Test 4 Production Archetypes Live</h2>
+    <!-- Real Client-Side Anti-Slop Linter (Actual Functional Utility) -->
+    <section>
+      <h2>
+        <span>Live Code Scanner</span>
+        <span class="section-sub">CLIENT-SIDE HEURISTICS</span>
+      </h2>
 
-      <div class="theme-buttons">
-        <button class="theme-btn active" onclick="setTheme('default')">Quiet Luxury SaaS (Default)</button>
-        <button class="theme-btn" onclick="setTheme('terminal')">Technical Dense Terminal</button>
-        <button class="theme-btn" onclick="setTheme('editorial')">Editorial &amp; Refined</button>
-        <button class="theme-btn" onclick="setTheme('warm')">Warm Tactile</button>
+      <div class="scanner-wrap">
+        <div class="scanner-controls">
+          <label for="codeInput">PASTE HTML / JSX / TAILWIND CODE:</label>
+          <button class="sample-link" onclick="loadSample()">Load Vibe-Coded Sample</button>
+        </div>
+        <textarea id="codeInput" class="code-input" placeholder="Paste UI markup or classes here... (e.g., bg-slate-900 bg-indigo-600 radial-gradient 🚀)"></textarea>
+        <button class="scan-btn" onclick="runAudit()">AUDIT CODE</button>
+
+        <div id="auditOutput" class="audit-results"></div>
       </div>
+    </section>
 
-      <!-- Live Preview Card -->
-      <div class="preview-card">
-        <div class="preview-header">
-          <div>
-            <h3 id="previewHeading">Enterprise Observability</h3>
-            <p style="font-size: 0.8125rem; color: var(--text-secondary);">Real-time telemetry and revenue performance</p>
-          </div>
-          <div class="preview-controls">
-            <input type="text" class="preview-input" value="Last 30 days" readonly style="width: 120px; cursor: pointer;">
-            <button class="copy-btn" style="padding: 6px 14px;">Export</button>
-          </div>
-        </div>
+    <!-- 12 Banned Clichés Matrix (High-Contrast Monochrome) -->
+    <section>
+      <h2>
+        <span>The 12 Banned AI Slop Anti-Patterns</span>
+        <span class="section-sub">PROHIBITED TROPES</span>
+      </h2>
 
-        <div class="kpi-grid">
-          <div class="kpi-card">
-            <div class="kpi-label">Active Workflows</div>
-            <div class="kpi-val">1,429</div>
-            <div class="kpi-delta">↑ +14.2% MoM</div>
-          </div>
-          <div class="kpi-card">
-            <div class="kpi-label">Median Latency</div>
-            <div class="kpi-val">84ms</div>
-            <div class="kpi-delta">↓ -8.4ms faster</div>
-          </div>
-          <div class="kpi-card">
-            <div class="kpi-label">Task Completion</div>
-            <div class="kpi-val">99.4%</div>
-            <div class="kpi-delta">↑ 0 friction blocks</div>
-          </div>
-        </div>
-
-        <div style="background: var(--bg-surface-elevated); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 16px;">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-            <span style="font-size: 0.8125rem; font-weight: 600;">Top Conversion Channels</span>
-            <span style="font-size: 0.75rem; color: var(--text-muted);">Tabular Delta Comparison</span>
-          </div>
-          <div style="display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid var(--border-subtle); font-size: 0.8125rem;">
-            <span>Developer API Direct</span>
-            <span style="font-family: var(--font-mono); font-weight: 600;">64.2%</span>
-          </div>
-          <div style="display: flex; justify-content: space-between; padding: 6px 0; font-size: 0.8125rem;">
-            <span>GitHub App Integration</span>
-            <span style="font-family: var(--font-mono); font-weight: 600;">35.8%</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Banned Anti-Patterns Table -->
-  <section class="table-section">
-    <div class="container">
-      <div class="section-label">Diagnostic Matrix</div>
-      <h2 class="section-title">The 12 Banned AI Slop Tropes</h2>
-
-      <table class="banned-table">
+      <table class="data-table">
         <thead>
           <tr>
-            <th width="30%">AI Slop Anti-Pattern</th>
-            <th width="35%">Vibe-Coded Manifestation</th>
-            <th width="35%">Mandatory Production Replacement</th>
+            <th width="28%">Banned Anti-Pattern</th>
+            <th width="36%">AI Vibe-Coded Manifestation</th>
+            <th width="36%">Mandatory Production Replacement</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td class="bad-text">✕ The "AI Dark Mode" Blob</td>
-            <td>Purple/indigo radial gradient in corners</td>
-            <td class="good-text">✓ Deep obsidian monochrome (#09090b) with 1px hairline border</td>
+            <td class="mono-cell" style="color: #ff6666;">radial-gradient blob</td>
+            <td style="color: var(--text-dim);">Indigo/purple glow in background corners</td>
+            <td style="color: var(--text);">Deep solid obsidian (#09090b) with 1px hairline border</td>
           </tr>
           <tr>
-            <td class="bad-text">✕ Raw Emojis as Icons</td>
-            <td>Plastering 🚀 🔥 💡 inside buttons</td>
-            <td class="good-text">✓ Crisp 1.5px/2px stroke vector SVGs (Lucide / Phosphor)</td>
+            <td class="mono-cell" style="color: #ff6666;">emojis as icons</td>
+            <td style="color: var(--text-dim);">Plastering raw emojis (🚀, 🔥, 📊) inside buttons</td>
+            <td style="color: var(--text);">Crisp 1.5px/2px stroke vector SVGs (Lucide / Phosphor)</td>
           </tr>
           <tr>
-            <td class="bad-text">✕ Duplicate Metric Cards</td>
-            <td>Repeating the same KPI across multiple cards</td>
-            <td class="good-text">✓ Single source of metric truth with unified page-level filters</td>
+            <td class="mono-cell" style="color: #ff6666;">cookie-cutter 3-card</td>
+            <td style="color: var(--text-dim);">3 identical cards with glowing hover borders</td>
+            <td style="color: var(--text);">Asymmetric layout, split-panels, or sequential workflow rows</td>
           </tr>
           <tr>
-            <td class="bad-text">✕ Vanity Space-Wasters</td>
-            <td>Giant 3D world maps showing zero actionable deltas</td>
-            <td class="good-text">✓ Compact horizontal comparison bars with tabular numbers</td>
+            <td class="mono-cell" style="color: #ff6666;">redundant KPI counters</td>
+            <td style="color: var(--text-dim);">Repeating total clicks in header, sidebar &amp; cards</td>
+            <td style="color: var(--text);">Single source of metric truth; one primary KPI summary</td>
           </tr>
           <tr>
-            <td class="bad-text">✕ Missing Component States</td>
-            <td>Buttons with only hover states; no focus or active feedback</td>
-            <td class="good-text">✓ 8-State interactive machine + tactile press scale(0.97)</td>
+            <td class="mono-cell" style="color: #ff6666;">card-level filter clutter</td>
+            <td style="color: var(--text-dim);">Date pickers embedded inside each card</td>
+            <td style="color: var(--text);">Unified page-level control bar synchronizing all cards</td>
+          </tr>
+          <tr>
+            <td class="mono-cell" style="color: #ff6666;">vanity 3D space-wasters</td>
+            <td style="color: var(--text-dim);">Giant 3D globe/map taking 50% screen with no deltas</td>
+            <td style="color: var(--text);">Compact horizontal comparison bars with tabular percentages</td>
+          </tr>
+          <tr>
+            <td class="mono-cell" style="color: #ff6666;">screaming eyebrows</td>
+            <td style="color: var(--text-dim);">Tracked-out ALL CAPS labels above every heading</td>
+            <td style="color: var(--text);">Sentence-case hierarchy or omit entirely if redundant</td>
+          </tr>
+          <tr>
+            <td class="mono-cell" style="color: #ff6666;">single-word italic glow</td>
+            <td style="color: var(--text-dim);">Headlines with one word italicized in glowing gradient</td>
+            <td style="color: var(--text);">Uniform typographic weight; let the full statement lead</td>
+          </tr>
+          <tr>
+            <td class="mono-cell" style="color: #ff6666;">missing active states</td>
+            <td style="color: var(--text-dim);">Buttons with only hover states; no focus or active feel</td>
+            <td style="color: var(--text);">8-State interactive feedback + tactile scale(0.97)</td>
+          </tr>
+          <tr>
+            <td class="mono-cell" style="color: #ff6666;">sluggish 400ms ease-in</td>
+            <td style="color: var(--text-dim);">Slow ease-in transitions on modals and dropdowns</td>
+            <td style="color: var(--text);">Snappy &lt;200ms ease-out (cubic-bezier(0.23, 1, 0.32, 1))</td>
+          </tr>
+          <tr>
+            <td class="mono-cell" style="color: #ff6666;">uncalibrated radii</td>
+            <td style="color: var(--text-dim);">Inner buttons and outer cards with arbitrary radius</td>
+            <td style="color: var(--text);">Nested radius formula: R_inner = max(0, R_outer - padding)</td>
+          </tr>
+          <tr>
+            <td class="mono-cell" style="color: #ff6666;">fake vanity stats</td>
+            <td style="color: var(--text-dim);">Unverified &quot;+99.9% uptime&quot; or &quot;10x faster&quot; cards</td>
+            <td style="color: var(--text);">Real domain telemetry or delete the card entirely</td>
           </tr>
         </tbody>
       </table>
-    </div>
-  </section>
+    </section>
 
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <p>MIT Licensed • Created with care by <a href="https://wwew.tech" target="_blank">wwewtech</a> (Pavel Lebedev)</p>
-      <p style="margin-top: 8px;">
-        <a href="https://github.com/wwewtech/anti-slop-design" target="_blank">GitHub Repository</a> •
-        <a href="https://skills.sh/wwewtech/anti-slop-design" target="_blank">skills.sh Page</a> •
-        <a href="https://github.com/wwewtech/anti-slop-design/blob/main/SKILLS_ANALYSIS_AND_AUDIT.md" target="_blank">Corpus Audit</a>
-      </p>
-    </div>
-  </footer>
+    <!-- Fundamental UX Laws (from ux.md) -->
+    <section>
+      <h2>
+        <span>Core Commercial UX Laws</span>
+        <span class="section-sub">SPEED &amp; LOGIC</span>
+      </h2>
+
+      <ul class="axioms-list">
+        <li>
+          <div class="axiom-name">The 1-to-3 Rule</div>
+          <div class="axiom-desc">1 dominant focal action per zone; maximum 3 secondary supporting actions. If a block has 5+ equal buttons, collapse into a popover or prioritize by frequency.</div>
+        </li>
+        <li>
+          <div class="axiom-name">85% Usage Law</div>
+          <div class="axiom-desc">Identify the primary scenario used by 85% of users. Make it 1-click accessible. Tuck secondary 15% edge cases into subtle secondary menus.</div>
+        </li>
+        <li>
+          <div class="axiom-name">Duplication Ban</div>
+          <div class="axiom-desc">Exactly one brand mark in viewport. Exactly one global filter bar controlling the view. Never duplicate identical actions across header, sidebar, and cards.</div>
+        </li>
+        <li>
+          <div class="axiom-name">Mobile Linearity</div>
+          <div class="axiom-desc">Avoid placing competing complex logic blocks side-by-side on desktop. Stack sequentially so human eye scans without cognitive collision.</div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- 7-Axis Quality Gate -->
+    <section>
+      <h2>
+        <span>7-Axis Pre-Emit Quality Gate</span>
+        <span class="section-sub">EVALUATION RUBRIC (&gt;= 4/5 REQUIRED)</span>
+      </h2>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th width="30%">Evaluation Axis</th>
+            <th width="70%">Objective Passing Standard</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="mono-cell">1. Anti-Slop Purity</td>
+            <td style="color: var(--text-dim);">Zero purple radial blobs, zero raw emojis as icons, zero fake vanity stats, zero single-word italic gradients.</td>
+          </tr>
+          <tr>
+            <td class="mono-cell">2. UX Speed &amp; 1-to-3</td>
+            <td style="color: var(--text-dim);">1 primary action per zone, max 3 secondary, global filters at page header, zero duplicate KPI cards.</td>
+          </tr>
+          <tr>
+            <td class="mono-cell">3. Typographic Scale</td>
+            <td style="color: var(--text-dim);">Max 2 font families, tabular numbers enabled on all metrics, body line-length &lt;= 75ch, sentence-case labels.</td>
+          </tr>
+          <tr>
+            <td class="mono-cell">4. Geometric Math</td>
+            <td style="color: var(--text-dim);">Strict 4px/8pt grid adherence, nested corner radius formula respected: R_inner = R_outer - Padding.</td>
+          </tr>
+          <tr>
+            <td class="mono-cell">5. Micro-Interactions</td>
+            <td style="color: var(--text-dim);">UI transitions &lt; 200ms, high-frequency actions (100+/day) 0ms instant, tactile :active scale(0.97) present.</td>
+          </tr>
+          <tr>
+            <td class="mono-cell">6. Accessibility (WCAG)</td>
+            <td style="color: var(--text-dim);">Visible focus rings on all interactive elements (:focus-visible), aria-label on icon-only buttons, semantic HTML.</td>
+          </tr>
+          <tr>
+            <td class="mono-cell">7. Mobile Linearity</td>
+            <td style="color: var(--text-dim);">Clean vertical stacking, zero horizontal overflow bugs, touch targets &gt;= 44px.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div>anti-slop-design · MIT License · wwewtech</div>
+      <div>
+        <a href="https://github.com/wwewtech/anti-slop-design">github</a> ·
+        <a href="https://skills.sh/wwewtech/anti-slop-design">skills.sh</a> ·
+        <a href="https://github.com/wwewtech/anti-slop-design/releases">releases</a>
+      </div>
+    </footer>
+
+  </div>
 
   <script>
-    const commands = {
-      skills: 'npx skills add wwewtech/anti-slop-design',
-      claude: 'claude skills add https://github.com/wwewtech/anti-slop-design',
-      cursor: 'curl -sL https://raw.githubusercontent.com/wwewtech/anti-slop-design/main/SKILL.md -o .cursor/skills/anti-slop-design/SKILL.md',
-      antigravity: 'curl -sL https://raw.githubusercontent.com/wwewtech/anti-slop-design/main/SKILL.md -o ~/.gemini/config/skills/anti-slop-design/SKILL.md'
-    };
-
-    function switchInstall(key) {
-      document.getElementById('installCmd').textContent = commands[key];
-      const tabs = document.querySelectorAll('.install-tab');
-      tabs.forEach(t => t.classList.remove('active'));
-      event.target.classList.add('active');
-    }
-
-    function copyInstall() {
-      const text = document.getElementById('installCmd').textContent;
+    function copyCommand() {
+      const text = 'npx skills add wwewtech/anti-slop-design';
       navigator.clipboard.writeText(text).then(() => {
         const btn = document.getElementById('copyBtn');
-        btn.textContent = 'Copied! ✓';
-        setTimeout(() => { btn.textContent = 'Copy'; }, 2000);
+        btn.textContent = 'COPIED';
+        setTimeout(() => { btn.textContent = 'COPY'; }, 2000);
       });
     }
 
-    function setTheme(theme) {
-      document.body.className = '';
-      if (theme !== 'default') {
-        document.body.classList.add('theme-' + theme);
-      }
-      const btns = document.querySelectorAll('.theme-btn');
-      btns.forEach(b => b.classList.remove('active'));
-      event.target.classList.add('active');
+    function loadSample() {
+      document.getElementById('codeInput').value = `<div className="min-h-screen bg-slate-900 flex flex-col items-center justify-center p-8 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-900 via-slate-900 to-black">
+  <span className="text-xs uppercase tracking-widest text-indigo-400 font-semibold mb-2">FEATURES</span>
+  <h1 className="text-4xl font-bold text-white">Next-Gen <span className="italic bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">AI Platform</span></h1>
+  
+  <div className="grid grid-cols-3 gap-6 mt-8">
+    <div className="p-6 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 hover:border-indigo-500 transition-all duration-400 ease-in">
+      <div className="text-2xl mb-2">🚀</div>
+      <h3 className="text-xl font-semibold">Total Clicks</h3>
+      <p className="text-3xl font-bold">+99.9% Uptime</p>
+      <input type="date" className="mt-4 p-2 bg-slate-800 rounded" />
+    </div>
+    <div className="p-6 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 hover:border-indigo-500 transition-all duration-400 ease-in">
+      <div className="text-2xl mb-2">🔥</div>
+      <h3 className="text-xl font-semibold">Total Clicks</h3>
+      <p className="text-3xl font-bold">10x Faster</p>
+      <input type="date" className="mt-4 p-2 bg-slate-800 rounded" />
+    </div>
+  </div>
+</div>`;
+    }
 
-      const headings = {
-        default: 'Enterprise Observability',
-        terminal: 'SYS_METRICS_OBSERVER::v1.0',
-        editorial: 'The Weekly Dispatches & Metrics',
-        warm: 'Studio Pulse & Creative Workflows'
-      };
-      document.getElementById('previewHeading').textContent = headings[theme] || 'Enterprise Observability';
+    function runAudit() {
+      const val = document.getElementById('codeInput').value;
+      const out = document.getElementById('auditOutput');
+      out.style.display = 'block';
+      out.innerHTML = '';
+
+      if (!val.trim()) {
+        out.innerHTML = '<div class="audit-item"><span class="audit-desc">No code provided. Paste code above or click "Load Vibe-Coded Sample".</span></div>';
+        return;
+      }
+
+      const issues = [];
+
+      // Detect radial gradient
+      if (/radial-gradient/i.test(val)) {
+        issues.push({ type: 'bad', name: 'AI Dark Mode Blob', msg: 'Detected radial-gradient. Replace with deep solid monochrome (#09090b) and hairline border.' });
+      }
+
+      // Detect raw emojis
+      const emojiMatch = val.match(/[\u{1F300}-\u{1F6FF}\u{1F900}-\u{1F9FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]/u);
+      if (emojiMatch) {
+        issues.push({ type: 'bad', name: 'Raw Emojis as UI Icons', msg: `Found raw emoji (${emojiMatch[0]}). Replace with 1.5px/2px stroke vector SVG icons (Lucide / Phosphor).` });
+      }
+
+      // Detect slate-900 / indigo-600
+      if (/bg-slate-900|bg-indigo-600|text-indigo-400/i.test(val)) {
+        issues.push({ type: 'bad', name: 'Monotonous Slate/Indigo Template', msg: 'Detected boilerplate Tailwind slate/indigo pairing. Use intentional curated semantic tokens.' });
+      }
+
+      // Detect 3-card grid
+      if (/grid-cols-3/i.test(val)) {
+        issues.push({ type: 'bad', name: 'Cookie-Cutter 3-Card Grid', msg: 'Detected standard 3-card grid. Consider asymmetric bento or workflow row architecture.' });
+      }
+
+      // Detect fake stats
+      if (/\+99\.9%|10x faster|50k\+/i.test(val)) {
+        issues.push({ type: 'bad', name: 'Fabricated Vanity Stats', msg: 'Detected generic AI marketing claims (+99.9%, 10x). Replace with real domain metrics or delete card.' });
+      }
+
+      // Detect slow ease-in
+      if (/ease-in\b|duration-400|duration-500/i.test(val)) {
+        issues.push({ type: 'bad', name: 'Sluggish Animation Curve', msg: 'Detected ease-in or >300ms duration. Use punchy ease-out <200ms (cubic-bezier(0.23, 1, 0.32, 1)).' });
+      }
+
+      // Detect single-word italic
+      if (/italic.*text-transparent/i.test(val) || /bg-clip-text/i.test(val)) {
+        issues.push({ type: 'bad', name: 'Single-Word Italic Gradient', msg: 'Detected single-word gradient/italic highlight. Enforce confident, uniform typographic weight.' });
+      }
+
+      // Detect card-level date picker
+      if (/<input[^>]*type=["']date["']/i.test(val)) {
+        issues.push({ type: 'bad', name: 'Card-Level Filter Pollution', msg: 'Date input detected inside repeated container. Unify date ranges into a single page-level control bar.' });
+      }
+
+      if (issues.length === 0) {
+        out.innerHTML = '<div class="audit-item"><span class="audit-type-ok">✓ PASS:</span><span class="audit-desc">Zero common AI slop patterns detected! Ensure 8-state interactivity and WCAG focus rings are configured.</span></div>';
+      } else {
+        issues.forEach(iss => {
+          const el = document.createElement('div');
+          el.className = 'audit-item';
+          el.innerHTML = `<span class="audit-type-bad">✕ ${iss.name}:</span> <span class="audit-desc">${iss.msg}</span>`;
+          out.appendChild(el);
+        });
+      }
     }
   </script>
 </body>
