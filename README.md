@@ -7,7 +7,8 @@
 **The Autonomous Principal Design Technologist & Anti-AI-Slop Skill for AI Agents**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](LICENSE)
-[![Skills.sh](https://img.shields.io/badge/skills.sh-anti--slop--design-black?style=flat-square&logo=vercel)](https://skills.sh)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Interactive%20Showcase-10B981?style=flat-square&logo=googlechrome)](https://wwewtech.github.io/anti-slop-design/)
+[![Skills.sh](https://img.shields.io/badge/skills.sh-anti--slop--design-black?style=flat-square&logo=vercel)](https://skills.sh/wwewtech/anti-slop-design)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-Compatible-orange?style=flat-square)](https://docs.anthropic.com/en/docs/agents-and-tools/claude-code)
 [![Antigravity](https://img.shields.io/badge/Google%20Antigravity-Ready-4285F4?style=flat-square)](https://deepmind.google)
 [![Cursor & Windsurf](https://img.shields.io/badge/Cursor%20%7C%20Windsurf-Supported-purple?style=flat-square)](#installation)
