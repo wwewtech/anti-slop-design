@@ -52,78 +52,165 @@
       padding: 24px 0 120px;
     }
 
-    /* Minimalist Top Header */
+    /* Authentic Sticky Header Bar */
     header.site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      height: 54px;
+      display: flex;
+      align-items: center;
+    }
+
+    .header-inner {
+      max-width: 1040px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 16px 0 24px;
-      border-bottom: 1px solid var(--border-subtle);
-      margin-bottom: 48px;
     }
 
-    .brand-group {
+    .header-left {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
 
-    .brand-mark {
+    .brand-link {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      text-decoration: none;
+      color: #ffffff;
+    }
+
+    .brand-glyph {
       width: 26px;
       height: 26px;
-      background: #ffffff;
-      border-radius: 5px;
+      border-radius: 6px;
+      background: #18181c;
+      border: 1px solid rgba(255, 255, 255, 0.12);
       display: grid;
       place-items: center;
-      color: #000000;
-      user-select: none;
+      color: #ffffff;
+      transition: all 120ms var(--ease-out);
     }
 
-    .brand-title {
-      font-family: var(--font-mono);
-      font-weight: 600;
+    .brand-link:hover .brand-glyph {
+      background: #24242a;
+      border-color: rgba(255, 255, 255, 0.24);
+    }
+
+    .brand-name {
       font-size: 13.5px;
-      color: var(--text);
-      text-decoration: none;
+      font-weight: 600;
       letter-spacing: -0.02em;
+      color: #ffffff;
     }
 
-    .brand-title span { color: var(--text-muted); font-weight: 400; }
+    .version-tag {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 500;
+      background: #141418;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 4px;
+      padding: 2px 6px;
+      color: var(--text-dim);
+    }
 
     .header-nav {
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 4px;
     }
 
     .header-nav a {
       color: var(--text-dim);
-      font-family: var(--font-mono);
-      font-size: 12px;
+      font-size: 12.5px;
+      font-weight: 400;
       text-decoration: none;
-      transition: color 120ms var(--ease-out);
+      padding: 6px 10px;
+      border-radius: 6px;
+      transition: all 120ms var(--ease-out);
     }
 
-    .header-nav a:hover { color: var(--text); }
+    .header-nav a:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.05);
+    }
 
-    .btn-header-gh {
+    .nav-link-spec {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      background: #121215;
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-sm);
+      gap: 4px;
+      color: var(--text-muted) !important;
+      font-family: var(--font-mono);
+      font-size: 11.5px !important;
+    }
+
+    .nav-link-spec:hover {
+      color: var(--text) !important;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-skills-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
       padding: 5px 10px;
-      color: var(--text);
+      border-radius: 5px;
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--text-dim);
       font-family: var(--font-mono);
       font-size: 11.5px;
       text-decoration: none;
       transition: all 120ms var(--ease-out);
     }
 
-    .btn-header-gh:hover {
-      background: #18181c;
-      border-color: var(--border-hover);
+    .btn-skills-link:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.08);
+    }
+
+    .btn-github-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      border-radius: 6px;
+      background: #ffffff;
+      color: #000000;
+      font-size: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 60ms var(--ease-out), background 100ms var(--ease-out);
+    }
+
+    .btn-github-pill:hover {
+      background: #e4e4e7;
+    }
+
+    .btn-github-pill:active {
+      transform: scale(0.97);
+    }
+
+    @media (max-width: 768px) {
+      .header-nav { display: none; }
     }
 
     /* HERO SECTION (Bespoke Human-Grade Architecture) */
@@ -1242,30 +1329,49 @@
 </head>
 <body>
 
-  <div class="wrap">
-
-    <!-- Minimalist Header -->
-    <header class="site-header">
-      <div class="brand-group">
-        <div class="brand-mark">
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-            <path d="M3 3l10 10M13 3L3 13" stroke="#000000" stroke-width="2.4" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <a href="#" class="brand-title">anti-slop-design <span>/ wwewtech</span></a>
+  <!-- Authentic Sticky Header Bar -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="header-left">
+        <a href="#" class="brand-link">
+          <div class="brand-glyph">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="3"/>
+              <line x1="3" y1="9" x2="21" y2="9"/>
+              <line x1="9" y1="21" x2="9" y2="9"/>
+            </svg>
+          </div>
+          <span class="brand-name">anti-slop-design</span>
+        </a>
+        <span class="version-tag">v1.0.0</span>
       </div>
+
       <nav class="header-nav">
-        <a href="#lens">showcase</a>
-        <a href="#archetypes">archetypes</a>
-        <a href="#states">8-states</a>
-        <a href="#linter">linter</a>
-        <a href="#matrix">anti-patterns</a>
-        <a href="https://github.com/wwewtech/anti-slop-design" target="_blank" class="btn-header-gh">
-          <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
-          <span>GitHub</span>
+        <a href="#lens">Demo</a>
+        <a href="#archetypes">Archetypes</a>
+        <a href="#states">States</a>
+        <a href="#linter">Linter</a>
+        <a href="#matrix">Anti-Patterns</a>
+        <a href="https://github.com/wwewtech/anti-slop-design/blob/main/SKILL.md" target="_blank" class="nav-link-spec">
+          <span>SKILL.md</span>
+          <svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3h7v7M13 3L6 10"/></svg>
         </a>
       </nav>
-    </header>
+
+      <div class="header-actions">
+        <a href="https://skills.sh/wwewtech/anti-slop-design" target="_blank" class="btn-skills-link">
+          <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1L1 14h14L8 1z"/></svg>
+          <span>skills.sh</span>
+        </a>
+        <a href="https://github.com/wwewtech/anti-slop-design" target="_blank" class="btn-github-pill">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+          <span>GitHub</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap">
 
     <!-- HERO SECTION -->
     <div class="hero">
