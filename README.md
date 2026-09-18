@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="assets/anti-slop-banner.svg" alt="Anti-Slop Design Banner" width="100%" />
+
 # Anti-Slop Design
 
 **The Autonomous Principal Design Technologist & Anti-AI-Slop Skill for AI Agents**
