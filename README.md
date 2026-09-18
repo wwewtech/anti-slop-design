@@ -14,7 +14,7 @@
   <em>Cures vibe-coded software from generic AI slop. Transforms cookie-cutter AI prototypes into distinctive, tactile, accessible, and commercially viable production interfaces.</em>
 </p>
 
-[Quick Install](#quick-installation) • [The 12 AI Slop Anti-Patterns](#the-12-ai-slop-anti-patterns) • [The 8 Universal Cures](#the-8-universal-cures) • [Design Archetypes](#production-design-archetypes) • [7-Axis Quality Gate](#the-7-axis-pre-emit-quality-gate)
+[Quick Install](#quick-installation) • [The 12 AI Slop Anti-Patterns](#the-12-ai-slop-anti-patterns) • [The 8 Universal Cures](#the-8-universal-cures) • [Design Archetypes](#production-design-archetypes) • [7-Axis Quality Gate](#the-7-axis-pre-emit-quality-gate) • [Collections](COLLECTIONS.md)
 
 </div>
 
@@ -174,6 +174,18 @@ Before completing any UI task, the agent automatically grades its work against 7
 | **7. Mobile & Responsive Linearity** | Cross-device stability | Clean vertical stacking, zero horizontal overflow, $\ge 44\text{px}$ touch targets |
 
 *A score of $\ge 4/5$ across all 7 axes is mandatory before shipping.*
+
+---
+
+## Collections & Ecosystem Inclusion
+
+`anti-slop-design` is indexed and curated across major AI agent skill collections and registries:
+
+- **[skills.sh Directory](https://skills.sh/wwewtech/anti-slop-design):** Featured in `Design & UI`, `Agent Workflows`, `Mobile`, `React`, and `Next.js` topics.
+- **[ComposioHQ/awesome-claude-skills](https://github.com/ComposioHQ/awesome-claude-skills):** Curated under UI & Frontend Engineering.
+- **[VoltAgent/awesome-agent-skills](https://github.com/VoltAgent/awesome-agent-skills):** Listed in Design & User Experience.
+- **[Google Antigravity Built-in Skills](https://deepmind.google):** Full support for native workspace and agent workflows.
+- **Full Compilations Registry:** See [COLLECTIONS.md](COLLECTIONS.md) for direct links, category entries, and markdown snippets for awesome-lists.
 
 ---
 
