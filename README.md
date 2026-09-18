@@ -1,40 +1,79 @@
-<div align="center">
+# anti-slop-design
 
-<img src="assets/anti-slop-banner.svg" alt="Anti-Slop Design Banner" width="100%" />
+Autonomous Principal Design Technologist and Anti-AI-Slop Specialist for AI coding agents (Claude Code, Cursor, Antigravity, Windsurf).
 
-# Anti-Slop Design
+Transforms messy, template-ridden vibe-coded prototypes into bespoke, human-grade, production-ready software.
 
-**The Autonomous Principal Design Technologist & Anti-AI-Slop Skill for AI Agents**
+```bash
+npx skills add wwewtech/anti-slop-design
+```
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](LICENSE)
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-Interactive%20Showcase-10B981?style=flat-square&logo=googlechrome)](https://wwewtech.github.io/anti-slop-design/)
-[![Skills.sh](https://img.shields.io/badge/skills.sh-anti--slop--design-black?style=flat-square&logo=vercel)](https://skills.sh/wwewtech/anti-slop-design)
-[![Claude Code](https://img.shields.io/badge/Claude%20Code-Compatible-orange?style=flat-square)](https://docs.anthropic.com/en/docs/agents-and-tools/claude-code)
-[![Antigravity](https://img.shields.io/badge/Google%20Antigravity-Ready-4285F4?style=flat-square)](https://deepmind.google)
-[![Cursor & Windsurf](https://img.shields.io/badge/Cursor%20%7C%20Windsurf-Supported-purple?style=flat-square)](#installation)
-
-<p align="center">
-  <em>Cures vibe-coded software from generic AI slop. Transforms cookie-cutter AI prototypes into distinctive, tactile, accessible, and commercially viable production interfaces.</em>
-</p>
-
-[Quick Install](#quick-installation) • [The 12 AI Slop Anti-Patterns](#the-12-ai-slop-anti-patterns) • [The 8 Universal Cures](#the-8-universal-cures) • [Design Archetypes](#production-design-archetypes) • [7-Axis Quality Gate](#the-7-axis-pre-emit-quality-gate) • [Collections](COLLECTIONS.md)
-
-</div>
+**[Live Showcase](https://wwewtech.github.io/anti-slop-design/)** • **[skills.sh](https://skills.sh/wwewtech/anti-slop-design)** • **[SKILL.md](SKILL.md)** • **[Collections](COLLECTIONS.md)**
 
 ---
 
-## Why Anti-Slop Design?
+## Why Anti-Slop?
 
-AI coding assistants (Claude Code, Cursor, Windsurf, Copilot, Antigravity) are extraordinary at generating functional code. However, when left to generate UI on their own, they inevitably produce **AI Design Slop ("нейрослоп")**:
+When coding agents generate user interfaces without design constraints, they converge on predictable tropes:
 
-- ❌ The infamous **"AI Dark Mode" Blob**: `radial-gradient` from indigo-600/purple-900 blurred in corners of dark backgrounds.
-- ❌ **Metric & Filter Clutter**: Date pickers duplicated inside 4 individual cards; the same metric repeated 3 times across the page.
-- ❌ **The "Emoji as Icon" Plague**: Using `🚀`, `🔥`, `💡`, `📊` in sidebars and buttons instead of crisp, single-stroke vector icons.
-- ❌ **Vanity Space-Wasters**: Giant 3D globes or useless maps occupying 60% of the screen with zero actionable data.
-- ❌ **Sluggish Transitions**: 400ms `ease-in` animations on every element that make software feel sluggish.
-- ❌ **Missing Component States**: Buttons with only hover states, lacking `:focus-visible`, `:active`, loading, and disabled handling.
+- **The "AI Dark Mode" Blob**: `radial-gradient` from indigo-600/purple-900 blurred in corners of dark backgrounds.
+- **Metric & Filter Clutter**: Date pickers duplicated inside individual cards; total counts repeated across 3 different widgets.
+- **The "Emoji as Icon" Plague**: Using raw emojis (`🚀`, `🔥`, `💡`, `📊`) in buttons and sidebars instead of single-stroke vector icons.
+- **Vanity Space-Wasters**: Giant 3D globes or map widgets that occupy 50% of the viewport with zero actionable data deltas.
+- **Sluggish Transitions**: 400ms `ease-in` curves that make software feel laggy and ungrounded.
+- **Missing Interaction States**: Buttons that only have hover states, lacking `:focus-visible`, `:active`, loading, and disabled handling.
 
-**`anti-slop-design`** is a battle-tested agent skill that equips your AI coding agent with the taste, restraint, and discipline of a Principal Design Technologist.
+`anti-slop-design` replaces these defaults with deterministic architectural rules, curated token archetypes, and an objective 7-axis quality gate.
+
+---
+
+## Transformation in Action
+
+### Before: Vibe-Coded AI Slop
+```tsx
+<div className="min-h-screen bg-slate-900 bg-[radial-gradient(ellipse_at_top,_#312e81,_#0f172a,_#000000)] p-8">
+  <span className="text-xs uppercase tracking-widest text-indigo-400">ANALYTICS</span>
+  <h1 className="text-4xl font-bold text-white">Live <span className="italic bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">Radar</span></h1>
+  
+  <div className="grid grid-cols-3 gap-6 mt-8">
+    <div className="p-6 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 hover:border-indigo-500 transition-all duration-400 ease-in">
+      <div className="text-2xl mb-2">🚀</div>
+      <h3 className="text-xl font-semibold">Total Clicks</h3>
+      <p className="text-3xl font-bold">+99.9% Uptime</p>
+      <input type="date" className="mt-4 p-2 bg-slate-800 rounded" />
+    </div>
+  </div>
+</div>
+```
+
+### After: Human-Grade Production (Quiet Luxury SaaS Archetype)
+```tsx
+<div className="min-h-screen bg-[#09090b] text-zinc-100 p-8 font-sans">
+  <div className="max-w-5xl mx-auto space-y-6">
+    {/* Unified Page-Level Header & Filter Bar */}
+    <header className="flex items-center justify-between pb-4 border-b border-white/10">
+      <div>
+        <h1 className="text-base font-semibold tracking-tight">Link Telemetry</h1>
+        <p className="text-xs text-zinc-400 mt-0.5">Normalized 30-day traffic metrics</p>
+      </div>
+      <div className="flex items-center gap-3">
+        <DateRangeSelector defaultValue="30d" />
+        <button className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white text-black text-xs font-medium rounded-md active:scale-95 transition-transform duration-100 focus-visible:ring-2 focus-visible:ring-white/50 outline-none">
+          <PlusIcon className="w-3.5 h-3.5 stroke-[2]" />
+          Create Link
+        </button>
+      </div>
+    </header>
+
+    {/* Single Source of Truth Summary */}
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <MetricCard label="Active Links" value="1,284" change="+12.4%" />
+      <MetricCard label="Total Referrals" value="49,102" change="+8.1%" />
+      <MetricCard label="Avg Latency" value="42ms" change="-3.2%" />
+    </div>
+  </div>
+</div>
+```
 
 ---
 
@@ -73,40 +112,40 @@ curl -sL https://raw.githubusercontent.com/wwewtech/anti-slop-design/main/SKILL.
 
 ## The 12 AI Slop Anti-Patterns
 
-| AI Slop Anti-Pattern | Manifestation in Vibe-Coded UI | Mandatory Production Replacement |
+| Anti-Pattern | Manifestation in Vibe-Coded UI | Mandatory Production Replacement |
 | :--- | :--- | :--- |
-| **❌ The "AI Dark Mode" Blob** | `radial-gradient` from indigo-600 or purple-900 blurred in corners of dark backgrounds. | Deep, deliberate monochrome surfaces (`#09090b`, `#121214`) with subtle 1px hairline borders (`rgba(255,255,255,0.08)`). |
-| **❌ Monotonous Slate/Indigo** | Generic `bg-slate-900 text-slate-400 bg-indigo-600` cookie-cutter templates. | Curated semantic tokens (OKLCH/HSL) with distinct brand personality (e.g., Warm Amber, Electric Cobalt, Deep Emerald, or Crisp Monochrome). |
-| **❌ Cookie-Cutter 3-Card Grid** | Three identical rectangular cards with glowing borders on hover. | Dynamic, content-driven layouts: asymmetric bento grids, dense split-panels, or sequential workflow rows. |
-| **❌ Raw Emojis as Icons** | Plastering raw emojis (`🚀`, `🔥`, `💡`, `📊`) inside buttons, cards, and sidebars. | Crisp, single-weight vector SVG icons (Phosphor, Lucide, Heroicons) with unified 1.5px/2px stroke widths. |
-| **❌ Fabricated Vanity Stats** | Meaningless filler cards: `"+99.9% Uptime"`, `"10x Faster"`, `"50k+ Users"` with no source. | Real domain telemetry or remove the card entirely. Zero vanity metrics. |
-| **❌ Screaming Eyebrow Labels** | Tracked-out uppercase labels above every heading: `OVERVIEW`, `FEATURES`, `ANALYTICS`. | Sentence-case hierarchy, subtle metadata tags, or omit entirely if the heading is self-explanatory. |
-| **❌ Single-Word Italic/Color Accents** | Headlines with one arbitrary word italicized or highlighted in glowing gradient text. | Uniform, confident typographic weight. Let the whole statement carry authority. |
-| **❌ Redundant Metric Duplication** | Repeating total clicks/revenue in header, sidebar, and inside multiple individual cards. | **Single Source of Metric Truth.** One primary KPI summary per viewport; drill-downs below. |
-| **❌ Card-Level Filter Pollution** | Duplicating date pickers or dropdowns inside every card rather than at the page level. | Unified **Page-Level Control Bar** that synchronizes all underlying views. |
-| **❌ Vanity Visual Space-Wasters** | Giant world maps or 3D blobs that occupy 60% of the screen with zero actionable data. | Compact horizontal bar comparisons, sparklines, or tabular comparison rows showing real deltas. |
-| **❌ Missing Interactive States** | Buttons with only hover effects, lacking `:focus-visible`, `:active`, loading, and disabled states. | **8-State Interactive Feedback System** on all interactive primitives. |
-| **❌ Broken Placeholders & Links** | `via.placeholder.com`, broken Unsplash URLs, or blurry stock photos. | High-fidelity inline SVGs, semantic CSS abstract shapes, or verified local assets. |
+| **The "AI Dark Mode" Blob** | `radial-gradient` from indigo-600 or purple-900 blurred in corners of dark backgrounds. | Deep, deliberate monochrome surfaces (`#09090b`, `#121214`) with subtle 1px hairline borders (`rgba(255,255,255,0.08)`). |
+| **Monotonous Slate/Indigo** | Generic `bg-slate-900 text-slate-400 bg-indigo-600` cookie-cutter templates. | Curated semantic tokens (OKLCH/HSL) with distinct brand personality (e.g., Warm Amber, Electric Cobalt, Deep Emerald, or Crisp Monochrome). |
+| **Cookie-Cutter 3-Card Grid** | Three identical rectangular cards with glowing borders on hover. | Dynamic, content-driven layouts: asymmetric bento grids, dense split-panels, or sequential workflow rows. |
+| **Raw Emojis as Icons** | Plastering raw emojis (`🚀`, `🔥`, `💡`, `📊`) inside buttons, cards, and sidebars. | Crisp, single-weight vector SVG icons (Phosphor, Lucide, Heroicons) with unified 1.5px/2px stroke widths. |
+| **Fabricated Vanity Stats** | Meaningless filler cards: `"+99.9% Uptime"`, `"10x Faster"`, `"50k+ Users"` with no source. | Real domain telemetry or remove the card entirely. Zero vanity metrics. |
+| **Screaming Eyebrow Labels** | Tracked-out uppercase labels above every heading: `OVERVIEW`, `FEATURES`, `ANALYTICS`. | Sentence-case hierarchy, subtle metadata tags, or omit entirely if the heading is self-explanatory. |
+| **Single-Word Italic/Color Accents** | Headlines with one arbitrary word italicized or highlighted in glowing gradient text. | Uniform, confident typographic weight. Let the whole statement carry authority. |
+| **Redundant Metric Duplication** | Repeating total clicks/revenue in header, sidebar, and inside multiple individual cards. | **Single Source of Metric Truth.** One primary KPI summary per viewport; drill-downs below. |
+| **Card-Level Filter Pollution** | Duplicating date pickers or dropdowns inside every card rather than at the page level. | Unified **Page-Level Control Bar** that synchronizes all underlying views. |
+| **Vanity Visual Space-Wasters** | Giant world maps or 3D blobs that occupy 60% of the screen with zero actionable data. | Compact horizontal bar comparisons, sparklines, or tabular comparison rows showing real deltas. |
+| **Missing Interactive States** | Buttons with only hover effects, lacking `:focus-visible`, `:active`, loading, and disabled states. | **8-State Interactive Feedback System** on all interactive primitives. |
+| **Broken Placeholders & Links** | `via.placeholder.com`, broken Unsplash URLs, or blurry stock photos. | High-fidelity inline SVGs, semantic CSS abstract shapes, or verified local assets. |
 
 ---
 
-## Core UX Axioms: Speed & Commercial Logic
+## Core UX Axioms
 
-1. **The "1-to-3" Rule:** 1 primary action or dominant focal point per viewport section $\rightarrow$ max 3 secondary supporting actions.
+1. **The "1-to-3" Rule:** 1 primary action or dominant focal point per viewport section -> max 3 secondary supporting actions.
 2. **The 85% Statistical Prioritization Law:** Optimize for what 85% of users do every day. Make that scenario 1-click accessible. Tweak the 15% edge cases into subtle secondary popovers.
 3. **Strict Ban on Duplication:** Page-level filters apply globally. Never repeat the same KPI across multiple widgets.
 4. **Mobile Linearity on Desktop:** Stack competing logic blocks sequentially so the human eye scans naturally from top to bottom.
 
 ---
 
-## The 8 Universal Cures
+## Architectural Principles
 
 1. **Visual DNA Ingestion:** Extract 5 foundation tokens (`Canvas`, `Surface`, `Primary Accent`, `Text Hierarchy`, `Hairline Border`) without copying visual bugs.
 2. **Bespoke Asset Architecture:** Replace broken placeholders with high-fidelity inline SVGs or structured DOM mockups.
 3. **Contextual Asset Differentiation:** Frame physical goods with generous whitespace and macro-photography; showcase digital SaaS with live, crisp UI components.
-4. **Typographic Mastery:** Cap body line length at $\le 75\text{ch}$. Pair character-rich display fonts with tabular monospace metadata (`font-variant-numeric: tabular-nums`).
+4. **Typographic Discipline:** Cap body line length at `<= 75ch`. Pair character-rich display fonts with tabular monospace metadata (`font-variant-numeric: tabular-nums`).
 5. **Deterministic Design Variations:** Switch between 4 logic-preserving archetypes (*Quiet Luxury SaaS*, *Technical Dense Terminal*, *Editorial & Refined*, *Warm Tactile*) while preserving 100% of underlying form logic and state.
-6. **Spacing Geometry:** Strict 4px/8pt spatial grid. Enforce nested radius math: $R_{\text{inner}} = R_{\text{outer}} - \text{Padding}$.
+6. **Spacing Geometry:** Strict 4px/8pt spatial grid. Enforce nested radius math: `R_inner = max(0, R_outer - padding)`.
 7. **Cognitive De-Cluttering:** Strip decorative ballast, redundant status pills, and empty ghost cards.
 8. **Systematic Scaffolding:** Anchor every screen to a battle-tested layout skeleton (App Shell, High-Density Dashboard, or 50ms Conversion Hero).
 
@@ -147,12 +186,15 @@ curl -sL https://raw.githubusercontent.com/wwewtech/anti-slop-design/main/SKILL.
 
 ---
 
-## Micro-Interactions & The 8-State Interactive Feedback System
+## Micro-Interactions & The 8-State Feedback System
 
-Every interactive primitive (button, input, tab, card) MUST implement all 8 states:
+Every interactive primitive (button, input, tab, card) must implement 8 functional states:
 
-$$\text{Default} \longrightarrow \text{Hover} \longrightarrow \text{:focus-visible} \longrightarrow \text{:active (Tactile)}$$
-$$\text{Disabled} \longleftarrow \text{Loading (Spinner)} \longleftarrow \text{Error (Shake/Red)} \longleftarrow \text{Success (Check)}$$
+```
+[Default] ──> [Hover] ──> [:focus-visible] ──> [:active (Tactile 0.97)]
+   │
+   └──> [Loading (Spinner)] ──> [Error (Shake)] ──> [Success (Pulse)] ──> [Disabled]
+```
 
 ### The Emil Kowalski Animation Decision Rules
 - **Actions performed 100+ times/day:** **0ms duration (INSTANT). Never animate.**
@@ -170,13 +212,13 @@ Before completing any UI task, the agent automatically grades its work against 7
 | :--- | :--- | :--- |
 | **1. Anti-Slop Purity** | Freedom from AI clichés | Zero purple gradients, zero emojis as icons, zero vanity stats |
 | **2. UX Speed & 1-to-3 Rule** | Logical clarity | 1 primary action, max 3 secondary, unified page-level filters |
-| **3. Typographic Discipline** | Personality & hierarchy | Max 2 font families, tabular numbers on metrics, $\le 75\text{ch}$ body |
-| **4. Spacing & Geometric Math** | Spatial cadence | Strict 4px/8pt grid, nested radius math $R_{\text{inner}} = R_{\text{outer}} - P$ |
-| **5. Micro-Interactions & Motion** | Physical feel | Snappy transitions $< 200\text{ms}$, tactile `:active { transform: scale(0.97) }` |
+| **3. Typographic Discipline** | Personality & hierarchy | Max 2 font families, tabular numbers on metrics, `<= 75ch` body |
+| **4. Spacing & Geometric Math** | Spatial cadence | Strict 4px/8pt grid, nested radius math `R_inner = max(0, R_outer - padding)` |
+| **5. Micro-Interactions & Motion** | Physical feel | Snappy transitions `< 200ms`, tactile `:active { transform: scale(0.97) }` |
 | **6. Accessibility & Keyboard Flow** | WCAG 2.1 AA | Visible `:focus-visible` rings, no naked `outline: none`, semantic tags |
-| **7. Mobile & Responsive Linearity** | Cross-device stability | Clean vertical stacking, zero horizontal overflow, $\ge 44\text{px}$ touch targets |
+| **7. Mobile & Responsive Linearity** | Cross-device stability | Clean vertical stacking, zero horizontal overflow, `>= 44px` touch targets |
 
-*A score of $\ge 4/5$ across all 7 axes is mandatory before shipping.*
+*A score of `>= 4/5` across all 7 axes is mandatory before shipping.*
 
 ---
 

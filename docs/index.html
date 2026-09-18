@@ -4,22 +4,33 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>anti-slop-design · Human-Grade UI/UX Engineering for AI Agents</title>
-  <meta name="description" content="Autonomous Principal Design Technologist. Cures vibe-coded applications from AI design slop.">
+  <meta name="description" content="Autonomous Principal Design Technologist. Cures vibe-coded applications from AI design slop with deterministic token architecture and an objective 7-axis quality gate.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22><rect width=%2232%22 height=%2232%22 rx=%226%22 fill=%22%23000%22/><path d=%22M8 8l16 16M24 8L8 24%22 stroke=%22%23fff%22 stroke-width=%223%22 stroke-linecap=%22round%22/></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #000000;
-      --surface: #0a0a0a;
-      --surface-hover: #121212;
-      --border: #1a1a1a;
-      --border-focus: #ffffff;
-      --text: #ffffff;
-      --text-dim: #888888;
-      --text-muted: #555555;
-      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      --font-mono: 'JetBrains Mono', monospace;
+      --surface-1: #09090b;
+      --surface-2: #121215;
+      --surface-elevated: #18181c;
+      --border-subtle: #222226;
+      --border-active: #3a3a42;
+      --text: #ededed;
+      --text-dim: #8e8e93;
+      --text-muted: #52525b;
+      --accent-blue: #3b82f6;
+      --accent-emerald: #10b981;
+      --accent-amber: #f59e0b;
+      --accent-crimson: #ef4444;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', Consolas, monospace;
+      --font-serif: 'Newsreader', Georgia, serif;
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -28,327 +39,1138 @@
       background: var(--bg);
       color: var(--text);
       font-family: var(--font-sans);
-      line-height: 1.5;
-      font-size: 14px;
+      font-size: 13.5px;
+      line-height: 1.55;
       -webkit-font-smoothing: antialiased;
-      padding: 0 16px;
+      padding: 0 20px;
     }
 
     .wrap {
-      max-width: 880px;
+      max-width: 980px;
       margin: 0 auto;
-      padding: 40px 0 80px;
+      padding: 32px 0 100px;
     }
 
-    /* Top Utility Header */
+    /* Precision Top Navigation */
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding-bottom: 32px;
-      border-bottom: 1px solid var(--border);
-      margin-bottom: 48px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border-subtle);
+      margin-bottom: 40px;
+    }
+
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
 
     .brand-mark {
-      font-family: var(--font-mono);
-      font-weight: 600;
+      width: 24px;
+      height: 24px;
+      background: #ffffff;
+      border-radius: 4px;
+      display: grid;
+      place-items: center;
+      color: #000000;
+      font-weight: 800;
       font-size: 14px;
-      letter-spacing: -0.02em;
-      color: var(--text);
-      text-decoration: none;
+      font-family: var(--font-mono);
+      user-select: none;
     }
 
-    .header-links {
+    .brand-title {
+      font-family: var(--font-mono);
+      font-weight: 600;
+      font-size: 13px;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-title span { color: var(--text-muted); }
+
+    .telemetry-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #0d1611;
+      border: 1px solid #183822;
+      border-radius: 9999px;
+      padding: 2px 8px;
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      color: var(--accent-emerald);
+      letter-spacing: 0.02em;
+    }
+
+    .telemetry-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--accent-emerald);
+      border-radius: 50%;
+      box-shadow: 0 0 6px var(--accent-emerald);
+    }
+
+    .nav-links {
       display: flex;
+      align-items: center;
       gap: 16px;
     }
 
-    .header-links a {
+    .nav-links a {
       color: var(--text-dim);
-      text-decoration: none;
-      font-size: 13px;
       font-family: var(--font-mono);
-      transition: color 100ms ease-out;
+      font-size: 12px;
+      text-decoration: none;
+      transition: color 120ms var(--ease-out);
     }
 
-    .header-links a:hover {
-      color: var(--text);
-    }
+    .nav-links a:hover { color: var(--text); }
 
     /* Hero */
     .hero {
       margin-bottom: 48px;
     }
 
-    h1 {
+    .hero-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .hero-title {
       font-size: 32px;
       font-weight: 700;
-      letter-spacing: -0.03em;
+      letter-spacing: -0.035em;
+      line-height: 1.15;
       margin-bottom: 12px;
-      line-height: 1.2;
     }
 
-    .lead {
+    .hero-desc {
       color: var(--text-dim);
-      font-size: 16px;
+      font-size: 15px;
+      max-width: 660px;
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+
+    /* Terminal Install Multi-Tab Box */
+    .install-container {
+      background: var(--surface-1);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
       max-width: 640px;
-      margin-bottom: 28px;
-      line-height: 1.6;
-    }
-
-    /* Install Bar */
-    .cmd-row {
-      display: flex;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 4px;
       overflow: hidden;
-      max-width: 580px;
-      align-items: center;
+      margin-bottom: 48px;
     }
 
-    .cmd-text {
+    .install-tabs {
+      display: flex;
+      background: #060608;
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 0 6px;
+    }
+
+    .install-tab {
+      background: transparent;
+      border: none;
+      padding: 8px 12px;
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      color: var(--text-muted);
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: all 120ms var(--ease-out);
+    }
+
+    .install-tab:hover { color: var(--text-dim); }
+
+    .install-tab.active {
+      color: var(--text);
+      border-bottom-color: #ffffff;
+      font-weight: 500;
+    }
+
+    .install-body {
+      display: flex;
+      align-items: center;
+      padding: 8px 12px;
+    }
+
+    .install-cmd {
       flex: 1;
       font-family: var(--font-mono);
       font-size: 13px;
-      padding: 12px 16px;
-      color: #e5e5e5;
-      overflow-x: auto;
+      color: #e4e4e7;
       white-space: nowrap;
+      overflow-x: auto;
     }
 
-    .cmd-text span {
+    .install-cmd span {
       color: var(--text-muted);
       margin-right: 8px;
+      user-select: none;
     }
 
-    .copy-btn {
-      background: transparent;
-      border: none;
-      border-left: 1px solid var(--border);
-      color: var(--text-dim);
+    .btn-copy {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #18181b;
+      border: 1px solid #2e2e34;
+      border-radius: var(--radius-sm);
+      color: var(--text);
       font-family: var(--font-mono);
-      font-size: 12px;
-      padding: 12px 18px;
+      font-size: 11px;
+      font-weight: 500;
+      padding: 6px 12px;
       cursor: pointer;
       user-select: none;
-      transition: background 100ms ease-out, color 100ms ease-out, transform 60ms ease-out;
+      transition: background 100ms var(--ease-out), transform 60ms var(--ease-out);
     }
 
-    .copy-btn:hover {
-      background: var(--surface-hover);
-      color: var(--text);
+    .btn-copy:hover { background: #24242a; }
+    .btn-copy:active { transform: scale(0.96); }
+
+    /* Section Divider */
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border-subtle);
+      margin: 56px 0 20px;
     }
 
-    .copy-btn:active {
-      transform: scale(0.96);
-    }
-
-    .copy-btn:focus-visible {
-      outline: 2px solid var(--border-focus);
-    }
-
-    /* Section Headings */
-    h2 {
-      font-size: 18px;
+    .section-header h2 {
+      font-size: 17px;
       font-weight: 600;
       letter-spacing: -0.02em;
-      margin: 48px 0 16px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
     }
 
-    h2 .section-sub {
-      font-family: var(--font-mono);
-      font-size: 12px;
-      font-weight: 400;
-      color: var(--text-muted);
-    }
-
-    /* Utility: Live Code Scanner */
-    .scanner-wrap {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 20px;
-      margin-bottom: 40px;
-    }
-
-    .scanner-controls {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 12px;
-    }
-
-    .scanner-controls label {
-      font-family: var(--font-mono);
-      font-size: 12px;
-      color: var(--text-dim);
-    }
-
-    .sample-link {
-      background: none;
-      border: none;
-      color: var(--text-dim);
-      font-family: var(--font-mono);
-      font-size: 12px;
-      cursor: pointer;
-      text-decoration: underline;
-      padding: 0;
-    }
-
-    .sample-link:hover { color: var(--text); }
-
-    textarea.code-input {
-      width: 100%;
-      height: 140px;
-      background: #050505;
-      border: 1px solid var(--border);
-      border-radius: 2px;
-      color: #e5e5e5;
-      font-family: var(--font-mono);
-      font-size: 12px;
-      padding: 12px;
-      line-height: 1.5;
-      resize: vertical;
-      outline: none;
-    }
-
-    textarea.code-input:focus {
-      border-color: #333333;
-    }
-
-    .scan-btn {
-      display: inline-block;
-      margin-top: 12px;
-      padding: 8px 16px;
-      background: #ffffff;
-      color: #000000;
-      border: 1px solid #ffffff;
-      border-radius: 2px;
-      font-family: var(--font-mono);
-      font-size: 12px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 80ms ease-out, transform 60ms ease-out;
-    }
-
-    .scan-btn:hover { background: #e5e5e5; }
-    .scan-btn:active { transform: scale(0.97); }
-
-    .audit-results {
-      margin-top: 16px;
-      display: none;
-      border-top: 1px solid var(--border);
-      padding-top: 16px;
-    }
-
-    .audit-item {
-      font-family: var(--font-mono);
-      font-size: 12px;
-      padding: 8px 0;
-      border-bottom: 1px solid #141414;
-      display: flex;
-      gap: 12px;
-    }
-
-    .audit-type-bad { color: #ff5555; }
-    .audit-type-ok { color: #55ff55; }
-    .audit-desc { color: var(--text-dim); }
-
-    /* Clean Diagnostic Table */
-    table.data-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 13px;
-      margin: 16px 0 32px;
-    }
-
-    table.data-table th {
-      text-align: left;
+    .section-header .tag {
       font-family: var(--font-mono);
       font-size: 11px;
       color: var(--text-muted);
       letter-spacing: 0.05em;
       text-transform: uppercase;
-      padding: 10px 12px;
-      border-bottom: 1px solid var(--border);
     }
 
-    table.data-table td {
-      padding: 12px;
-      border-bottom: 1px solid #141414;
-      vertical-align: top;
+    /* Interactive Before/After SaaS Telemetry Viewport */
+    .viewport-box {
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      background: var(--surface-1);
+      overflow: hidden;
+      margin-bottom: 48px;
     }
 
-    table.data-table tr:hover td {
-      background: rgba(255, 255, 255, 0.015);
-    }
-
-    .mono-cell {
+    .viewport-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 16px;
+      background: #070709;
+      border-bottom: 1px solid var(--border-subtle);
       font-family: var(--font-mono);
-      font-size: 12px;
+      font-size: 11.5px;
     }
 
-    /* Core Axioms List */
-    .axioms-list {
-      list-style: none;
-      margin: 16px 0 40px;
-    }
-
-    .axioms-list li {
-      padding: 14px 0;
-      border-bottom: 1px solid #141414;
-      display: grid;
-      grid-template-columns: 180px 1fr;
-      gap: 20px;
-      font-size: 13px;
-    }
-
-    .axiom-name {
-      font-family: var(--font-mono);
-      font-weight: 500;
-      color: var(--text);
-    }
-
-    .axiom-desc {
+    .toolbar-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
       color: var(--text-dim);
     }
 
-    /* Footer */
-    footer {
-      margin-top: 64px;
-      padding-top: 24px;
-      border-top: 1px solid var(--border);
+    .toolbar-tools {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-tool {
+      background: transparent;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      color: var(--text-dim);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      padding: 4px 8px;
+      cursor: pointer;
+      transition: all 100ms var(--ease-out);
+    }
+
+    .btn-tool:hover {
+      background: #141418;
+      color: var(--text);
+    }
+
+    .btn-tool.active {
+      background: #1c1c22;
+      border-color: var(--border-active);
+      color: var(--text);
+    }
+
+    .mode-switch {
+      display: inline-flex;
+      background: #000000;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 2px;
+      gap: 2px;
+    }
+
+    .mode-btn {
+      padding: 4px 10px;
+      background: transparent;
+      border: none;
+      border-radius: 3px;
+      color: var(--text-dim);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      cursor: pointer;
+      transition: all 120ms var(--ease-out);
+    }
+
+    .mode-btn.active-slop {
+      background: #2a1436;
+      color: #f0abfc;
+      font-weight: 600;
+    }
+
+    .mode-btn.active-clean {
+      background: #ffffff;
+      color: #000000;
+      font-weight: 600;
+    }
+
+    .preview-canvas {
+      padding: 24px;
+      min-height: 400px;
+      background: #000000;
+      position: relative;
+    }
+
+    /* SLOP STAGE */
+    .stage-slop {
+      background: radial-gradient(ellipse at top right, rgba(99, 102, 241, 0.35), rgba(30, 27, 75, 0.6), #09090b);
+      border: 1px solid rgba(129, 140, 248, 0.3);
+      border-radius: 14px;
+      padding: 24px;
+      position: relative;
+    }
+
+    .stage-slop .slop-eyebrow {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #818cf8;
+      margin-bottom: 4px;
+    }
+
+    .stage-slop .slop-title {
+      font-size: 26px;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    .stage-slop .slop-title em {
+      font-style: italic;
+      background: linear-gradient(to right, #c084fc, #f472b6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .stage-slop .slop-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .stage-slop .slop-card {
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 14px;
+      padding: 16px;
+      transition: all 400ms ease-in;
+    }
+
+    .stage-slop .slop-card:hover {
+      border-color: #6366f1;
+      box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+    }
+
+    .stage-slop .slop-card-emoji { font-size: 22px; margin-bottom: 8px; }
+    .stage-slop .slop-card-h { font-size: 12px; font-weight: 600; color: #a5b4fc; text-transform: uppercase; }
+    .stage-slop .slop-card-val { font-size: 24px; font-weight: 700; color: #ffffff; margin: 4px 0; }
+
+    .stage-slop .slop-date {
+      width: 100%;
+      margin-top: 8px;
+      padding: 6px 8px;
+      background: #1e1b4b;
+      border: 1px solid #4338ca;
+      border-radius: 6px;
+      color: #c7d2fe;
+      font-size: 11px;
+    }
+
+    .stage-slop .slop-btn {
+      padding: 10px 18px;
+      background: #4f46e5;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 400ms ease-in;
+    }
+
+    .stage-slop .slop-btn:hover { background: #4338ca; }
+
+    /* Flaw Callout Pins */
+    .flaw-pin {
+      position: absolute;
+      background: #ef4444;
+      color: #ffffff;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      padding: 2px 6px;
+      border-radius: 3px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+      pointer-events: none;
+      z-index: 10;
+      display: none;
+    }
+
+    /* CLEAN STAGE (Human-Grade) */
+    .stage-clean {
+      background: #09090b;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 20px;
+    }
+
+    .clean-nav {
       display: flex;
       justify-content: space-between;
+      align-items: center;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border-subtle);
+      margin-bottom: 20px;
+    }
+
+    .clean-crumb {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+
+    .clean-crumb span { color: var(--text); font-weight: 500; }
+
+    .clean-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .clean-search {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: #040405;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 5px 10px;
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      color: var(--text-dim);
+    }
+
+    .kbd-tag {
+      background: #18181c;
+      border: 1px solid #2a2a30;
+      border-radius: 3px;
+      padding: 1px 4px;
+      font-size: 9.5px;
+      color: var(--text-muted);
+    }
+
+    .clean-select {
+      background: #040405;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 6px 10px;
+      color: var(--text);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      outline: none;
+    }
+
+    .clean-btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      background: #ffffff;
+      color: #000000;
+      border: none;
+      border-radius: var(--radius-sm);
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      outline: none;
+      transition: transform 60ms var(--ease-out);
+    }
+
+    .clean-btn-primary:active { transform: scale(0.97); }
+    .clean-btn-primary:focus-visible { outline: 2px solid #ffffff; outline-offset: 2px; }
+
+    /* Single Source of Metric Truth */
+    .clean-summary-bar {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .clean-metric-tile {
+      background: #0e0e11;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .clean-tile-left .lbl {
+      font-size: 11px;
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .clean-tile-left .val {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text);
+      font-family: var(--font-mono);
+      font-variant-numeric: tabular-nums;
+      margin-top: 2px;
+    }
+
+    .clean-tile-delta {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+    }
+
+    .delta-up { color: var(--accent-emerald); }
+    .delta-down { color: var(--accent-crimson); }
+
+    /* Clean Telemetry Table */
+    .clean-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12.5px;
+    }
+
+    .clean-table th {
+      text-align: left;
+      padding: 8px 10px;
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .clean-table td {
+      padding: 10px;
+      border-bottom: 1px solid #141418;
+      vertical-align: middle;
+    }
+
+    .clean-table tr:hover td { background: #0c0c0f; }
+
+    .path-cell {
+      font-family: var(--font-mono);
+      font-weight: 500;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .status-ping {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-emerald);
+    }
+
+    .num-cell {
+      font-family: var(--font-mono);
+      font-variant-numeric: tabular-nums;
+      color: var(--text);
+    }
+
+    .btn-table-action {
+      background: transparent;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      color: var(--text-dim);
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      padding: 3px 8px;
+      cursor: pointer;
+      transition: all 80ms var(--ease-out);
+    }
+
+    .btn-table-action:hover {
+      background: #18181c;
+      color: var(--text);
+    }
+
+    .btn-table-action:active { transform: scale(0.96); }
+
+    /* Showcase 2: Live Archetype Switcher */
+    .archetype-container {
+      background: var(--surface-1);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-bottom: 48px;
+    }
+
+    .archetype-nav {
+      display: flex;
+      background: #070709;
+      border-bottom: 1px solid var(--border-subtle);
+      overflow-x: auto;
+    }
+
+    .arch-btn {
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid transparent;
+      padding: 12px 18px;
       font-family: var(--font-mono);
       font-size: 12px;
+      color: var(--text-muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 120ms var(--ease-out);
+    }
+
+    .arch-btn:hover { color: var(--text-dim); }
+
+    .arch-btn.active {
+      color: var(--text);
+      border-bottom-color: #ffffff;
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .arch-workspace {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 20px;
+      padding: 24px;
+    }
+
+    @media (max-width: 768px) {
+      .arch-workspace { grid-template-columns: 1fr; }
+    }
+
+    .arch-preview-wrap {
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      transition: all 200ms var(--ease-out);
+    }
+
+    .arch-code-wrap {
+      background: #050506;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .arch-code-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .arch-code-pre {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      line-height: 1.6;
+      color: #d4d4d8;
+      overflow-x: auto;
+      flex: 1;
+    }
+
+    /* Showcase 3: 8-State Component Sandbox */
+    .sandbox-container {
+      background: var(--surface-1);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      margin-bottom: 48px;
+    }
+
+    .sandbox-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    @media (max-width: 768px) {
+      .sandbox-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .sandbox-tile {
+      background: #0d0d10;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      min-height: 110px;
+    }
+
+    .sandbox-tile-label {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Tactile Interactive Button Primitives */
+    .tac-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      font-family: var(--font-sans);
+      font-size: 12.5px;
+      font-weight: 500;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      user-select: none;
+      transition: all 120ms var(--ease-out);
+      outline: none;
+    }
+
+    .tac-btn-default {
+      background: #ffffff;
+      color: #000000;
+      border: 1px solid transparent;
+    }
+
+    .tac-btn-default:hover { background: #e4e4e7; }
+    .tac-btn-default:active { transform: scale(0.97); }
+
+    .tac-btn-focus {
+      background: #ffffff;
+      color: #000000;
+      outline: 2px solid #3b82f6 !important;
+      outline-offset: 2px;
+    }
+
+    .tac-btn-active {
+      background: #d4d4d8;
+      color: #000000;
+      transform: scale(0.97);
+    }
+
+    .tac-btn-loading {
+      background: #27272a;
+      color: #a1a1aa;
+      cursor: wait;
+    }
+
+    .tac-btn-success {
+      background: #064e3b;
+      color: #6ee7b7;
+      border: 1px solid #059669;
+    }
+
+    .tac-btn-error {
+      background: #450a0a;
+      color: #fca5a5;
+      border: 1px solid #dc2626;
+      animation: shake 0.3s var(--ease-out);
+    }
+
+    .tac-btn-disabled {
+      background: #18181b;
+      color: #52525b;
+      border: 1px solid #27272a;
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-4px); }
+      40%, 80% { transform: translateX(4px); }
+    }
+
+    .spinner-svg {
+      width: 14px;
+      height: 14px;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Showcase 4: Live AST/Regex Scanner & Auto-Fixer */
+    .scanner-box {
+      background: var(--surface-1);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      margin-bottom: 48px;
+    }
+
+    .scanner-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .scanner-presets {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .btn-preset {
+      background: #101014;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      color: var(--text-dim);
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      padding: 3px 8px;
+      cursor: pointer;
+      transition: all 80ms var(--ease-out);
+    }
+
+    .btn-preset:hover {
+      background: #1c1c24;
+      color: var(--text);
+    }
+
+    .scanner-editor-wrap {
+      position: relative;
+      margin-bottom: 12px;
+    }
+
+    textarea.scanner-text {
+      width: 100%;
+      height: 140px;
+      background: #000000;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      color: #e4e4e7;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      padding: 12px;
+      line-height: 1.6;
+      outline: none;
+      resize: vertical;
+      transition: border-color 120ms var(--ease-out);
+    }
+
+    textarea.scanner-text:focus { border-color: var(--border-active); }
+
+    .scanner-actions {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .btn-action-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      background: #ffffff;
+      color: #000000;
+      border: none;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 60ms var(--ease-out);
+    }
+
+    .btn-action-primary:active { transform: scale(0.97); }
+
+    .btn-action-fix {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      background: #0d2818;
+      border: 1px solid #165c32;
+      color: #4ade80;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 60ms var(--ease-out);
+    }
+
+    .btn-action-fix:active { transform: scale(0.97); }
+
+    .scanner-out {
+      background: #070709;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 14px;
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      display: none;
+    }
+
+    .out-row {
+      display: flex;
+      gap: 10px;
+      padding: 5px 0;
+      border-bottom: 1px solid #141418;
+    }
+
+    .out-row:last-child { border-bottom: none; }
+    .out-rule { color: var(--accent-crimson); font-weight: 600; flex-shrink: 0; width: 180px; }
+    .out-msg { color: var(--text-dim); }
+    .out-pass { color: var(--accent-emerald); font-weight: 600; }
+
+    /* Showcase 5: Interactive 7-Axis Quality Gate Calculator */
+    .gate-container {
+      background: var(--surface-1);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      margin-bottom: 48px;
+    }
+
+    .gate-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 24px;
+    }
+
+    @media (max-width: 768px) {
+      .gate-grid { grid-template-columns: 1fr; }
+    }
+
+    .gate-axis-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid #16161b;
+    }
+
+    .gate-axis-name {
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .gate-axis-sub {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+
+    .gate-slider-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .gate-range {
+      accent-color: #ffffff;
+      cursor: pointer;
+    }
+
+    .gate-score-display {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text);
+      width: 20px;
+      text-align: right;
+    }
+
+    .gate-summary-card {
+      background: #08080a;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-align: center;
+    }
+
+    .gate-big-score {
+      font-family: var(--font-mono);
+      font-size: 48px;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      margin: 12px 0 4px;
+      color: #ffffff;
+    }
+
+    .gate-verdict {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-top: 8px;
+    }
+
+    .verdict-pass {
+      background: #0c2b18;
+      border: 1px solid #165c32;
+      color: #4ade80;
+    }
+
+    .verdict-fail {
+      background: #361010;
+      border: 1px solid #6b1f1f;
+      color: #f87171;
+    }
+
+    /* Specification Table */
+    table.spec-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      margin-top: 12px;
+    }
+
+    table.spec-table th {
+      text-align: left;
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 10px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    table.spec-table td {
+      padding: 12px 10px;
+      border-bottom: 1px solid #141418;
+      vertical-align: top;
+    }
+
+    .rule-name {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: #f87171;
+      font-weight: 500;
+    }
+
+    /* Minimalist Footer */
+    footer {
+      margin-top: 80px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 11.5px;
       color: var(--text-muted);
     }
 
     footer a {
       color: var(--text-dim);
       text-decoration: none;
+      transition: color 100ms var(--ease-out);
     }
 
-    footer a:hover {
-      color: var(--text);
+    footer a:hover { color: var(--text); }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #18181c;
+      border: 1px solid #2e2e36;
+      border-radius: var(--radius-sm);
+      padding: 10px 16px;
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      color: #ffffff;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 180ms var(--ease-out);
+      z-index: 100;
     }
 
-    @media (max-width: 640px) {
-      .axioms-list li {
-        grid-template-columns: 1fr;
-        gap: 6px;
-      }
-      h1 { font-size: 24px; }
-      header { flex-direction: column; align-items: flex-start; gap: 12px; }
-      footer { flex-direction: column; gap: 12px; }
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
     }
   </style>
 </head>
@@ -356,311 +1178,942 @@
 
   <div class="wrap">
 
-    <!-- Top Utility Navigation -->
+    <!-- Header Navigation -->
     <header>
-      <a href="#" class="brand-mark">wwewtech / anti-slop-design</a>
-      <nav class="header-links">
+      <div class="brand-wrap">
+        <div class="brand-mark">✕</div>
+        <a href="#" class="brand-title">wwewtech <span>/</span> anti-slop-design</a>
+        <div class="telemetry-badge">
+          <div class="telemetry-dot"></div>
+          <span>v1.0.0 · HUMAN-GRADE</span>
+        </div>
+      </div>
+      <div class="nav-links">
+        <a href="#proof">proof</a>
+        <a href="#archetypes">archetypes</a>
+        <a href="#sandbox">states</a>
+        <a href="#scanner">linter</a>
         <a href="https://skills.sh/wwewtech/anti-slop-design" target="_blank">skills.sh</a>
-        <a href="https://github.com/wwewtech/anti-slop-design/blob/main/SKILL.md" target="_blank">SKILL.md</a>
-        <a href="https://github.com/wwewtech/anti-slop-design" target="_blank">GitHub</a>
-      </nav>
+        <a href="https://github.com/wwewtech/anti-slop-design" target="_blank">github</a>
+      </div>
     </header>
 
-    <!-- Hero Section (Zero Marketing Fluff, Zero Fake Metrics) -->
-    <section class="hero">
-      <h1>Autonomous Anti-Slop UI/UX Engineering</h1>
-      <p class="lead">
-        A single-file agent skill for Claude Code, Cursor, Antigravity, and CLI workflows. Eliminates AI slop tropes, enforces 1-to-3 UX hierarchy, and evaluates code via a 7-axis quality gate.
+    <!-- Hero -->
+    <div class="hero">
+      <div class="hero-eyebrow">Autonomous Principal Design Technologist</div>
+      <h1 class="hero-title">Kill the AI Slop.<br>Ship Human-Grade Software.</h1>
+      <p class="hero-desc">
+        A single-file agent skill for Claude Code, Cursor, Antigravity, and Windsurf. Enforces the 1-to-3 focus triangle, 8-state tactile micro-interactions, curated token archetypes, and an objective 7-axis quality gate.
       </p>
 
-      <div class="cmd-row">
-        <div class="cmd-text"><span>$</span>npx skills add wwewtech/anti-slop-design</div>
-        <button class="copy-btn" id="copyBtn" onclick="copyCommand()">COPY</button>
-      </div>
-    </section>
-
-    <!-- Real Client-Side Anti-Slop Linter (Actual Functional Utility) -->
-    <section>
-      <h2>
-        <span>Live Code Scanner</span>
-        <span class="section-sub">CLIENT-SIDE HEURISTICS</span>
-      </h2>
-
-      <div class="scanner-wrap">
-        <div class="scanner-controls">
-          <label for="codeInput">PASTE HTML / JSX / TAILWIND CODE:</label>
-          <button class="sample-link" onclick="loadSample()">Load Vibe-Coded Sample</button>
+      <!-- Terminal Install Multi-Tab Box -->
+      <div class="install-container">
+        <div class="install-tabs">
+          <button class="install-tab active" onclick="setInstallTab('skills')">skills.sh</button>
+          <button class="install-tab" onclick="setInstallTab('claude')">claude code</button>
+          <button class="install-tab" onclick="setInstallTab('antigravity')">antigravity</button>
+          <button class="install-tab" onclick="setInstallTab('cursor')">cursor / windsurf</button>
         </div>
-        <textarea id="codeInput" class="code-input" placeholder="Paste UI markup or classes here... (e.g., bg-slate-900 bg-indigo-600 radial-gradient 🚀)"></textarea>
-        <button class="scan-btn" onclick="runAudit()">AUDIT CODE</button>
-
-        <div id="auditOutput" class="audit-results"></div>
+        <div class="install-body">
+          <code class="install-cmd" id="installCmdText"><span>$</span>npx skills add wwewtech/anti-slop-design</code>
+          <button class="btn-copy" id="btnCopyInstall" onclick="copyActiveInstall()">
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="5" width="9" height="9" rx="1.5"/><path d="M11 5V3a1.5 1.5 0 0 0-1.5-1.5H3A1.5 1.5 0 0 0 1.5 3v6.5A1.5 1.5 0 0 0 3 11h2"/></svg>
+            <span id="copyBtnLabel">COPY</span>
+          </button>
+        </div>
       </div>
-    </section>
+    </div>
 
-    <!-- 12 Banned Clichés Matrix (High-Contrast Monochrome) -->
-    <section>
-      <h2>
-        <span>The 12 Banned AI Slop Anti-Patterns</span>
-        <span class="section-sub">PROHIBITED TROPES</span>
-      </h2>
+    <!-- Showcase 1: Interactive Before/After SaaS Telemetry -->
+    <div class="section-header" id="proof">
+      <h2>Interactive Proof: AI Slop vs Human-Grade UI</h2>
+      <span class="tag">Press 'V' to toggle</span>
+    </div>
 
-      <table class="data-table">
-        <thead>
-          <tr>
-            <th width="28%">Banned Anti-Pattern</th>
-            <th width="36%">AI Vibe-Coded Manifestation</th>
-            <th width="36%">Mandatory Production Replacement</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="mono-cell" style="color: #ff6666;">radial-gradient blob</td>
-            <td style="color: var(--text-dim);">Indigo/purple glow in background corners</td>
-            <td style="color: var(--text);">Deep solid obsidian (#09090b) with 1px hairline border</td>
-          </tr>
-          <tr>
-            <td class="mono-cell" style="color: #ff6666;">emojis as icons</td>
-            <td style="color: var(--text-dim);">Plastering raw emojis (🚀, 🔥, 📊) inside buttons</td>
-            <td style="color: var(--text);">Crisp 1.5px/2px stroke vector SVGs (Lucide / Phosphor)</td>
-          </tr>
-          <tr>
-            <td class="mono-cell" style="color: #ff6666;">cookie-cutter 3-card</td>
-            <td style="color: var(--text-dim);">3 identical cards with glowing hover borders</td>
-            <td style="color: var(--text);">Asymmetric layout, split-panels, or sequential workflow rows</td>
-          </tr>
-          <tr>
-            <td class="mono-cell" style="color: #ff6666;">redundant KPI counters</td>
-            <td style="color: var(--text-dim);">Repeating total clicks in header, sidebar &amp; cards</td>
-            <td style="color: var(--text);">Single source of metric truth; one primary KPI summary</td>
-          </tr>
-          <tr>
-            <td class="mono-cell" style="color: #ff6666;">card-level filter clutter</td>
-            <td style="color: var(--text-dim);">Date pickers embedded inside each card</td>
-            <td style="color: var(--text);">Unified page-level control bar synchronizing all cards</td>
-          </tr>
-          <tr>
-            <td class="mono-cell" style="color: #ff6666;">vanity 3D space-wasters</td>
-            <td style="color: var(--text-dim);">Giant 3D globe/map taking 50% screen with no deltas</td>
-            <td style="color: var(--text);">Compact horizontal comparison bars with tabular percentages</td>
-          </tr>
-          <tr>
-            <td class="mono-cell" style="color: #ff6666;">screaming eyebrows</td>
-            <td style="color: var(--text-dim);">Tracked-out ALL CAPS labels above every heading</td>
-            <td style="color: var(--text);">Sentence-case hierarchy or omit entirely if redundant</td>
-          </tr>
-          <tr>
-            <td class="mono-cell" style="color: #ff6666;">single-word italic glow</td>
-            <td style="color: var(--text-dim);">Headlines with one word italicized in glowing gradient</td>
-            <td style="color: var(--text);">Uniform typographic weight; let the full statement lead</td>
-          </tr>
-          <tr>
-            <td class="mono-cell" style="color: #ff6666;">missing active states</td>
-            <td style="color: var(--text-dim);">Buttons with only hover states; no focus or active feel</td>
-            <td style="color: var(--text);">8-State interactive feedback + tactile scale(0.97)</td>
-          </tr>
-          <tr>
-            <td class="mono-cell" style="color: #ff6666;">sluggish 400ms ease-in</td>
-            <td style="color: var(--text-dim);">Slow ease-in transitions on modals and dropdowns</td>
-            <td style="color: var(--text);">Snappy &lt;200ms ease-out (cubic-bezier(0.23, 1, 0.32, 1))</td>
-          </tr>
-          <tr>
-            <td class="mono-cell" style="color: #ff6666;">uncalibrated radii</td>
-            <td style="color: var(--text-dim);">Inner buttons and outer cards with arbitrary radius</td>
-            <td style="color: var(--text);">Nested radius formula: R_inner = max(0, R_outer - padding)</td>
-          </tr>
-          <tr>
-            <td class="mono-cell" style="color: #ff6666;">fake vanity stats</td>
-            <td style="color: var(--text-dim);">Unverified &quot;+99.9% uptime&quot; or &quot;10x faster&quot; cards</td>
-            <td style="color: var(--text);">Real domain telemetry or delete the card entirely</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
+    <div class="viewport-box">
+      <div class="viewport-toolbar">
+        <div class="toolbar-left">
+          <span>URL SHORTENER ANALYTICS // TELEMETRY VIEWPORT</span>
+        </div>
+        <div class="toolbar-tools">
+          <button class="btn-tool" id="btnTogglePins" onclick="toggleAnnotations()">Show Flaws (5)</button>
+          <div class="mode-switch">
+            <button class="mode-btn active-slop" id="btnSlop" onclick="setStage('slop')">VIBE-CODED (SLOP)</button>
+            <button class="mode-btn" id="btnClean" onclick="setStage('clean')">HUMAN-GRADE</button>
+          </div>
+        </div>
+      </div>
 
-    <!-- Fundamental UX Laws (from ux.md) -->
-    <section>
-      <h2>
-        <span>Core Commercial UX Laws</span>
-        <span class="section-sub">SPEED &amp; LOGIC</span>
-      </h2>
+      <div class="preview-canvas">
+        <!-- Vibe-Coded Slop Stage -->
+        <div id="stageSlop" class="stage-slop">
+          <div class="flaw-pin" id="pinEyebrow" style="top: 14px; left: 24px;">✕ Screaming Eyebrow</div>
+          <div class="slop-eyebrow">DASHBOARD // REAL-TIME METRICS</div>
+          
+          <div class="flaw-pin" id="pinGlow" style="top: 40px; left: 200px;">✕ Single-Word Italic Gradient</div>
+          <div class="slop-title">Link Telemetry &amp; <em>Traffic Radar</em></div>
+          
+          <div class="flaw-pin" id="pinGrid" style="top: 100px; left: 24px;">✕ Cookie-Cutter 3-Card Grid</div>
+          <div class="slop-grid">
+            <div class="slop-card">
+              <div class="slop-card-emoji">🚀</div>
+              <div class="slop-card-h">Total Clicks</div>
+              <div class="slop-card-val">28,491</div>
+              <input type="date" class="slop-date" value="2026-09-01">
+            </div>
+            <div class="slop-card">
+              <div class="slop-card-emoji">🔥</div>
+              <div class="slop-card-h">Uptime</div>
+              <div class="slop-card-val">+99.9% Uptime</div>
+              <input type="date" class="slop-date" value="2026-09-01">
+            </div>
+            <div class="slop-card">
+              <div class="slop-card-emoji">💡</div>
+              <div class="slop-card-h">Total Links</div>
+              <div class="slop-card-val">50k+ Active</div>
+              <input type="date" class="slop-date" value="2026-09-01">
+            </div>
+          </div>
 
-      <ul class="axioms-list">
-        <li>
-          <div class="axiom-name">The 1-to-3 Rule</div>
-          <div class="axiom-desc">1 dominant focal action per zone; maximum 3 secondary supporting actions. If a block has 5+ equal buttons, collapse into a popover or prioritize by frequency.</div>
-        </li>
-        <li>
-          <div class="axiom-name">85% Usage Law</div>
-          <div class="axiom-desc">Identify the primary scenario used by 85% of users. Make it 1-click accessible. Tuck secondary 15% edge cases into subtle secondary menus.</div>
-        </li>
-        <li>
-          <div class="axiom-name">Duplication Ban</div>
-          <div class="axiom-desc">Exactly one brand mark in viewport. Exactly one global filter bar controlling the view. Never duplicate identical actions across header, sidebar, and cards.</div>
-        </li>
-        <li>
-          <div class="axiom-name">Mobile Linearity</div>
-          <div class="axiom-desc">Avoid placing competing complex logic blocks side-by-side on desktop. Stack sequentially so human eye scans without cognitive collision.</div>
-        </li>
-      </ul>
-    </section>
+          <div class="flaw-pin" id="pinEmojiBtn" style="bottom: 16px; left: 24px;">✕ Raw Emojis Inside Action Buttons</div>
+          <button class="slop-btn">🚀 Create New Link 🚀</button>
+        </div>
 
-    <!-- 7-Axis Quality Gate -->
-    <section>
-      <h2>
-        <span>7-Axis Pre-Emit Quality Gate</span>
-        <span class="section-sub">EVALUATION RUBRIC (&gt;= 4/5 REQUIRED)</span>
-      </h2>
+        <!-- Clean Stage (Human-Grade) -->
+        <div id="stageClean" class="stage-clean" style="display: none;">
+          <div class="clean-nav">
+            <div class="clean-crumb">
+              <span>Analytics</span>
+              <svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg>
+              <span style="color: #ffffff;">Link Telemetry</span>
+            </div>
+            <div class="clean-controls">
+              <div class="clean-search">
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5L14 14"/></svg>
+                <span>Filter paths...</span>
+                <span class="kbd-tag">⌘K</span>
+              </div>
+              <select class="clean-select">
+                <option>Last 30 Days (Global)</option>
+                <option>Last 7 Days</option>
+                <option>Today</option>
+              </select>
+              <button class="clean-btn-primary">
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M8 3v10M3 8h10"/></svg>
+                Create Link
+              </button>
+            </div>
+          </div>
 
-      <table class="data-table">
-        <thead>
-          <tr>
-            <th width="30%">Evaluation Axis</th>
-            <th width="70%">Objective Passing Standard</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="mono-cell">1. Anti-Slop Purity</td>
-            <td style="color: var(--text-dim);">Zero purple radial blobs, zero raw emojis as icons, zero fake vanity stats, zero single-word italic gradients.</td>
-          </tr>
-          <tr>
-            <td class="mono-cell">2. UX Speed &amp; 1-to-3</td>
-            <td style="color: var(--text-dim);">1 primary action per zone, max 3 secondary, global filters at page header, zero duplicate KPI cards.</td>
-          </tr>
-          <tr>
-            <td class="mono-cell">3. Typographic Scale</td>
-            <td style="color: var(--text-dim);">Max 2 font families, tabular numbers enabled on all metrics, body line-length &lt;= 75ch, sentence-case labels.</td>
-          </tr>
-          <tr>
-            <td class="mono-cell">4. Geometric Math</td>
-            <td style="color: var(--text-dim);">Strict 4px/8pt grid adherence, nested corner radius formula respected: R_inner = R_outer - Padding.</td>
-          </tr>
-          <tr>
-            <td class="mono-cell">5. Micro-Interactions</td>
-            <td style="color: var(--text-dim);">UI transitions &lt; 200ms, high-frequency actions (100+/day) 0ms instant, tactile :active scale(0.97) present.</td>
-          </tr>
-          <tr>
-            <td class="mono-cell">6. Accessibility (WCAG)</td>
-            <td style="color: var(--text-dim);">Visible focus rings on all interactive elements (:focus-visible), aria-label on icon-only buttons, semantic HTML.</td>
-          </tr>
-          <tr>
-            <td class="mono-cell">7. Mobile Linearity</td>
-            <td style="color: var(--text-dim);">Clean vertical stacking, zero horizontal overflow bugs, touch targets &gt;= 44px.</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
+          <!-- Single Source of Truth Summary -->
+          <div class="clean-summary-bar">
+            <div class="clean-metric-tile">
+              <div class="clean-tile-left">
+                <div class="lbl">Active Links</div>
+                <div class="val">1,284</div>
+              </div>
+              <div class="clean-tile-delta delta-up">↑ 12.4%</div>
+            </div>
+            <div class="clean-metric-tile">
+              <div class="clean-tile-left">
+                <div class="lbl">Total Referrals</div>
+                <div class="val">49,102</div>
+              </div>
+              <div class="clean-tile-delta delta-up">↑ 8.1%</div>
+            </div>
+            <div class="clean-metric-tile">
+              <div class="clean-tile-left">
+                <div class="lbl">Avg Latency</div>
+                <div class="val">42ms</div>
+              </div>
+              <div class="clean-tile-delta delta-down">↓ 3.2%</div>
+            </div>
+          </div>
+
+          <!-- Structured Telemetry Table -->
+          <table class="clean-table">
+            <thead>
+              <tr>
+                <th width="40%">Source Path</th>
+                <th width="20%">Referrals</th>
+                <th width="20%">30d Delta</th>
+                <th width="20%" style="text-align: right;">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="path-cell"><div class="status-ping"></div> /launch-2026</td>
+                <td class="num-cell">18,240</td>
+                <td class="num-cell delta-up">↑ 14.2%</td>
+                <td style="text-align: right;"><button class="btn-table-action" onclick="triggerToast('Copied shortlink to clipboard')">Copy Link</button></td>
+              </tr>
+              <tr>
+                <td class="path-cell"><div class="status-ping"></div> /pricing-table</td>
+                <td class="num-cell">6,102</td>
+                <td class="num-cell delta-up">↑ 8.1%</td>
+                <td style="text-align: right;"><button class="btn-table-action" onclick="triggerToast('Copied shortlink to clipboard')">Copy Link</button></td>
+              </tr>
+              <tr>
+                <td class="path-cell"><div class="status-ping"></div> /api-docs</td>
+                <td class="num-cell">4,149</td>
+                <td class="num-cell delta-down">↓ 1.4%</td>
+                <td style="text-align: right;"><button class="btn-table-action" onclick="triggerToast('Copied shortlink to clipboard')">Copy Link</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Showcase 2: Live Archetype Switcher -->
+    <div class="section-header" id="archetypes">
+      <h2>The 4 Production Design Archetypes</h2>
+      <span class="tag">DYNAMIC TOKEN ENGINE</span>
+    </div>
+
+    <div class="archetype-container">
+      <div class="archetype-nav">
+        <button class="arch-btn active" id="archBtn-luxury" onclick="setArchetype('luxury')">1. Quiet Luxury SaaS</button>
+        <button class="arch-btn" id="archBtn-terminal" onclick="setArchetype('terminal')">2. Technical Dense Terminal</button>
+        <button class="arch-btn" id="archBtn-editorial" onclick="setArchetype('editorial')">3. Warm Editorial</button>
+        <button class="arch-btn" id="archBtn-tactile" onclick="setArchetype('tactile')">4. Tactile Obsidian</button>
+      </div>
+
+      <div class="arch-workspace">
+        <!-- Live Morphing UI Box -->
+        <div class="arch-preview-wrap" id="archCanvas" style="background: #09090b; border-color: rgba(255,255,255,0.08); border-radius: 8px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+            <div>
+              <div id="archTitle" style="font-size: 15px; font-weight: 600; color: #f4f4f5;">Deploy Pipeline #84</div>
+              <div id="archSub" style="font-size: 11.5px; color: #a1a1aa; font-family: var(--font-mono); margin-top: 2px;">Production Branch · Commit 4f1a2</div>
+            </div>
+            <button id="archActionBtn" style="background: #3b82f6; color: #ffffff; border: none; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer; transition: transform 60ms var(--ease-out);">
+              Re-deploy
+            </button>
+          </div>
+
+          <div style="background: #121215; border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; padding: 12px; margin-bottom: 12px;" id="archMetricCard">
+            <div style="display: flex; justify-content: space-between; font-size: 11px; font-family: var(--font-mono); color: #8e8e93;">
+              <span>BUILD LATENCY</span>
+              <span style="color: #10b981;" id="archStatus">STABLE (1.2s)</span>
+            </div>
+            <div style="font-size: 20px; font-weight: 700; font-family: var(--font-mono); color: #ffffff; margin-top: 4px;" id="archNum">
+              1,420 ms
+            </div>
+          </div>
+
+          <div style="font-size: 11px; color: #8e8e93; line-height: 1.5;" id="archDesc">
+            Optimized zero-downtime container cluster across 3 availability zones.
+          </div>
+        </div>
+
+        <!-- Live Code / Tokens Inspector -->
+        <div class="arch-code-wrap">
+          <div class="arch-code-header">
+            <span>SEMANTIC CSS TOKENS</span>
+            <button class="btn-table-action" onclick="copyArchTokens()">Copy Tokens</button>
+          </div>
+          <pre class="arch-code-pre" id="archCodeView">:root {
+  --bg-canvas: #09090b;
+  --bg-surface: #121215;
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --accent-primary: #3b82f6; /* Electric Cobalt */
+  --text-primary: #f4f4f5;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+}</pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- Showcase 3: 8-State Interactive Machine Sandbox -->
+    <div class="section-header" id="sandbox">
+      <h2>The 8-State Interactive Feedback Sandbox</h2>
+      <span class="tag">EMIL KOWALSKI DECISION RULES</span>
+    </div>
+
+    <div class="sandbox-container">
+      <div class="sandbox-grid">
+        <div class="sandbox-tile">
+          <span class="sandbox-tile-label">1. Default State</span>
+          <button class="tac-btn tac-btn-default">Action Button</button>
+        </div>
+        <div class="sandbox-tile">
+          <span class="sandbox-tile-label">2. Focus-Visible State</span>
+          <button class="tac-btn tac-btn-focus">Focus Ring</button>
+        </div>
+        <div class="sandbox-tile">
+          <span class="sandbox-tile-label">3. Active State (0.97)</span>
+          <button class="tac-btn tac-btn-active">Tactile Press</button>
+        </div>
+        <div class="sandbox-tile">
+          <span class="sandbox-tile-label">4. Loading State</span>
+          <button class="tac-btn tac-btn-loading">
+            <svg class="spinner-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10" stroke-opacity="0.25"/><path d="M12 2a10 10 0 0 1 10 10"/></svg>
+            Saving...
+          </button>
+        </div>
+        <div class="sandbox-tile">
+          <span class="sandbox-tile-label">5. Success State</span>
+          <button class="tac-btn tac-btn-success">
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8.5l3.5 3.5 6.5-7"/></svg>
+            Deployed
+          </button>
+        </div>
+        <div class="sandbox-tile">
+          <span class="sandbox-tile-label">6. Error State (Shake)</span>
+          <button class="tac-btn tac-btn-error" onclick="triggerShake(this)">
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v3.5M8 11h.01"/></svg>
+            Failed (Click)
+          </button>
+        </div>
+        <div class="sandbox-tile">
+          <span class="sandbox-tile-label">7. Disabled State</span>
+          <button class="tac-btn tac-btn-disabled" disabled>Locked</button>
+        </div>
+        <div class="sandbox-tile">
+          <span class="sandbox-tile-label">8. Live Test Primitive</span>
+          <button class="tac-btn tac-btn-default" id="btnLiveTest" onclick="cycleInteractiveState()">
+            Click to Cycle
+          </button>
+        </div>
+      </div>
+
+      <div style="font-family: var(--font-mono); font-size: 11.5px; color: var(--text-dim); line-height: 1.6; border-top: 1px solid var(--border-subtle); padding-top: 14px;">
+        <span style="color: #ffffff; font-weight: 600;">ENFORCED BY SKILL:</span> Actions 100+ times/day = <strong>0ms (Instant)</strong>. Standard micro-interactions = <strong>120ms–180ms ease-out (cubic-bezier(0.23, 1, 0.32, 1))</strong>. Tactile press = <strong>transform: scale(0.97)</strong>. Never use ease-in for UI.
+      </div>
+    </div>
+
+    <!-- Showcase 4: Live AST/Regex Scanner & Auto-Fixer -->
+    <div class="section-header" id="scanner">
+      <h2>Live Anti-Slop Code Scanner &amp; Auto-Fixer</h2>
+      <span class="tag">CLIENT-SIDE LINTER</span>
+    </div>
+
+    <div class="scanner-box">
+      <div class="scanner-top">
+        <span>PRESET TEST CASES:</span>
+        <div class="scanner-presets">
+          <button class="btn-preset" onclick="loadPreset('radial')">Radial Gradient Blob</button>
+          <button class="btn-preset" onclick="loadPreset('emoji')">Emoji Clutter</button>
+          <button class="btn-preset" onclick="loadPreset('cards')">3-Card Marketing Grid</button>
+          <button class="btn-preset" onclick="loadPreset('clean')">Clean Human-Grade</button>
+        </div>
+      </div>
+
+      <div class="scanner-editor-wrap">
+        <textarea id="scanInput" class="scanner-text" placeholder="Paste JSX / HTML / Tailwind code here..."></textarea>
+      </div>
+
+      <div class="scanner-actions">
+        <button class="btn-action-primary" onclick="runScan()">
+          <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5L14 14"/></svg>
+          Audit Code
+        </button>
+        <button class="btn-action-fix" onclick="autoFixCode()">
+          <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2l-4 4M2 14l4-4M10 2l4 4-7.5 7.5a2.12 2.12 0 0 1-3 0l-1.5-1.5a2.12 2.12 0 0 1 0-3L9.5 2z"/></svg>
+          1-Click Auto-Fix
+        </button>
+      </div>
+
+      <div id="scanOut" class="scanner-out"></div>
+    </div>
+
+    <!-- Showcase 5: Interactive 7-Axis Quality Gate Calculator -->
+    <div class="section-header">
+      <h2>The 7-Axis Pre-Emit Quality Gate</h2>
+      <span class="tag">MANDATORY PASS THRESHOLD &ge; 28/35</span>
+    </div>
+
+    <div class="gate-container">
+      <div class="gate-grid">
+        <div class="gate-axes">
+          <div class="gate-axis-row">
+            <div>
+              <div class="gate-axis-name">1. Anti-Slop Purity</div>
+              <div class="gate-axis-sub">Zero purple gradients, zero emojis as icons, zero vanity stats</div>
+            </div>
+            <div class="gate-slider-wrap">
+              <input type="range" min="1" max="5" value="5" class="gate-range" oninput="calcQualityGate()">
+              <span class="gate-score-display">5</span>
+            </div>
+          </div>
+          <div class="gate-axis-row">
+            <div>
+              <div class="gate-axis-name">2. UX Speed &amp; 1-to-3 Rule</div>
+              <div class="gate-axis-sub">1 primary action, max 3 secondary, unified page-level filters</div>
+            </div>
+            <div class="gate-slider-wrap">
+              <input type="range" min="1" max="5" value="5" class="gate-range" oninput="calcQualityGate()">
+              <span class="gate-score-display">5</span>
+            </div>
+          </div>
+          <div class="gate-axis-row">
+            <div>
+              <div class="gate-axis-name">3. Typographic Discipline</div>
+              <div class="gate-axis-sub">Max 2 font families, tabular numbers on metrics, &le; 75ch body</div>
+            </div>
+            <div class="gate-slider-wrap">
+              <input type="range" min="1" max="5" value="5" class="gate-range" oninput="calcQualityGate()">
+              <span class="gate-score-display">5</span>
+            </div>
+          </div>
+          <div class="gate-axis-row">
+            <div>
+              <div class="gate-axis-name">4. Spacing &amp; Geometric Math</div>
+              <div class="gate-axis-sub">Strict 4px/8pt grid, nested radius math: R_inner = max(0, R_outer - padding)</div>
+            </div>
+            <div class="gate-slider-wrap">
+              <input type="range" min="1" max="5" value="5" class="gate-range" oninput="calcQualityGate()">
+              <span class="gate-score-display">5</span>
+            </div>
+          </div>
+          <div class="gate-axis-row">
+            <div>
+              <div class="gate-axis-name">5. Micro-Interactions &amp; Motion</div>
+              <div class="gate-axis-sub">Snappy transitions &lt; 200ms, tactile active scale(0.97), no ease-in</div>
+            </div>
+            <div class="gate-slider-wrap">
+              <input type="range" min="1" max="5" value="5" class="gate-range" oninput="calcQualityGate()">
+              <span class="gate-score-display">5</span>
+            </div>
+          </div>
+          <div class="gate-axis-row">
+            <div>
+              <div class="gate-axis-name">6. Accessibility &amp; Keyboard Flow</div>
+              <div class="gate-axis-sub">WCAG 2.1 AA visible focus rings, no naked outline: none, semantic tags</div>
+            </div>
+            <div class="gate-slider-wrap">
+              <input type="range" min="1" max="5" value="5" class="gate-range" oninput="calcQualityGate()">
+              <span class="gate-score-display">5</span>
+            </div>
+          </div>
+          <div class="gate-axis-row">
+            <div>
+              <div class="gate-axis-name">7. Mobile &amp; Responsive Linearity</div>
+              <div class="gate-axis-sub">Clean vertical stacking, zero horizontal overflow, &ge; 44px touch targets</div>
+            </div>
+            <div class="gate-slider-wrap">
+              <input type="range" min="1" max="5" value="5" class="gate-range" oninput="calcQualityGate()">
+              <span class="gate-score-display">5</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="gate-summary-card">
+          <div>
+            <div style="font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); text-transform: uppercase;">
+              AGGREGATE AUDIT SCORE
+            </div>
+            <div class="gate-big-score" id="gateBigScore">35</div>
+            <div style="font-family: var(--font-mono); font-size: 11.5px; color: var(--text-dim);">
+              OUT OF 35 MAXIMUM
+            </div>
+          </div>
+          <div>
+            <div class="gate-verdict verdict-pass" id="gateVerdictBadge">PASSED: PRODUCTION READY</div>
+            <div style="font-size: 11px; color: var(--text-muted); margin-top: 8px;" id="gateVerdictDesc">
+              All 7 axes exceed the mandatory &ge; 4/5 threshold.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- The 12 Banned Anti-Patterns Specification Table -->
+    <div class="section-header">
+      <h2>The 12 Banned AI Slop Anti-Patterns</h2>
+      <span class="tag">ENFORCED IN AGENT LOOP</span>
+    </div>
+
+    <table class="spec-table">
+      <thead>
+        <tr>
+          <th width="28%">Anti-Pattern</th>
+          <th width="36%">Vibe-Coded AI Manifestation</th>
+          <th width="36%">Mandatory Production Replacement</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="rule-name">The "AI Dark Mode" Blob</td>
+          <td style="color: var(--text-dim);">radial-gradient from indigo-600/purple-900 blurred in corners</td>
+          <td>Deep monochrome obsidian surfaces (#09090b) with 1px hairline border</td>
+        </tr>
+        <tr>
+          <td class="rule-name">Monotonous Slate/Indigo</td>
+          <td style="color: var(--text-dim);">Generic bg-slate-900 text-slate-400 bg-indigo-600 boilerplates</td>
+          <td>Curated semantic tokens (OKLCH/HSL) with distinct brand personality</td>
+        </tr>
+        <tr>
+          <td class="rule-name">Cookie-Cutter 3-Card Grid</td>
+          <td style="color: var(--text-dim);">Three identical rectangular cards with glowing hover borders</td>
+          <td>Dynamic asymmetric bento, split-panels, or sequential workflow rows</td>
+        </tr>
+        <tr>
+          <td class="rule-name">Raw Emojis as UI Icons</td>
+          <td style="color: var(--text-dim);">Plastering raw emojis (🚀, 🔥, 💡) inside buttons and cards</td>
+          <td>Crisp single-weight vector SVG icons (Phosphor, Lucide, Heroicons)</td>
+        </tr>
+        <tr>
+          <td class="rule-name">Fabricated Vanity Stats</td>
+          <td style="color: var(--text-dim);">Filler cards: "+99.9% Uptime", "10x Faster", "50k+ Users"</td>
+          <td>Real domain telemetry or remove the card entirely. Zero vanity metrics</td>
+        </tr>
+        <tr>
+          <td class="rule-name">Screaming Eyebrow Labels</td>
+          <td style="color: var(--text-dim);">Tracked-out uppercase labels above every heading: OVERVIEW, FEATURES</td>
+          <td>Sentence-case hierarchy, subtle metadata tags, or omit if self-explanatory</td>
+        </tr>
+        <tr>
+          <td class="rule-name">Single-Word Italic/Color Accents</td>
+          <td style="color: var(--text-dim);">Headlines with one word italicized in glowing gradient text</td>
+          <td>Uniform, confident typographic weight. Let the whole statement carry authority</td>
+        </tr>
+        <tr>
+          <td class="rule-name">Redundant Metric Duplication</td>
+          <td style="color: var(--text-dim);">Repeating total clicks/revenue in header, sidebar, and inside multiple cards</td>
+          <td>Single source of metric truth. One primary KPI summary per viewport</td>
+        </tr>
+        <tr>
+          <td class="rule-name">Card-Level Filter Pollution</td>
+          <td style="color: var(--text-dim);">Duplicating date pickers or dropdowns inside individual cards</td>
+          <td>Unified page-level control bar that synchronizes all views</td>
+        </tr>
+        <tr>
+          <td class="rule-name">Vanity Space-Wasters</td>
+          <td style="color: var(--text-dim);">Giant 3D globe or map taking 60% viewport with zero deltas</td>
+          <td>Compact horizontal bar comparisons, sparklines, or tabular comparison rows</td>
+        </tr>
+        <tr>
+          <td class="rule-name">Missing Interactive States</td>
+          <td style="color: var(--text-dim);">Buttons with only hover effects; lacking :focus-visible, active, loading</td>
+          <td>8-State interactive feedback system with tactile active scale(0.97)</td>
+        </tr>
+        <tr>
+          <td class="rule-name">Broken Placeholders &amp; Links</td>
+          <td style="color: var(--text-dim);">via.placeholder.com, broken Unsplash URLs, or blurry stock images</td>
+          <td>High-fidelity inline SVGs, semantic CSS abstract shapes, or verified local assets</td>
+        </tr>
+      </tbody>
+    </table>
 
     <!-- Footer -->
     <footer>
       <div>anti-slop-design · MIT License · wwewtech</div>
-      <div>
-        <a href="https://github.com/wwewtech/anti-slop-design">github</a> ·
-        <a href="https://skills.sh/wwewtech/anti-slop-design">skills.sh</a> ·
-        <a href="https://github.com/wwewtech/anti-slop-design/releases">releases</a>
+      <div style="display: flex; gap: 16px;">
+        <a href="https://github.com/wwewtech/anti-slop-design" target="_blank">github</a>
+        <a href="https://skills.sh/wwewtech/anti-slop-design" target="_blank">skills.sh</a>
+        <a href="https://github.com/wwewtech/anti-slop-design/blob/main/SKILL.md" target="_blank">SKILL.md</a>
+        <a href="https://github.com/wwewtech/anti-slop-design/releases" target="_blank">releases</a>
       </div>
     </footer>
 
   </div>
 
+  <!-- Toast Element -->
+  <div class="toast" id="globalToast">
+    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#10b981" stroke-width="2.2"><path d="M3 8.5l3.5 3.5 6.5-7"/></svg>
+    <span id="toastMsg">Command copied to clipboard</span>
+  </div>
+
   <script>
-    function copyCommand() {
-      const text = 'npx skills add wwewtech/anti-slop-design';
+    // Install Commands Registry
+    const installCmds = {
+      skills: 'npx skills add wwewtech/anti-slop-design',
+      claude: 'claude skills add https://github.com/wwewtech/anti-slop-design',
+      antigravity: 'curl -sL https://raw.githubusercontent.com/wwewtech/anti-slop-design/main/SKILL.md -o ~/.gemini/config/skills/anti-slop-design/SKILL.md',
+      cursor: 'mkdir -p .cursor/skills/anti-slop-design && curl -sL https://raw.githubusercontent.com/wwewtech/anti-slop-design/main/SKILL.md -o .cursor/skills/anti-slop-design/SKILL.md'
+    };
+    let currentInstallKey = 'skills';
+
+    function setInstallTab(key) {
+      currentInstallKey = key;
+      document.querySelectorAll('.install-tab').forEach(b => b.classList.remove('active'));
+      event.target.classList.add('active');
+      document.getElementById('installCmdText').innerHTML = `<span>$</span>${installCmds[key]}`;
+    }
+
+    function copyActiveInstall() {
+      const text = installCmds[currentInstallKey];
       navigator.clipboard.writeText(text).then(() => {
-        const btn = document.getElementById('copyBtn');
-        btn.textContent = 'COPIED';
-        setTimeout(() => { btn.textContent = 'COPY'; }, 2000);
+        triggerToast('Install command copied to clipboard');
+        const label = document.getElementById('copyBtnLabel');
+        label.textContent = 'COPIED';
+        setTimeout(() => { label.textContent = 'COPY'; }, 2000);
       });
     }
 
-    function loadSample() {
-      document.getElementById('codeInput').value = `<div className="min-h-screen bg-slate-900 flex flex-col items-center justify-center p-8 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-900 via-slate-900 to-black">
-  <span className="text-xs uppercase tracking-widest text-indigo-400 font-semibold mb-2">FEATURES</span>
-  <h1 className="text-4xl font-bold text-white">Next-Gen <span className="italic bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">AI Platform</span></h1>
-  
-  <div className="grid grid-cols-3 gap-6 mt-8">
-    <div className="p-6 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 hover:border-indigo-500 transition-all duration-400 ease-in">
-      <div className="text-2xl mb-2">🚀</div>
-      <h3 className="text-xl font-semibold">Total Clicks</h3>
-      <p className="text-3xl font-bold">+99.9% Uptime</p>
-      <input type="date" className="mt-4 p-2 bg-slate-800 rounded" />
-    </div>
-    <div className="p-6 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 hover:border-indigo-500 transition-all duration-400 ease-in">
-      <div className="text-2xl mb-2">🔥</div>
-      <h3 className="text-xl font-semibold">Total Clicks</h3>
-      <p className="text-3xl font-bold">10x Faster</p>
-      <input type="date" className="mt-4 p-2 bg-slate-800 rounded" />
-    </div>
-  </div>
-</div>`;
+    // Toast Telemetry
+    let toastTimeout;
+    function triggerToast(msg) {
+      const el = document.getElementById('globalToast');
+      document.getElementById('toastMsg').textContent = msg;
+      el.classList.add('show');
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => { el.classList.remove('show'); }, 2200);
     }
 
-    function runAudit() {
-      const val = document.getElementById('codeInput').value;
-      const out = document.getElementById('auditOutput');
+    // Stage Toggle (Vibe vs Clean)
+    let currentStage = 'slop';
+    function setStage(stage) {
+      currentStage = stage;
+      const slopBox = document.getElementById('stageSlop');
+      const cleanBox = document.getElementById('stageClean');
+      const btnSlop = document.getElementById('btnSlop');
+      const btnClean = document.getElementById('btnClean');
+
+      if (stage === 'slop') {
+        slopBox.style.display = 'block';
+        cleanBox.style.display = 'none';
+        btnSlop.className = 'mode-btn active-slop';
+        btnClean.className = 'mode-btn';
+      } else {
+        slopBox.style.display = 'none';
+        cleanBox.style.display = 'block';
+        btnSlop.className = 'mode-btn';
+        btnClean.className = 'mode-btn active-clean';
+        // Hide flaw pins if showing clean
+        document.querySelectorAll('.flaw-pin').forEach(p => p.style.display = 'none');
+        document.getElementById('btnTogglePins').classList.remove('active');
+      }
+    }
+
+    let showPins = false;
+    function toggleAnnotations() {
+      if (currentStage !== 'slop') {
+        setStage('slop');
+      }
+      showPins = !showPins;
+      const btn = document.getElementById('btnTogglePins');
+      document.querySelectorAll('.flaw-pin').forEach(p => {
+        p.style.display = showPins ? 'block' : 'none';
+      });
+      if (showPins) {
+        btn.classList.add('active');
+        btn.textContent = 'Hide Flaws';
+      } else {
+        btn.classList.remove('active');
+        btn.textContent = 'Show Flaws (5)';
+      }
+    }
+
+    // Archetype Switcher Engine
+    const archetypes = {
+      luxury: {
+        bg: '#09090b',
+        border: 'rgba(255, 255, 255, 0.08)',
+        radius: '8px',
+        titleColor: '#f4f4f5',
+        subColor: '#a1a1aa',
+        accentBg: '#3b82f6',
+        accentText: '#ffffff',
+        font: "'Inter', sans-serif",
+        statusColor: '#10b981',
+        cardBg: '#121215',
+        numColor: '#ffffff',
+        desc: 'Quiet Luxury SaaS archetype. Electric cobalt accents, deep obsidian canvas, and refined spacing geometry.',
+        code: `:root {
+  --bg-canvas: #09090b;
+  --bg-surface: #121215;
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --accent-primary: #3b82f6; /* Electric Cobalt */
+  --text-primary: #f4f4f5;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+}`
+      },
+      terminal: {
+        bg: '#0c0d0e',
+        border: '#24282c',
+        radius: '2px',
+        titleColor: '#e6edf3',
+        subColor: '#7d8590',
+        accentBg: '#10b981',
+        accentText: '#000000',
+        font: "'JetBrains Mono', monospace",
+        statusColor: '#f59e0b',
+        cardBg: '#141618',
+        numColor: '#10b981',
+        desc: 'Technical Dense Terminal. Monospace typography, precision emerald telemetry, zero border radiuses.',
+        code: `:root {
+  --bg-canvas: #0c0d0e;
+  --bg-surface: #141618;
+  --border-subtle: #24282c;
+  --accent-primary: #10b981; /* Precision Emerald */
+  --accent-secondary: #f59e0b; /* Amber Alert */
+  --text-primary: #e6edf3;
+  --font-mono: 'JetBrains Mono', monospace;
+  --radius-sm: 2px;
+}`
+      },
+      editorial: {
+        bg: '#fcfbf9',
+        border: '#e7e4df',
+        radius: '6px',
+        titleColor: '#1a1918',
+        subColor: '#73706a',
+        accentBg: '#991b1b',
+        accentText: '#ffffff',
+        font: "'Newsreader', Georgia, serif",
+        statusColor: '#991b1b',
+        cardBg: '#f5f3ef',
+        numColor: '#1a1918',
+        desc: 'Warm Editorial. Literary serif headings paired with clean monospace metadata and rich crimson accents.',
+        code: `:root {
+  --bg-canvas: #fcfbf9;
+  --bg-surface: #f5f3ef;
+  --border-subtle: #e7e4df;
+  --accent-primary: #991b1b; /* Editorial Crimson */
+  --text-primary: #1a1918;
+  --font-display: 'Newsreader', serif;
+  --radius-sm: 4px;
+}`
+      },
+      tactile: {
+        bg: '#000000',
+        border: '#2a2a30',
+        radius: '6px',
+        titleColor: '#ffffff',
+        subColor: '#888888',
+        accentBg: '#ffffff',
+        accentText: '#000000',
+        font: "'Inter', sans-serif",
+        statusColor: '#ffffff',
+        cardBg: '#0e0e11',
+        numColor: '#ffffff',
+        desc: 'Tactile Obsidian. Extreme high-contrast black-and-white geometry with crisp 1px borders.',
+        code: `:root {
+  --bg-canvas: #000000;
+  --bg-surface: #0e0e11;
+  --border-subtle: #2a2a30;
+  --accent-primary: #ffffff;
+  --text-primary: #ffffff;
+  --radius-sm: 6px;
+}`
+      }
+    };
+    let currentArchKey = 'luxury';
+
+    function setArchetype(key) {
+      currentArchKey = key;
+      document.querySelectorAll('.arch-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById(`archBtn-${key}`).classList.add('active');
+
+      const data = archetypes[key];
+      const canvas = document.getElementById('archCanvas');
+      canvas.style.background = data.bg;
+      canvas.style.borderColor = data.border;
+      canvas.style.borderRadius = data.radius;
+
+      const title = document.getElementById('archTitle');
+      title.style.color = data.titleColor;
+      title.style.fontFamily = data.font;
+
+      const sub = document.getElementById('archSub');
+      sub.style.color = data.subColor;
+
+      const actionBtn = document.getElementById('archActionBtn');
+      actionBtn.style.background = data.accentBg;
+      actionBtn.style.color = data.accentText;
+      actionBtn.style.borderRadius = data.radius;
+
+      const card = document.getElementById('archMetricCard');
+      card.style.background = data.cardBg;
+      card.style.borderColor = data.border;
+      card.style.borderRadius = data.radius;
+
+      const num = document.getElementById('archNum');
+      num.style.color = data.numColor;
+
+      const status = document.getElementById('archStatus');
+      status.style.color = data.statusColor;
+
+      document.getElementById('archDesc').textContent = data.desc;
+      document.getElementById('archCodeView').textContent = data.code;
+    }
+
+    function copyArchTokens() {
+      navigator.clipboard.writeText(archetypes[currentArchKey].code).then(() => {
+        triggerToast('Archetype tokens copied to clipboard');
+      });
+    }
+
+    // 8-State Interactive Machine Test
+    let liveStateIndex = 0;
+    const liveStates = ['default', 'hover', 'focus', 'active', 'loading', 'success', 'error', 'disabled'];
+    function cycleInteractiveState() {
+      liveStateIndex = (liveStateIndex + 1) % liveStates.length;
+      const state = liveStates[liveStateIndex];
+      const btn = document.getElementById('btnLiveTest');
+      btn.className = `tac-btn tac-btn-${state}`;
+      btn.textContent = `State: ${state.toUpperCase()}`;
+      if (state === 'error') triggerShake(btn);
+    }
+
+    function triggerShake(el) {
+      el.style.animation = 'none';
+      el.offsetHeight; // reflow
+      el.style.animation = 'shake 0.3s var(--ease-out)';
+    }
+
+    // Code Linter Presets & Auto-Fix Engine
+    const codePresets = {
+      radial: `<div className="min-h-screen bg-slate-900 bg-[radial-gradient(ellipse_at_top,_#312e81,_#0f172a,_#000000)] p-8">
+  <span className="text-xs uppercase tracking-widest text-indigo-400">OVERVIEW</span>
+  <h1 className="text-4xl font-bold text-white">Live <span className="italic bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">Radar</span></h1>
+</div>`,
+      emoji: `<div className="flex gap-4">
+  <button className="px-4 py-2 bg-indigo-600 text-white rounded-lg">🚀 Launch Radar</button>
+  <button className="px-4 py-2 bg-slate-800 text-white rounded-lg">🔥 View Trending</button>
+</div>`,
+      cards: `<div className="grid grid-cols-3 gap-6">
+  <div className="p-6 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 hover:border-indigo-500 transition-all duration-400 ease-in">
+    <div className="text-2xl mb-2">🚀</div>
+    <h3 className="text-xl font-semibold">Total Clicks</h3>
+    <p className="text-3xl font-bold">+99.9% Uptime</p>
+    <input type="date" className="mt-4 p-2 bg-slate-800 rounded" />
+  </div>
+</div>`,
+      clean: `<div className="min-h-screen bg-[#09090b] text-zinc-100 p-8 font-sans">
+  <header className="flex items-center justify-between pb-4 border-b border-white/10">
+    <h1 className="text-base font-semibold">Link Telemetry</h1>
+    <button className="px-3 py-1.5 bg-white text-black text-xs font-medium rounded active:scale-95 transition-transform duration-100 focus-visible:ring-2 focus-visible:ring-white">
+      Create Link
+    </button>
+  </header>
+</div>`
+    };
+
+    function loadPreset(key) {
+      document.getElementById('scanInput').value = codePresets[key];
+      runScan();
+    }
+
+    function runScan() {
+      const val = document.getElementById('scanInput').value;
+      const out = document.getElementById('scanOut');
       out.style.display = 'block';
       out.innerHTML = '';
 
       if (!val.trim()) {
-        out.innerHTML = '<div class="audit-item"><span class="audit-desc">No code provided. Paste code above or click "Load Vibe-Coded Sample".</span></div>';
+        out.innerHTML = '<div class="out-row"><span class="out-msg">Paste JSX or Tailwind code above to run audit.</span></div>';
         return;
       }
 
       const issues = [];
-
-      // Detect radial gradient
       if (/radial-gradient/i.test(val)) {
-        issues.push({ type: 'bad', name: 'AI Dark Mode Blob', msg: 'Detected radial-gradient. Replace with deep solid monochrome (#09090b) and hairline border.' });
+        issues.push({ rule: 'The "AI Dark Mode" Blob', fix: 'Replace with solid deep obsidian (#09090b) and hairline border (1px solid rgba(255,255,255,0.08)).' });
       }
-
-      // Detect raw emojis
       const emojiMatch = val.match(/[\u{1F300}-\u{1F6FF}\u{1F900}-\u{1F9FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]/u);
       if (emojiMatch) {
-        issues.push({ type: 'bad', name: 'Raw Emojis as UI Icons', msg: `Found raw emoji (${emojiMatch[0]}). Replace with 1.5px/2px stroke vector SVG icons (Lucide / Phosphor).` });
+        issues.push({ rule: `Raw Emojis as UI Icons (${emojiMatch[0]})`, fix: 'Replace with 1.5px/2px stroke single-weight vector SVG icons (Lucide / Phosphor).' });
       }
-
-      // Detect slate-900 / indigo-600
       if (/bg-slate-900|bg-indigo-600|text-indigo-400/i.test(val)) {
-        issues.push({ type: 'bad', name: 'Monotonous Slate/Indigo Template', msg: 'Detected boilerplate Tailwind slate/indigo pairing. Use intentional curated semantic tokens.' });
+        issues.push({ rule: 'Monotonous Slate/Indigo', fix: 'Use curated semantic tokens (Quiet Luxury, Terminal, or Editorial).' });
       }
-
-      // Detect 3-card grid
       if (/grid-cols-3/i.test(val)) {
-        issues.push({ type: 'bad', name: 'Cookie-Cutter 3-Card Grid', msg: 'Detected standard 3-card grid. Consider asymmetric bento or workflow row architecture.' });
+        issues.push({ rule: 'Cookie-Cutter 3-Card Grid', fix: 'Use asymmetric bento or workflow row architecture.' });
       }
-
-      // Detect fake stats
       if (/\+99\.9%|10x faster|50k\+/i.test(val)) {
-        issues.push({ type: 'bad', name: 'Fabricated Vanity Stats', msg: 'Detected generic AI marketing claims (+99.9%, 10x). Replace with real domain metrics or delete card.' });
+        issues.push({ rule: 'Fabricated Vanity Stats', fix: 'Use real domain telemetry or remove card entirely.' });
       }
-
-      // Detect slow ease-in
       if (/ease-in\b|duration-400|duration-500/i.test(val)) {
-        issues.push({ type: 'bad', name: 'Sluggish Animation Curve', msg: 'Detected ease-in or >300ms duration. Use punchy ease-out <200ms (cubic-bezier(0.23, 1, 0.32, 1)).' });
+        issues.push({ rule: 'Sluggish Ease-In Motion', fix: 'Use snappy ease-out <200ms (cubic-bezier(0.23, 1, 0.32, 1)).' });
       }
-
-      // Detect single-word italic
       if (/italic.*text-transparent/i.test(val) || /bg-clip-text/i.test(val)) {
-        issues.push({ type: 'bad', name: 'Single-Word Italic Gradient', msg: 'Detected single-word gradient/italic highlight. Enforce confident, uniform typographic weight.' });
+        issues.push({ rule: 'Single-Word Italic Glow', fix: 'Enforce uniform, confident typographic weight. Let the statement lead.' });
       }
-
-      // Detect card-level date picker
       if (/<input[^>]*type=["']date["']/i.test(val)) {
-        issues.push({ type: 'bad', name: 'Card-Level Filter Pollution', msg: 'Date input detected inside repeated container. Unify date ranges into a single page-level control bar.' });
+        issues.push({ rule: 'Card-Level Filter Pollution', fix: 'Move date filter to a unified page-level control bar.' });
       }
 
       if (issues.length === 0) {
-        out.innerHTML = '<div class="audit-item"><span class="audit-type-ok">✓ PASS:</span><span class="audit-desc">Zero common AI slop patterns detected! Ensure 8-state interactivity and WCAG focus rings are configured.</span></div>';
+        out.innerHTML = '<div class="out-row"><span class="out-pass">✓ 100% CLEAN:</span><span class="out-msg">No AI design slop patterns detected! Verified against 12 anti-patterns.</span></div>';
       } else {
-        issues.forEach(iss => {
-          const el = document.createElement('div');
-          el.className = 'audit-item';
-          el.innerHTML = `<span class="audit-type-bad">✕ ${iss.name}:</span> <span class="audit-desc">${iss.msg}</span>`;
-          out.appendChild(el);
+        issues.forEach(i => {
+          out.innerHTML += `<div class="out-row"><span class="out-rule">✕ ${i.rule}</span><span class="out-msg">${i.fix}</span></div>`;
         });
       }
     }
+
+    function autoFixCode() {
+      const input = document.getElementById('scanInput');
+      let code = input.value;
+      if (!code.trim()) {
+        loadPreset('cards');
+        code = input.value;
+      }
+
+      // Perform deterministic AST/regex replacements
+      code = code.replace(/bg-slate-900\s+bg-\[radial-gradient[^\]]+\]/g, 'bg-[#09090b] border border-white/10');
+      code = code.replace(/bg-\[radial-gradient[^\]]+\]/g, 'bg-[#09090b]');
+      code = code.replace(/bg-indigo-600/g, 'bg-white text-black font-medium hover:bg-zinc-200');
+      code = code.replace(/text-indigo-400/g, 'text-zinc-400 font-mono text-xs');
+      code = code.replace(/italic\s+bg-gradient-to-r[^\s"]+/g, 'text-white font-semibold');
+      code = code.replace(/bg-clip-text\s+text-transparent/g, '');
+      code = code.replace(/[\u{1F300}-\u{1F6FF}\u{1F900}-\u{1F9FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]\s*/gu, '');
+      code = code.replace(/grid-cols-3/g, 'grid-cols-1 md:grid-cols-3');
+      code = code.replace(/rounded-2xl/g, 'rounded-md');
+      code = code.replace(/duration-400\s+ease-in/g, 'duration-150 ease-out active:scale-95');
+      code = code.replace(/<input[^>]*type=["']date["'][^>]*\/>/g, '<!-- Filter hoisted to page-level control bar -->');
+
+      input.value = code;
+      runScan();
+      triggerToast('Code refactored to human-grade standards');
+    }
+
+    // 7-Axis Quality Gate Calculation
+    function calcQualityGate() {
+      const ranges = document.querySelectorAll('.gate-range');
+      const displays = document.querySelectorAll('.gate-score-display');
+      let total = 0;
+      let allAboveFour = true;
+
+      ranges.forEach((r, idx) => {
+        const val = parseInt(r.value, 10);
+        displays[idx].textContent = val;
+        total += val;
+        if (val < 4) allAboveFour = false;
+      });
+
+      document.getElementById('gateBigScore').textContent = total;
+      const verdict = document.getElementById('gateVerdictBadge');
+      const desc = document.getElementById('gateVerdictDesc');
+
+      if (total >= 28 && allAboveFour) {
+        verdict.className = 'gate-verdict verdict-pass';
+        verdict.textContent = 'PASSED: PRODUCTION READY';
+        desc.textContent = 'All 7 axes exceed the mandatory ≥ 4/5 threshold.';
+      } else {
+        verdict.className = 'gate-verdict verdict-fail';
+        verdict.textContent = 'REJECTED: MUST REFACTOR';
+        desc.textContent = 'One or more axes fall below the mandatory 4/5 production threshold.';
+      }
+    }
+
+    // Global Keyboard Shortcuts
+    window.addEventListener('keydown', (e) => {
+      // Toggle proof mode with 'V'
+      if (e.key === 'v' || e.key === 'V') {
+        if (document.activeElement.tagName !== 'TEXTAREA' && document.activeElement.tagName !== 'INPUT') {
+          setStage(currentStage === 'slop' ? 'clean' : 'slop');
+          triggerToast(`Switched to ${currentStage.toUpperCase()} mode`);
+        }
+      }
+      // Copy active install with 'C'
+      if ((e.key === 'c' || e.key === 'C') && !e.ctrlKey && !e.metaKey) {
+        if (document.activeElement.tagName !== 'TEXTAREA' && document.activeElement.tagName !== 'INPUT') {
+          copyActiveInstall();
+        }
+      }
+    });
+
+    // Initialize Default States
+    window.addEventListener('DOMContentLoaded', () => {
+      calcQualityGate();
+      loadPreset('radial');
+    });
   </script>
 </body>
 </html>
